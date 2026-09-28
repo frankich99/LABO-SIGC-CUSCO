@@ -1,0 +1,37 @@
+% ==============================================================================
+% SECCIÓN 5: GESTIÓN DE RIESGOS INICIALES (PARTE 4 DE LA GUÍA)
+% ==============================================================================
+
+\section{Parte 4: Identificación y Gestión Inicial de Riesgos}
+
+En la fase de \textit{Agile Inception}, la identificación temprana de riesgos permite al equipo de ingeniería de software diseñar arquitecturas preventivas en lugar de aplicar soluciones reactivas costosas. A continuación, se presenta la matriz de riesgos del \textbf{SIGC\_V0.1}, categorizados por impacto y probabilidad.
+
+\subsection{Matriz de Valoración de Riesgos}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{p{0.8cm}p{3.5cm}cclX}
+\toprule
+\textbf{ID} & \textbf{Descripción del Riesgo} & \textbf{Prob.} & \textbf{Impacto} & \textbf{Nivel} & \textbf{Estrategia de Mitigación y Contingencia} \\
+\midrule
+\textbf{R01} & \textbf{Baja adopción por brecha digital} en funcionarios o participantes de mayor edad. & Media & Alto & \textbf{Alto} & Diseñar interfaz móvil minimalista (estilo 2 clics), inicio de sesión con DNI sin contraseñas complejas y manuales breves en video interactivo. \\
+\midrule
+\textbf{R02} & \textbf{Fallas o corte de conexión a Internet} en locales comunales durante la toma de asistencia. & Alta & Medio & \textbf{Alto} & Implementar arquitectura \textit{Offline-First} con \textit{Service Workers} y almacenamiento local (IndexedDB) para sincronización automática al volver la señal. \\
+\midrule
+\textbf{R03} & \textbf{Intento de falsificación o adulteración de certificados} por terceros. & Media & Crítico & \textbf{Crítico} & Incorporación de un hash criptográfico SHA-256 en la base de datos, firma digitalizada institucional y código QR dinámico que apunta al verificador oficial. \\
+\midrule
+\textbf{R04} & \textbf{Colapso del servidor por generación masiva de PDFs} tras finalizar cursos con cientos de inscritos. & Media & Medio & \textbf{Medio} & Procesamiento asíncrono en segundo plano mediante colas de tareas (\textit{worker queues}) y almacenamiento directo en buckets en la nube. \\
+\midrule
+\textbf{R05} & \textbf{Suplantación de identidad en el marcado de asistencia} (compartir códigos QR entre compañeros). & Alta & Medio & \textbf{Alto} & Generación de códigos QR efímeros que expiran cada 45 segundos en la pantalla del proyector o escaneo directo del DNI del participante por el capacitador. \\
+\midrule
+\textbf{R06} & \textbf{Resistencia institucional a abandonar Excel} por costumbre burocrática. & Alta & Alto & \textbf{Alto} & Módulo de exportación e importación masiva compatible al 100\,\% con plantillas de Microsoft Excel (.xlsx) y reportes en formato oficial requerido por OCI/OSCE. \\
+\bottomrule
+\end{tabularx}
+\caption{Matriz de Riesgos Iniciales y Planes de Mitigación del SIGC\_V0.1.}
+\label{tab:riesgos}
+\end{table}
+
+\subsection{Análisis del Nivel de Severidad}
+El riesgo más crítico identificado es el \textbf{R03 (Falsificación documental)}, puesto que las capacitaciones en normativas públicas (OSCE/SIGA) otorgan puntajes en convocatorias CAS y licitaciones del Estado. Cualquier vulnerabilidad en la integridad del certificado invalidaría la credibilidad del sistema. Por ello, el verificador público de certificados con código QR representa un requerimiento no funcional de seguridad de máxima prioridad.

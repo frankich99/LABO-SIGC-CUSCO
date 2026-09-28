@@ -1,0 +1,85 @@
+% ==============================================================================
+% SECCIÓN 6: ARQUITECTURA FUNCIONAL, MÓDULOS Y MODELO DE DATOS
+% ==============================================================================
+
+\section{Arquitectura Funcional y Alcance de Módulos del SIGC}
+
+\subsection{Estructura Modular del Sistema}
+Para asegurar que el sistema sea integral, robusto y altamente desacoplado, el \textbf{SIGC\_V0.1} se organiza en nueve módulos funcionales principales (ver Tabla~\ref{tab:modulos}).
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{p{3.2cm}p{5.5cm}X}
+\toprule
+\textbf{Módulo} & \textbf{Responsabilidad Principal} & \textbf{Operaciones Clave} \\
+\midrule
+\textbf{1. Usuarios y Roles} & Autenticación y gestión de permisos con control de acceso basado en roles (RBAC). & Login seguro, recuperación de credenciales, roles: Administrador, Coordinador, Capacitador, Alumno. \\
+\midrule
+\textbf{2. Instituciones} & Registro multitenant de entidades patrocinadoras y organizadoras. & Registro de municipalidades, empresas de turismo, logos institucionales y configuración de plantillas. \\
+\midrule
+\textbf{3. Capacitaciones} & Catálogo y parametrización de eventos formativos. & Creación de cursos, definición de fechas, horarios, límite de vacantes, modalidad (presencial/virtual) y asignación de expositores. \\
+\midrule
+\textbf{4. Inscripciones} & Registro y admisión de participantes con validación de cupos. & Formulario público o privado, validación de DNI en tiempo real, confirmación por correo y lista de espera. \\
+\midrule
+\textbf{5. Asistencia} & Control riguroso y auditable de asistencia por sesión formativa. & Marcado mediante código QR personal, registro manual por el instructor, porcentaje mínimo de asistencia para certificar. \\
+\midrule
+\textbf{6. Evaluaciones} & Registro de calificaciones y validación de aprobación académica. & Calificación de exámenes, registro de notas de 0 a 20, cálculo de promedio final y determinación de estado (Aprobado/Desaprobado). \\
+\midrule
+\textbf{7. Certificados} & Motor de generación, firma y validación documental. & Renderizado de PDF con datos del participante, firma digitalizada, código QR único, hash criptográfico y portal público de consulta. \\
+\midrule
+\textbf{8. Reportes y Métricas} & Analítica institucional para toma de decisiones y fiscalización. & Reportes de asistencia por distrito, índice de aprobación, descarga de padrón oficial en formato Excel/PDF. \\
+\midrule
+\textbf{9. Notificaciones} & Comunicaciones transaccionales en tiempo real. & Envío automático de recordatorios de sesiones, confirmación de inscripción y enlace de descarga de diploma. \\
+\bottomrule
+\end{tabularx}
+\caption{Módulos funcionales del Sistema Integral de Gestión de Capacitaciones.}
+\label{tab:modulos}
+\end{table}
+
+\subsection{Flujo Integral del Proceso de Capacitación}
+El ciclo de vida operativo del sistema sigue una secuencia ordenada y verificable:
+\begin{center}
+\begin{tikzpicture}[node distance=1.3cm, auto,
+    block/.style={rectangle, draw=blue!70!black, fill=blue!8, text width=9.5cm, text centered, rounded corners=2pt, minimum height=0.7cm, font=\small},
+    line/.style={draw=blue!70!black, -Latex, thick}]
+    
+    \node [block] (n1) {\textbf{1. Creación de Capacitación:}\\Institución define nombre, temario, fechas, vacantes y capacitador.};
+    \node [block, below of=n1] (n2) {\textbf{2. Publicación y Convocatoria:}\\Apertura del curso en el portal institucional; difusión vecinal/empresarial.};
+    \node [block, below of=n2] (n3) {\textbf{3. Inscripción del Participante:}\\Registro de datos, DNI, validación de cupo y asignación de credencial QR.};
+    \node [block, below of=n3] (n4) {\textbf{4. Ejecución y Control de Asistencia:}\\Marcado de asistencia sesión por sesión; registro de incidencias.};
+    \node [block, below of=n4] (n5) {\textbf{5. Evaluación y Cierre de Actas:}\\Capacitador ingresa notas; sistema valida cumplimiento de requisitos.};
+    \node [block, below of=n5] (n6) {\textbf{6. Emisión y Validación de Certificado:}\\Generación masiva con QR; participante descarga PDF verificado.};
+    \node [block, below of=n6] (n7) {\textbf{7. Auditoría y Reportes Gerenciales:}\\Generación de analítica para la municipalidad o gerencia de la empresa.};
+    
+    \path [line] (n1) -- (n2);
+    \path [line] (n2) -- (n3);
+    \path [line] (n3) -- (n4);
+    \path [line] (n4) -- (n5);
+    \path [line] (n5) -- (n6);
+    \path [line] (n6) -- (n7);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Modelo de Datos Preliminar}
+Para sustentar los módulos descritos, se establecen las siguientes entidades de datos fundamentales:
+\begin{itemize}
+    \item \textbf{Institución:} \texttt{id\_institucion, ruc, razon\_social, tipo (pública/privada), direccion, telefono, logo\_url, estado}.
+    \item \textbf{Usuario:} \texttt{id\_usuario, dni, nombres, apellidos, correo, password\_hash, rol, celular, estado}.
+    \item \textbf{Capacitación:} \texttt{id\_capacitacion, id\_institucion, id\_capacitador, titulo, descripcion, categoria, fecha\_inicio, fecha\_fin, horas\_academicas, modalidad, vacantes\_max, estado}.
+    \item \textbf{Inscripción:} \texttt{id\_inscripcion, id\_capacitacion, id\_participante, fecha\_registro, estado (confirmada/lista\_espera)}.
+    \item \textbf{Asistencia:} \texttt{id\_asistencia, id\_inscripcion, fecha\_sesion, hora\_marcado, estado\_asistencia (presente/falta/tardanza), metodo (qr/manual)}.
+    \item \textbf{Evaluación:} \texttt{id\_evaluacion, id\_inscripcion, nota\_obtenida (0--20), estado\_aprobacion (aprobado/desaprobado), observaciones}.
+    \item \textbf{Certificado:} \texttt{id\_certificado, codigo\_unico, id\_inscripcion, hash\_sha256, fecha\_emision, url\_pdf, url\_verificacion\_qr, estado}.
+\end{itemize}
+
+\subsection{Plan de Escalabilidad Estratégica en 5 Fases}
+El diseño arquitectónico no se limita a un único municipio, sino que contempla una evolución por etapas:
+\begin{enumerate}
+    \item \textbf{Fase 1 (MVP Local):} Municipalidades de la región Cusco (capacitaciones en SIGA, OSCE, residuos sólidos y tributación).
+    \item \textbf{Fase 2 (Sector Turístico):} Empresas privadas de hotelería, gastronomía y transporte turístico (certificación de competencias laborales y atención al cliente).
+    \item \textbf{Fase 3 (Educación Continua):} Universidades, institutos tecnológicos y colegios profesionales del sur del país.
+    \item \textbf{Fase 4 (Emprendimientos y MYPEs):} Cámaras de comercio y asociaciones de artesanos y productores locales.
+    \item \textbf{Fase 5 (Inteligencia de Datos y Recomendaciones):} Implementación de algoritmos de analítica predictiva de demanda laboral y verificación de certificados en blockchain.
+\end{enumerate}

@@ -1,0 +1,76 @@
+% ==============================================================================
+% CONFIGURACIÓN DE PAQUETES - LATEX (ESTÁNDAR ACADÉMICO UNSAAC / APA 7)
+% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC_V0.1)
+% ==============================================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
+\spanishdeactivate{"}
+\usepackage{csquotes}
+
+% Configuración de Márgenes APA 7 (2.54 cm / 1 pulgada)
+\usepackage[margin=2.54cm, headheight=18pt]{geometry}
+
+% Tipografía formal Times / Mathptmx y espaciado
+\usepackage{mathptmx}
+\usepackage{setspace}
+\onehalfspacing
+
+% Paquetes matemáticos y de símbolos
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% Tablas y Figuras Profesionales
+\usepackage{graphicx}
+\graphicspath{{./}{imagenes/}{./imagenes/}}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{pdflscape} % Para páginas en orientación horizontal (Lean Canvas)
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Cajas estilizadas para Lean Canvas y Callouts
+\usepackage[most]{tcolorbox}
+
+% Diagramas vectoriales TikZ
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, calc, shadows}
+
+% Encabezados y pies de página
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape UNSAAC -- Ingeniería de Software I}
+\fancyhead[R]{\small\itshape SIGC -- Laboratorio 02}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Enlaces y URLs
+\usepackage{xurl}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    breaklinks=true,
+    linkcolor=blue!75!black,
+    citecolor=blue!75!black,
+    urlcolor=blue!75!black,
+    pdftitle={Laboratorio 2: Agile Inception - SIGC v0.1},
+    pdfauthor={Choquenaira, Yaranga, Ccama - UNSAAC}
+}
+
+% Microtipografía para evitar overfull hboxes
+\usepackage{microtype}
+\emergencystretch=2.5em
+\tolerance=2000
+\hbadness=2000
+
+% Sangría de párrafos
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0.3em}

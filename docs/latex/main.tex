@@ -1,0 +1,53 @@
+% ==============================================================================
+% DOCUMENTO PRINCIPAL - LATEX
+% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC_V0.1)
+% Asignatura: Ingeniería de Software I - UNSAAC
+% ==============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% Inclusión de paquetes y configuración general
+\input{config/packages.tex}
+
+\begin{document}
+
+% 1. Portada Institucional Oficial
+\input{secciones/00_portada.tex}
+
+% 2. Tabla de Contenidos
+\newpage
+{
+    \hypersetup{linkcolor=black}
+    \tableofcontents
+}
+\newpage
+
+% 3. Secciones del Informe Técnico de Laboratorio 02
+\input{secciones/01_objetivo_fundamento.tex}
+\newpage
+
+\input{secciones/02_stakeholders.tex}
+\newpage
+
+\input{secciones/03_vision_sistema.tex}
+\newpage
+
+% Lean Canvas en formato horizontal
+\input{secciones/04_lean_canvas.tex}
+\newpage
+
+\input{secciones/05_gestion_riesgos.tex}
+\newpage
+
+\input{secciones/06_arquitectura_modulos.tex}
+\newpage
+
+\input{secciones/07_herramienta_trello.tex}
+\newpage
+
+\input{secciones/08_reflexion_git.tex}
+\newpage
+
+\input{secciones/09_benchmarking_soluciones.tex}
+
+\end{document}

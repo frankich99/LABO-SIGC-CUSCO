@@ -1,0 +1,64 @@
+% ==============================================================================
+% SECCIÓN 9: TRABAJO EXTRA - INVESTIGACIÓN DE SOLUCIONES SIMILARES (BENCHMARKING)
+% ==============================================================================
+
+\section{Parte 6 (Trabajo Extra): Investigación de Soluciones Similares en el Mercado}
+
+Como parte de la investigación requerida en el apartado de \textit{Trabajo Extra}, se ha llevado a cabo un análisis comparativo y de estado del arte entre el \textbf{SIGC} y las soluciones tecnológicas comúnmente empleadas en el ámbito formativo, tanto en el sector público como en el corporativo.
+
+\subsection{Análisis de Alternativas de Mercado}
+
+\begin{enumerate}
+    \item \textbf{LMS Tradicionales (Moodle / Chamilo / Canvas):}
+    \begin{itemize}
+        \item \textit{Fortalezas:} Gran madurez, soporte para foros, tareas y contenidos SCORM.
+        \item \textit{Limitaciones frente al SIGC:} Son sistemas sobredimensionados y complejos para capacitaciones cortas (de 1 a 5 sesiones). Su interfaz resulta confusa para usuarios con baja alfabetización digital y no cuentan con un mecanismo nativo y ágil para el control presencial de asistencia por código QR ni para la emisión de diplomas institucionales con verificación pública instantánea.
+    \end{itemize}
+
+    \item \textbf{Herramientas Ofimáticas Desarticuladas (Google Forms + Excel + Canva):}
+    \begin{itemize}
+        \item \textit{Fortalezas:} Costo directo cero y familiaridad de uso.
+        \item \textit{Limitaciones frente al SIGC:} Fragmentación absoluta de la información. No valida cupos en tiempo real, permite duplicidad de inscripciones, carece de seguridad (las listas pueden alterarse con facilidad) y la elaboración manual de diplomas demanda decenas de horas de trabajo administrativo con nula garantía de autenticidad.
+    \end{itemize}
+
+    \item \textbf{Plataformas Corporativas Cerradas (Crehana for Business / Platzi Empresas / Cornerstone):}
+    \begin{itemize}
+        \item \textit{Fortalezas:} Catálogos de cursos pregrabados de alta calidad audiovisual.
+        \item \textit{Limitaciones frente al SIGC:} Costos de licenciamiento prohibitivos en dólares para municipalidades y PYMEs cusqueñas. No permiten que la institución gestione sus propios cursos presenciales sobre normativas peruanas específicas (ej. SIGA, SIAF, OSCE, directivas sanitarias de DIRCETUR).
+    \end{itemize}
+
+    \item \textbf{Portales Estatales Cerrados (Campus Virtual OSCE / SENCE):}
+    \begin{itemize}
+        \item \textit{Fortalezas:} Cumplimiento normativo oficial.
+        \item \textit{Limitaciones frente al SIGC:} Son ecosistemas cerrados y de uso interno exclusivo del gobierno central, no disponibles para que municipalidades distritales o empresas turísticas independientes gestionen autónomamente sus eventos formativos.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Matriz Comparativa de Características (Benchmarking)}
+
+La Tabla~\ref{tab:benchmarking} resume la comparativa funcional entre las alternativas existentes y la propuesta de valor del \textbf{SIGC\_V0.1}.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{p{4.8cm}XXXX}
+\toprule
+\textbf{Característica / Criterio} & \textbf{SIGC (Propuesto)} & \textbf{Moodle} & \textbf{Google Suite} & \textbf{LMS Corporativo} \\
+\midrule
+Enfoque en capacitaciones cortas (1--5 sesiones) & \textbf{Total} & Bajo & Medio & Bajo \\
+Control de asistencia por QR en tiempo real & \textbf{Nativo} & Plugin complejo & No disponible & No \\
+Certificado digital automático con QR público & \textbf{Nativo} & Requiere plugins & Manual (Canva) & Sí (cerrado) \\
+Arquitectura multitenant (Municipalidad / Turismo) & \textbf{Sí} & Compleja & No & Sí (alto coste) \\
+Validación de DNI peruano en inscripción & \textbf{Sí} & No & No & No \\
+Exportación oficial a formatos compatibles con OSCE & \textbf{Sí} & No & Manual & No \\
+Facilidad de uso para usuarios con brecha digital & \textbf{Muy Alta} & Media / Baja & Media & Alta \\
+Coste de despliegue y mantenimiento & \textbf{Bajo (SaaS/Open)} & Medio & Bajo & Muy Alto (\$\$\$) \\
+\bottomrule
+\end{tabularx}
+\caption{Matriz comparativa de capacidades funcionales (Benchmarking).}
+\label{tab:benchmarking}
+\end{table}
+
+\subsection{Conclusiones del Estudio de Mercado}
+El análisis demuestra que existe un vacío en el mercado regional para una solución ligera, multientidad y adaptada a la realidad administrativa peruana. El \textbf{SIGC\_V0.1} llena esta brecha combinando la sencillez de un portal de eventos con la seriedad y seguridad jurídica requerida por las instituciones públicas y empresas líderes del Cusco.

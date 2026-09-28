@@ -1,0 +1,20 @@
+# Archivos auxiliares de LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Mantener PDF principal entregable
+!docs/latex/main.pdf
+
+# Configuración de editores y SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

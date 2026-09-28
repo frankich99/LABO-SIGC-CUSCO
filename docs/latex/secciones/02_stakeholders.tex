@@ -1,0 +1,62 @@
+% ==============================================================================
+% SECCIÓN 2: IDENTIFICACIÓN Y ANÁLISIS DE STAKEHOLDERS (PARTE 1 DE LA GUÍA)
+% ==============================================================================
+
+\section{Parte 1: Identificación y Caracterización de Stakeholders}
+
+El \textbf{Sistema Integral de Gestión de Capacitaciones (SIGC)} ha sido concebido bajo un enfoque multientidad y escalable, capaz de satisfacer las exigencias normativas del sector público (por ejemplo, municipalidades distritales y provinciales de la región Cusco) y la agilidad requerida por el sector privado (especialmente empresas hoteleras, restaurantes y agencias de turismo).
+
+\subsection{Definición de Actores Principales}
+
+\begin{enumerate}
+    \item \textbf{Municipalidades e Instituciones Públicas:}
+    Comprende a las gerencias de administración tributaria, logística, recursos humanos y desarrollo económico. Requieren capacitar obligatoriamente a su personal y a comerciantes en normativas estatales (OSCE, SIGA, SIAF, gestión de residuos y atención ciudadana), necesitando reportes de asistencia fiscalizables y control de presupuesto institucional.
+
+    \item \textbf{Empresas Privadas y Sector Turístico:}
+    Comprende a operadores turísticos, hoteles, picanterías tradicionales y restaurantes en el Cusco. Tienen la necesidad constante de capacitar y recertificar a su personal en protocolos de calidad, atención al cliente, idiomas y buenas prácticas de manipulación de alimentos, requiriendo acreditaciones inmediatas para cumplir con licencias y sellos de calidad.
+
+    \item \textbf{Participantes y Ciudadanos:}
+    Trabajadores públicos, estudiantes universitarios, técnicos y emprendedores que se inscriben en las capacitaciones. Su prioridad es registrarse sin trabas burocráticas, recibir recordatorios de clases, acceder a material digital y obtener un certificado digital formal, infalsificable y con verificación pública instantánea.
+
+    \item \textbf{Capacitadores y Expositores:}
+    Especialistas, consultores y funcionarios encargados de dictar las sesiones. Precisan herramientas ágiles para el control de asistencia en tiempo real (por ejemplo, escaneo de códigos QR o listas sincronizadas), registro rápido de calificaciones y comunicación directa con los inscritos.
+
+    \item \textbf{Administradores de Plataforma y Equipo de TI:}
+    Personal técnico responsable del aprovisionamiento de cuentas institucionales, respaldo de información, mantenimiento de servidores y resguardo de la seguridad criptográfica de los certificados emitidos.
+\end{enumerate}
+
+\subsection{Matriz de Caracterización y Análisis de Necesidades}
+
+A continuación, la Tabla~\ref{tab:stakeholders} detalla los dolores actuales, expectativas y valor generado para cada grupo de interés según las directrices de la guía.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{p{2.6cm}p{3.2cm}p{4.2cm}X}
+\toprule
+\textbf{Stakeholder} & \textbf{Rol en el Ecosistema} & \textbf{Dolores Actuales (\textit{Pains})} & \textbf{Requerimientos en el SIGC (\textit{Gains})} \\
+\midrule
+\textbf{Municipalidades (Sector Público)} & Planificador y patrocinador de capacitaciones oficiales (OSCE, SIGA). & Dispersión de listas en papel, firmas adulteradas, demoras de semanas en emitir diplomas y falta de auditoría. & Dashboard centralizado, control de vacantes, auditoría de asistencias y reportes estadísticos exportables. \\
+\midrule
+\textbf{Empresas Turísticas (Sector Privado)} & Gestor de competencias laborales (Atención al cliente, barismo, etc.). & Alto costo administrativo de coordinar cursos, pérdida de constancias de empleados y capacitación sin trazabilidad. & Portal institucional con marca propia, certificación rápida para auditorías de calidad y control por turnos. \\
+\midrule
+\textbf{Participantes / Ciudadanos} & Alumno y beneficiario de la formación técnica y laboral. & Procesos de inscripción confusos, no saber si alcanzaron vacante y certificados en PDF sin valor legal. & Inscripción ágil en 2 pasos, notificaciones de horarios, acceso a su expediente de cursos y certificado con QR verificable. \\
+\midrule
+\textbf{Capacitadores y Docentes} & Facilitador del conocimiento y evaluador del curso. & Pérdida de tiempo tomando lista manualmente y tener que calcular promedios de notas en hojas sueltas. & Marcado digital de asistencia (QR / PIN), libro de calificaciones en línea y cierre automático de actas. \\
+\midrule
+\textbf{Administrador de Sistemas / TI} & Garante de la infraestructura y disponibilidad de datos. & Riesgo de colapso por registros masivos y vulnerabilidades de falsificación de certificados. & Base de datos relacional robusta, emisión asíncrona de PDFs y hashes criptográficos de verificación. \\
+\bottomrule
+\end{tabularx}
+\caption{Matriz detallada de caracterización de Stakeholders para el SIGC\_V0.1.}
+\label{tab:stakeholders}
+\end{table}
+
+\subsection{Matriz Poder vs. Interés (Mendelow)}
+Para la estrategia de comunicación y gestión durante el ciclo de vida del software, los actores se priorizan de la siguiente manera:
+\begin{itemize}
+    \item \textbf{Alto Poder / Alto Interés (Gestionar de cerca):} Gerentes municipales y directores de empresas privadas (patrocinadores directos de licencias).
+    \item \textbf{Bajo Poder / Alto Interés (Mantener informados):} Participantes, ciudadanos y capacitadores (usuarios finales activos).
+    \item \textbf{Alto Poder / Bajo Interés (Mantener satisfechos):} Entes reguladores y auditores del Estado (OSCE, Contraloría, SUNAFIL).
+    \item \textbf{Bajo Poder / Bajo Interés (Monitorear):} Proveedores externos de infraestructura y comunidad en general.
+\end{itemize}
