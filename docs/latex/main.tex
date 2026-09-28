@@ -1,6 +1,6 @@
 % ==============================================================================
 % DOCUMENTO PRINCIPAL - LATEX
-% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC_V0.1)
+% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)
 % Asignatura: Ingeniería de Software I - UNSAAC
 % ==============================================================================
 
@@ -14,40 +14,41 @@
 % 1. Portada Institucional Oficial
 \input{secciones/00_portada.tex}
 
-% 2. Tabla de Contenidos
+% 2. Tabla de Contenidos (Ajustada a exactamente 1 página)
 \newpage
 {
     \hypersetup{linkcolor=black}
+    \begin{spacing}{0.90}
     \tableofcontents
+    \end{spacing}
 }
 \newpage
 
-% 3. Secciones del Informe Técnico de Laboratorio 02
+% 3. Secciones del Informe Técnico (Flujo continuo y compacto)
 \input{secciones/01_objetivo_fundamento.tex}
-\newpage
 
+\vspace{0.3cm}
 \input{secciones/02_stakeholders.tex}
-\newpage
 
+\vspace{0.3cm}
 \input{secciones/03_vision_sistema.tex}
-\newpage
 
-% Lean Canvas en formato horizontal
+% 4. Lean Canvas en Formato Horizontal (1 sola página)
 \input{secciones/04_lean_canvas.tex}
-\newpage
 
+% 5. Secciones Técnicas y Metodológicas (Flujo continuo y limpio)
 \input{secciones/05_gestion_riesgos.tex}
-\newpage
 
+\vspace{0.3cm}
 \input{secciones/06_arquitectura_modulos.tex}
-\newpage
 
+\vspace{0.3cm}
 \input{secciones/07_herramienta_trello.tex}
-\newpage
 
+\vspace{0.3cm}
 \input{secciones/08_reflexion_git.tex}
-\newpage
 
+\vspace{0.3cm}
 \input{secciones/09_benchmarking_soluciones.tex}
 
 \end{document}

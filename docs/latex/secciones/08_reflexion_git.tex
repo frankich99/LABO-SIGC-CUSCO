@@ -1,36 +1,25 @@
 % ==============================================================================
-% SECCIÓN 8: REFLEXIÓN SOBRE CONTROL DE VERSIONES CON GIT (SECCIÓN 8 DE LA GUÍA)
+% SECCIÓN 8: REFLEXIÓN SOBRE CONTROL DE VERSIONES CON GIT (PARTE 5 DE LA GUÍA)
 % ==============================================================================
 
 \section{Parte 5: Preguntas de Reflexión sobre el Control de Versiones con Git}
 
-En el marco del desarrollo de software profesional e industrial, el control de versiones no es una mera herramienta de almacenamiento auxiliar, sino la columna vertebral que garantiza la integridad, sincronización y calidad del producto. A continuación, se da respuesta formal a las preguntas de reflexión planteadas en la guía.
-
 \subsection{¿Por qué Git es crítico en proyectos colaborativos?}
 
-Git es crítico en proyectos de ingeniería de software colaborativos por las siguientes razones fundamentales:
+En proyectos de software en equipo, Git es indispensable por cuatro razones técnicas:
 
-\begin{enumerate}
-    \item \textbf{Desarrollo Concurrente y No Bloqueante:}
-    Permite que múltiples desarrolladores (por ejemplo, Choquenaira trabajando en el generador de certificados, Yaranga en el control de asistencia y Ccama en el portal de inscripciones) trabajen de forma simultánea en la misma base de código. A través del uso de ramas independientes (\textit{feature branches}), cada ingeniero experimenta e implementa cambios sin desestabilizar la versión operativa del sistema.
-
-    \item \textbf{Trazabilidad Total y Auditoría Histórica:}
-    Cada modificación queda registrada como un commit inmutable identificado por un hash SHA-1/SHA-256 criptográfico, que asocia con absoluta precisión \textbf{quién} realizó el cambio, en \textbf{qué momento} exacto, en \textbf{cuáles líneas} de código y bajo \textbf{qué justificación}. Esto es indispensable para auditar incidentes de seguridad y entender la evolución del diseño.
-
-    \item \textbf{Facilitación de Revisiones por Pares (\textit{Code Reviews / Pull Requests}):}
-    Antes de fusionar cualquier código a la rama principal (\texttt{main}), Git permite someter los cambios a inspección mediante \textit{Pull Requests}. Esto asegura que los estándares de codificación, las pruebas unitarias y la arquitectura del SIGC se preserven con el consenso de todo el equipo.
-
-    \item \textbf{Integración con Canales de CI/CD (Integración y Despliegue Continuo):}
-    Git actúa como disparador natural de pruebas automatizadas y despliegues automáticos a entornos de pruebas o producción en la nube cada vez que se aprueba una rama.
+\begin{enumerate}\setlength\itemsep{0.2em}
+    \item \textbf{Desarrollo Concurrente y Paralelo:} Permite que varios desarrolladores trabajen simultáneamente en diferentes módulos (por ejemplo, Choquenaira en el motor de certificados, Yaranga en el control de asistencia y Ccama en el portal de inscripciones) mediante ramas independientes (\textit{feature branches}), sin interferir en la versión operativa.
+    \item \textbf{Trazabilidad Total y Auditoría Histórica:} Cada commit deja una constancia inmutable con firma criptográfica que registra con exactitud quién modificó cada línea de código, en qué fecha y bajo qué justificación.
+    \item \textbf{Revisión por Pares (\textit{Pull Requests / Code Reviews}):} Facilita que los cambios sean evaluados y aprobados por los compañeros antes de integrarse a la rama principal (\texttt{main}), elevando la calidad técnica del código.
+    \item \textbf{Integración Continua (CI/CD):} Permite automatizar la ejecución de pruebas unitarias y el despliegue del sistema a entornos de prueba con cada fusión aprobada.
 \end{enumerate}
 
 \subsection{¿Qué problemas concretos evita?}
 
-El empleo riguroso de Git previene fallos operativos y de gestión que suelen frustrar proyectos sin control de versiones:
-
-\begin{itemize}
-    \item \textbf{Sobrescritura accidental de código:} Evita la típica catástrofe en la que dos programadores editan un mismo archivo por canales informales (WhatsApp, Google Drive o carpetas compartidas) y los cambios de uno borran silenciosamente los del otro.
-    \item \textbf{El desorden del versionado manual:} Erradica la proliferación caótica de carpetas del tipo \texttt{SIGC\_final}, \texttt{SIGC\_final\_corregido}, \texttt{SIGC\_este\_si\_definitivo.zip}, sustituyéndolo por un historial lineal y estructurado con etiquetas formales (\textit{tags} de versiones semánticas, ej. \texttt{v0.1.0}, \texttt{v1.0.0}).
-    \item \textbf{Pérdida catastrófica de código ante fallos de hardware:} Dado que Git es un sistema de control de versiones distribuido, cada miembro del equipo posee una copia local completa de todo el historial del repositorio. Si la máquina de un desarrollador sufre una avería, el proyecto se recupera íntegramente desde cualquier otro clon o desde GitHub.
-    \item \textbf{Miedo a la refactorización y reversión instantánea (\textit{Rollback}):} Si una nueva funcionalidad introduce un defecto crítico en producción, Git permite regresar de forma determinista y en cuestión de segundos al último commit estable (\texttt{git revert} o \texttt{git reset}), minimizando el tiempo de indisponibilidad del servicio.
+\begin{itemize}\setlength\itemsep{0.2em}
+    \item \textbf{Sobrescritura accidental de código:} Elimina el riesgo de que dos personas editen un mismo archivo por medios informales (Drive, WhatsApp o USB) y uno borre inadvertidamente el trabajo del otro.
+    \item \textbf{Caos de versionado manual:} Erradica la proliferación de carpetas como \texttt{SIGC\_v1}, \texttt{SIGC\_final}, \texttt{SIGC\_este\_si.zip}, reemplazándolo por un historial limpio con etiquetas semánticas formales (\texttt{v0.1.0}, \texttt{v1.0.0}).
+    \item \textbf{Pérdida por fallos de hardware:} Al ser un sistema distribuido, cada clon local contiene el historial íntegro del proyecto. Si una máquina falla, el código se recupera instantáneamente desde GitHub o el equipo de un colega.
+    \item \textbf{Reversión instantánea ante errores (\textit{Rollback}):} Si una funcionalidad causa fallas en producción, Git permite volver en segundos al último estado estable probado (\texttt{git revert}), asegurando la continuidad del servicio.
 \end{itemize}

@@ -5,46 +5,44 @@
 \section{Parte 2: Definición de la Visión del Producto}
 
 \subsection{Plantilla Canónica de Geoffrey Moore}
-Siguiendo las pautas metodológicas de la Guía de Laboratorio 2, la visión estratégica del \textbf{Sistema Integral de Gestión de Capacitaciones (SIGC)} se formaliza mediante la plantilla estándar de posicionamiento de producto:
+La visión estratégica de \textbf{SIGC-CUSCO} se formaliza mediante la plantilla de posicionamiento de producto:
 
-\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=\textbf{Declaración Oficial de Visión del Producto (SIGC\_V0.1)}, arc=2mm]
-\begin{description}
-    \item[\textbf{Para:}] Las municipalidades distritales/provinciales, empresas privadas (con énfasis en el sector turístico de Cusco) e instituciones formadoras que organizan actividades de capacitación y actualización laboral.
-    \item[\textbf{El sistema:}] \textbf{SIGC (Sistema Integral de Gestión de Capacitaciones)}.
-    \item[\textbf{Que permite:}] Centralizar, automatizar y auditar en una única plataforma web todo el ciclo de vida de la capacitación: desde la creación del curso y registro multientidad, hasta la inscripción en línea, el control digital de asistencia, la evaluación de competencias, la emisión instantánea de certificados digitales con código QR verificable y la analítica gerencial de impacto.
-    \item[\textbf{A diferencia de:}] Los flujos de trabajo tradicionales fragmentados basados en múltiples hojas de cálculo de Excel desarticuladas, formularios de Google desconectados, listas de asistencia en papel susceptibles a adulteración, grupos caóticos de WhatsApp y diplomas artesanales diseñados en Canva o Word sin mecanismos de validación antifraude.
-    \item[\textbf{Nuestro producto:}] Proporciona un ecosistema de software integral, multitenant, altamente escalable y seguro que reduce en más de un 80\,\% los tiempos de gestión administrativa, elimina el uso innecesario de papel y garantiza certeza jurídica e infalsificabilidad en cada certificación emitida.
+\begin{tcolorbox}[colback=blue!4!white, colframe=blue!70!black, title=\textbf{Declaración Oficial de Visión -- SIGC-CUSCO}, arc=1.5mm]
+\begin{description}\setlength\itemsep{0.2em}
+    \item[\textbf{Para:}] Municipalidades distritales y empresas privadas (turismo, hotelería y comercio del Cusco) que gestionan actividades de capacitación y actualización técnica.
+    \item[\textbf{El sistema:}] \textbf{SIGC-CUSCO (Sistema Integral de Gestión de Capacitaciones)}.
+    \item[\textbf{Que permite:}] Centralizar en una plataforma web todo el proceso formativo: convocatoria, inscripción digital, control de asistencia en tiempo real, evaluaciones y emisión automática de certificados con código QR verificable.
+    \item[\textbf{A diferencia de:}] Hojas de cálculo de Excel aisladas, listas de asistencia en papel propensas a pérdida o fraude, y diseño manual de diplomas sin validación pública.
+    \item[\textbf{Nuestro producto:}] Ofrece un sistema multientidad, escalable y seguro que reduce en más del 80\,\% los tiempos administrativos y garantiza autenticidad jurídica inmediata en cada certificado.
 \end{description}
 \end{tcolorbox}
 
-\subsection{Delimitación del Alcance: Matriz Es, No Es, Hace, No Hace}
-Para evitar la ambigüedad y el desvío de alcance en las primeras iteraciones, se define la frontera conceptual del producto en la Tabla~\ref{tab:alcance_frontera}.
+\subsection{Delimitación del Alcance (Matriz Es / No Es / Hace / No Hace)}
 
 \begin{table}[H]
 \centering
 \small
-\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\textwidth}{XX}
 \toprule
-\textbf{El Sistema SIGC SÍ ES / SÍ HACE} & \textbf{El Sistema SIGC NO ES / NO HACE} \\
+\textbf{El Sistema SIGC-CUSCO SÍ ES / SÍ HACE} & \textbf{El Sistema SIGC-CUSCO NO ES / NO HACE} \\
 \midrule
-\textbullet~Es una plataforma web integral de gestión administrativa, logística y académica de capacitaciones. & \textbullet~NO es un LMS complejo para diplomados universitarios de 5 años (como Blackboard o Moodle avanzado). \\
-\textbullet~Permite crear cursos, asignar cupos, capacitadores y fechas de ejecución. & \textbullet~NO es una pasarela bancaria de pagos directos en el MVP inicial. \\
-\textbullet~Permite inscripción pública y corporativa de participantes con validación de DNI. & \textbullet~NO transmite video en vivo por streaming (se integra con enlaces de Zoom, Meet o Teams). \\
-\textbullet~Controla asistencia digital mediante código QR o marcado rápido por sesión. & \textbullet~NO es una red social de empleabilidad ni una bolsa de trabajo abierta. \\
-\textbullet~Genera certificados digitales en PDF con código QR y URL de consulta pública. & \textbullet~NO emite títulos a nombre de la Nación sin el aval institucional correspondiente. \\
-\textbullet~Ofrece tableros estadísticos de participantes inscritos, asistentes y aprobados. & \textbullet~NO reemplaza los trámites administrativos formales de contratación de docentes. \\
+\textbullet~Plataforma web de gestión integral de capacitaciones. & \textbullet~NO es un LMS complejo para carreras de pregrado (como Blackboard). \\
+\textbullet~Inscripción pública y corporativa con validación de DNI. & \textbullet~NO procesa pasarelas de pago bancarias directas en el MVP inicial. \\
+\textbullet~Control de asistencia digital mediante código QR / PIN. & \textbullet~NO transmite streaming de video en vivo (enlaza a Zoom/Meet). \\
+\textbullet~Generación de certificados PDF con QR y hash SHA-256. & \textbullet~NO es una red social de búsqueda de empleo. \\
+\textbullet~Reportes y padrones oficiales de participantes y notas. & \textbullet~NO emite títulos a nombre de la Nación sin aval oficial. \\
 \bottomrule
 \end{tabularx}
-\caption{Matriz de delimitación de alcance preliminar para el SIGC\_V0.1.}
+\caption{Delimitación del alcance funcional del proyecto SIGC-CUSCO.}
 \label{tab:alcance_frontera}
 \end{table}
 
 \subsection{Objetivos Estratégicos SMART}
-\begin{enumerate}
-    \item \textbf{Específico (S):} Diseñar e implementar el núcleo funcional del SIGC abarcando los módulos de Instituciones, Capacitaciones, Inscripción, Asistencia, Calificación y Certificados con validación QR.
-    \item \textbf{Medible (M):} Lograr una reducción del tiempo de emisión de constancias de 5 a 10 días hábiles a menos de 10 segundos tras el cierre del acta de evaluación.
-    \item \textbf{Alcanzable (A):} Implementar la arquitectura multitenant en fases progresivas, validando el primer piloto en el marco del curso de Ingeniería de Software I.
-    \item \textbf{Relevante (R):} Solucionar un problema crítico de gestión pública y competitividad turística en la región del Cusco.
-    \item \textbf{Temporal (T):} Completar el ciclo de \textit{Inception}, modelado de requerimientos y prototipado durante las semanas estipuladas del presente semestre 2026-II.
-\end{enumerate}
+\begin{itemize}\setlength\itemsep{0.2em}
+    \item \textbf{Específico (S):} Implementar los módulos de Instituciones, Capacitaciones, Asistencia QR, Evaluación y Certificación Digital.
+    \item \textbf{Medible (M):} Reducir el tiempo de emisión de diplomas de 7 días hábiles a menos de 10 segundos tras finalizar el curso.
+    \item \textbf{Alcanzable (A):} Desarrollar un MVP funcional multitenant dentro del cronograma del curso de Ingeniería de Software I.
+    \item \textbf{Relevante (R):} Optimizar la gestión pública local en Cusco y elevar la competitividad de las empresas turísticas.
+    \item \textbf{Temporal (T):} Completar la fase de \textit{Inception} y requerimientos en las primeras semanas del ciclo 2026-II.
+\end{itemize}

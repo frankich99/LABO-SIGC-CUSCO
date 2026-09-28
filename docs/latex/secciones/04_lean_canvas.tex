@@ -1,168 +1,87 @@
 % ==============================================================================
-% SECCIÓN 4: LEAN CANVAS (PARTE 3 DE LA GUÍA + REFINAMIENTO DE TRABAJO EXTRA)
-% Formato Horizontal (Landscape) para visualización profesional de 9 bloques
+% SECCIÓN 4: LEAN CANVAS (PARTE 3 DE LA GUÍA + TRABAJO EXTRA)
+% Formato Horizontal (Landscape) - Estrictamente ajustado a UNA SOLA PÁGINA
 % ==============================================================================
 
-\section{Parte 3 y Trabajo Extra: Lean Canvas del SIGC\_V0.1}
-
-El \textit{Lean Canvas} condensa el modelo de negocio, validación del problema y viabilidad técnica del \textbf{Sistema Integral de Gestión de Capacitaciones (SIGC)}. Esta versión refinada amplía los cuatro bloques básicos solicitados en la actividad inicial (Problema, Solución, Propuesta de Valor y Usuarios) hacia los nueve bloques completos recomendados por Ash Maurya.
-
+\clearpage
 \begin{landscape}
-\thispagestyle{empty}
-\centering
+\thispagestyle{fancy}
+\begin{singlespace}
+\section{Parte 3 y Trabajo Extra: Lean Canvas del SIGC-CUSCO}
 
-{\fontsize{13}{16}\selectfont \textbf{LEAN CANVAS -- SISTEMA INTEGRAL DE GESTIÓN DE CAPACITACIONES (SIGC\_V0.1)}}\\[0.1cm]
-{\small\itshape Formato Ágil de Modelado de Negocio y Producto Software (Ash Maurya) -- Enfoque Multientidad (Municipalidades y Sector Turismo)}\\[0.3cm]
+\noindent\small El \textit{Lean Canvas} condensa el modelo de producto y negocio en una sola vista de nueve bloques bajo el enfoque de Ash Maurya, articulando las necesidades de las municipalidades del Cusco y del sector turismo.
 
-\setlength{\tabcolsep}{3.5pt}
-\renewcommand{\arraystretch}{1.15}
-\begin{table}[H]
-\centering
-\small
-\begin{tabular}{|p{4.6cm}|p{4.6cm}|p{4.6cm}|p{4.6cm}|p{4.6cm}|}
-\hline
-\rowcolor{blue!15}
-\centering\textbf{1. PROBLEMA} & 
-\centering\textbf{4. SOLUCIÓN} & 
-\centering\textbf{3. PROPUESTA DE VALOR} & 
-\centering\textbf{9. VENTAJA INJUSTA} & 
-\centering\textbf{2. SEGMENTO CLIENTES} \tabularnewline
-\hline
-\vspace{0.02cm}
-\textbf{Principales Dolores:}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Dispersión total de registros en Excel, cuadernos y WhatsApp.
-    \item Toma de asistencia lenta y propensa a suplantación.
-    \item Demoras de semanas en emitir diplomas y riesgo de falsificación.
-    \item Falta de trazabilidad del impacto y asistencia real a cursos.
-\end{itemize}
-&
-\vspace{0.02cm}
-\textbf{Funcionalidades Clave:}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Portal web de autoservicio para publicación e inscripción.
-    \item Control de asistencia digital vía código QR o marcado rápido.
-    \item Generador automatizado de actas de notas en línea.
-    \item Emisión masiva de certificados PDF con firma y QR.
-    \item Portal público de verificación documental inmediata.
-\end{itemize}
-&
-\vspace{0.02cm}
-\textbf{Mensaje Único y Claro:}
+\vspace{0.2cm}
 \begin{center}
-\textit{“Gestión de capacitaciones sin fricción: de la inscripción al certificado digital con QR en un solo clic.”}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\linewidth}{|Y|Y|Y|Y|Y|}
+\hline
+\cellcolor{CanvasLight}\CanvasCell{1. Problema}{3.3cm}{
+\textbullet{} Datos dispersos en Excel, formularios, mensajer\'ia y listas f\'isicas.\par
+\textbullet{} Registro de asistencia lento, vulnerable a suplantaci\'on o p\'erdida.\par
+\textbullet{} Emisi\'on lenta de diplomas (semanas) y alto riesgo de falsificaci\'on.\par
+\textbullet{} Falta de trazabilidad y estad\'isticas del impacto formativo.
+} &
+\cellcolor{CanvasLight}\CanvasCell{2. Soluci\'on}{3.3cm}{
+\textbullet{} Portal web de inscripci\'on en l\'inea con validaci\'on de DNI.\par
+\textbullet{} Control de asistencia digital en tiempo real v\'ia c\'odigo QR / PIN.\par
+\textbullet{} Registro de evaluaciones y cierre autom\'atico de actas.\par
+\textbullet{} Emisi\'on masiva de certificados PDF con firma y QR p\'ublico.
+} &
+\cellcolor{CanvasAccent}\CanvasCell{3. Propuesta de Valor}{3.3cm}{
+\textbf{Gesti\'on de capacitaciones sin fricci\'on: de la inscripci\'on al certificado digital con QR en un solo clic.}\par
+\vspace{0.3em}
+Un proceso unificado, auditable y seguro para municipalidades y empresas tur\'isticas.
+} &
+\cellcolor{CanvasGreen}\CanvasCell{4. Ventaja Injusta}{3.3cm}{
+\textbullet{} Adaptaci\'on nativa a flujos p\'ublicos peruanos (OSCE, SIGA, control municipal).\par
+\textbullet{} Plantillas para sector turismo cusque\~no (sellos de calidad).\par
+\textbullet{} Respaldo criptogr\'afico SHA-256 sin intermediarios costosos.
+} &
+\cellcolor{CanvasLight}\CanvasCell{5. Segmento Clientes}{3.3cm}{
+\textbullet{} Municipalidades del Cusco (Administraci\'on, Turismo, Log\'istica).\par
+\textbullet{} Empresas tur\'isticas (hoteles, agencias, restaurantes).\par
+\vspace{0.2em}
+\textit{Early Adopters:} Municipalidades con cursos SIGA/OSCE y hoteles en recertificaci\'on de calidad.
+} \\
+\hline
+\cellcolor{CanvasLight}\CanvasCell{Alternativas Actuales}{2.1cm}{
+Planillas Excel sueltas, Google Forms sin control de cupos, diplomas manuales en Canva o Word y listas en papel.
+} &
+\cellcolor{CanvasLight}\CanvasCell{6. M\'etricas Clave}{2.1cm}{
+\% de asistencia efectiva; tasa de aprobaci\'on; tiempo de emisi\'on ($< 10$ s); consultas de validaci\'on QR mensuales.
+} &
+\cellcolor{CanvasAccent}\CanvasCell{Concepto de Alto Nivel}{2.1cm}{
+\textit{Inscripci\'on \'agil estilo Eventbrite con certificaci\'on auditable de un LMS moderno.}
+} &
+\cellcolor{CanvasGreen}\CanvasCell{Canales}{2.1cm}{
+Portales municipales, redes sociales, gremios tur\'isticos (CARTUC, DIRCETUR) y correos de confirmaci\'on.
+} &
+\cellcolor{CanvasLight}\CanvasCell{Adoptantes Tempranos}{2.1cm}{
+Municipalidad Distrital de San Pedro (Cursos SIGA) y empresas tur\'isticas del centro hist\'orico del Cusco.
+} \\
+\hline
+\multicolumn{2}{|p{9.4cm}|}{%
+  \cellcolor{CanvasLight}\CanvasCell{7. Estructura de Costes}{2.0cm}{
+  \textbullet{} Servidor cloud y base de datos relacional PostgreSQL.\par
+  \textbullet{} Almacenamiento seguro de PDFs en la nube (AWS S3 / GCS).\par
+  \textbullet{} Servicio de correos masivos transaccionales y soporte t\'ecnico.
+  }%
+} &
+\multicolumn{3}{p{14.5cm}|}{%
+  \cellcolor{CanvasGreen}\CanvasCell{8. Flujos de Ingresos y Retorno de Inversi\'on}{2.0cm}{
+  \textbullet{} Licenciamiento institucional B2G/B2B anual seg\'un volumen de capacitaciones.\par
+  \textbullet{} Paquetes por cr\'editos de certificaci\'on para eventos masivos espec\'ificos.\par
+  \textbullet{} Ahorro operativo del 90\,\% en papel, tinta, carpetas y horas hombre administrativas.
+  }%
+} \\
+\hline
+\end{tabularx}
 \end{center}
-\textbf{Concepto de Alto Nivel:}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Plataforma integral que fusiona la inscripción de Eventbrite con la certificación verificable de un LMS moderno.
-\end{itemize}
-&
-\vspace{0.02cm}
-\textbf{Diferencial Competitivo:}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Arquitectura multitenant ligera adaptada a la normativa pública peruana (OSCE, SIGA, control municipal).
-    \item Plantillas especializadas para el sector turístico cusqueño (sellos de calidad y buenas prácticas).
-    \item Respaldo criptográfico SHA-256 sin requerir suscripciones costosas a terceros.
-\end{itemize}
-&
-\vspace{0.02cm}
-\textbf{Clientes Objetivo:}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Municipalidades provinciales y distritales de Cusco.
-    \item Empresas del sector turístico (hoteles, agencias, restaurantes).
-    \item Instituciones formativas y gremios comerciales.
-\end{itemize}
-\textbf{Early Adopters:}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Municipalidades con cursos obligatorios de SIGA/OSCE.
-    \item Gremios de turismo que capacitan en atención al cliente.
-\end{itemize}
-\tabularnewline
-\hline
-\rowcolor{gray!12}
-\centering\textbf{Alternativas Existentes} & 
-\centering\textbf{8. MÉTRICAS CLAVE} & 
-\centering\textbf{Concepto de Alto Nivel} & 
-\centering\textbf{5. CANALES} & 
-\centering\textbf{Early Adopters} \tabularnewline
-\hline
-\begin{minipage}[t]{4.4cm}
-\vspace{0.02cm}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Archivos Excel aislados.
-    \item Formularios de Google Forms.
-    \item Diplomas manuales en Canva o Word y papel impreso.
-\end{itemize}
-\vspace{0.02cm}
-\end{minipage}
-&
-\begin{minipage}[t]{4.4cm}
-\vspace{0.02cm}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item \% de asistencia efectiva.
-    \item Tasa de retención y aprobación.
-    \item Tiempo de emisión ($< 10$ s).
-    \item Consultas de validación QR mensuales.
-\end{itemize}
-\vspace{0.02cm}
-\end{minipage}
-&
-\begin{minipage}[t]{4.4cm}
-\vspace{0.02cm}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Ecosistema integral de capacitación y certificación digital verificado.
-\end{itemize}
-\vspace{0.02cm}
-\end{minipage}
-&
-\begin{minipage}[t]{4.4cm}
-\vspace{0.02cm}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Portales y redes sociales de las municipalidades.
-    \item Convenios con gremios turísticos (CARTUC, DIRCETUR).
-    \item Notificaciones por correo electrónico y WhatsApp.
-\end{itemize}
-\vspace{0.02cm}
-\end{minipage}
-&
-\begin{minipage}[t]{4.4cm}
-\vspace{0.02cm}
-\begin{itemize}\setlength\itemsep{0.05em}
-    \item Municipalidad de San Pedro (Piloto SIGA).
-    \item Empresas de turismo de Cusco (Piloto Atención al Cliente).
-\end{itemize}
-\vspace{0.02cm}
-\end{minipage}
-\tabularnewline
-\hline
-\rowcolor{blue!10}
-\multicolumn{2}{|p{9.4cm}|}{\centering\textbf{7. ESTRUCTURA DE COSTES}} & 
-\multicolumn{3}{p{14.5cm}|}{\centering\textbf{6. FLUJOS DE INGRESOS Y RETORNO DE INVERSIÓN}} \tabularnewline
-\hline
-\multicolumn{2}{|p{9.4cm}|}{
-\vspace{0.02cm}
-\begin{itemize}\setlength\itemsep{0.1em}
-    \item \textbf{Infraestructura Cloud:} Servidor de base de datos relacional (PostgreSQL) y backend en la nube.
-    \item \textbf{Almacenamiento de Certificados:} Repositorio seguro para PDFs firmados con redundancia (AWS S3 / Cloud Storage).
-    \item \textbf{Comunicaciones Transaccionales:} API de correos electrónicos masivos y mensajería.
-    \item \textbf{Mantenimiento y Soporte:} Monitoreo continuo de disponibilidad y seguridad criptográfica.
-\end{itemize}
-\vspace{0.02cm}
-} & 
-\multicolumn{3}{p{14.5cm}|}{
-\vspace{0.02cm}
-\begin{itemize}\setlength\itemsep{0.1em}
-    \item \textbf{Modelo SaaS B2G/B2B:} Licenciamiento anual por institución según volumen de cursos y usuarios activos.
-    \item \textbf{Planes por Créditos de Certificación:} Paquetes escalables de certificados generados para eventos masivos.
-    \item \textbf{Ahorro Operativo Institucional:} Reducción del 90\,\% en costos de papel, tinta, carpetas y horas administrativas.
-    \item \textbf{Planes Corporativos Turísticos:} Personalización de diplomas con sellos de calidad y estadísticas laborales.
-\end{itemize}
-\vspace{0.02cm}
-} \tabularnewline
-\hline
-\end{tabular}
-\caption{Matriz Lean Canvas Refinada para el Sistema Integral de Gestión de Capacitaciones (SIGC\_V0.1).}
-\label{tab:lean_canvas}
-\end{table}
 
+\vspace{0.1cm}
+\noindent\footnotesize\textit{Nota.} Este lienzo sintetiza las hip\'otesis de producto y viabilidad t\'ecnica de la versi\'on SIGC-CUSCO v0.1, cumpliendo con los 4 bloques b\'asicos de la gu\'ia y los 5 bloques del trabajo extra de refinamiento.
+\end{singlespace}
 \end{landscape}
+\clearpage

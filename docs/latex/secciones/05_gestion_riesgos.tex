@@ -4,34 +4,32 @@
 
 \section{Parte 4: Identificación y Gestión Inicial de Riesgos}
 
-En la fase de \textit{Agile Inception}, la identificación temprana de riesgos permite al equipo de ingeniería de software diseñar arquitecturas preventivas en lugar de aplicar soluciones reactivas costosas. A continuación, se presenta la matriz de riesgos del \textbf{SIGC\_V0.1}, categorizados por impacto y probabilidad.
+En la fase de \textit{Agile Inception}, la identificación temprana de riesgos permite formular salvaguardas arquitectónicas antes de iniciar la construcción del software. A continuación, se presenta la matriz de riesgos del proyecto \textbf{SIGC-CUSCO}.
 
-\subsection{Matriz de Valoración de Riesgos}
+\subsection{Matriz de Riesgos y Planes de Mitigación}
 
 \begin{table}[H]
 \centering
 \small
-\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\textwidth}{p{0.8cm}p{3.5cm}cclX}
 \toprule
 \textbf{ID} & \textbf{Descripción del Riesgo} & \textbf{Prob.} & \textbf{Impacto} & \textbf{Nivel} & \textbf{Estrategia de Mitigación y Contingencia} \\
 \midrule
-\textbf{R01} & \textbf{Baja adopción por brecha digital} en funcionarios o participantes de mayor edad. & Media & Alto & \textbf{Alto} & Diseñar interfaz móvil minimalista (estilo 2 clics), inicio de sesión con DNI sin contraseñas complejas y manuales breves en video interactivo. \\
+\textbf{R01} & \textbf{Baja adopción por brecha digital} en funcionarios o participantes mayores. & Media & Alto & \textbf{Alto} & Diseñar interfaz móvil minimalista (2 clics), login con DNI sin contraseñas engorrosas y manuales breves interactivos. \\
 \midrule
-\textbf{R02} & \textbf{Fallas o corte de conexión a Internet} en locales comunales durante la toma de asistencia. & Alta & Medio & \textbf{Alto} & Implementar arquitectura \textit{Offline-First} con \textit{Service Workers} y almacenamiento local (IndexedDB) para sincronización automática al volver la señal. \\
+\textbf{R02} & \textbf{Pérdida de conectividad} en locales comunales durante la toma de asistencia. & Alta & Medio & \textbf{Alto} & Implementar arquitectura \textit{Offline-First} con almacenamiento local (IndexedDB) y sincronización diferida automática al recuperar señal. \\
 \midrule
-\textbf{R03} & \textbf{Intento de falsificación o adulteración de certificados} por terceros. & Media & Crítico & \textbf{Crítico} & Incorporación de un hash criptográfico SHA-256 en la base de datos, firma digitalizada institucional y código QR dinámico que apunta al verificador oficial. \\
+\textbf{R03} & \textbf{Falsificación o adulteración de certificados} por terceros. & Media & Crítico & \textbf{Crítico} & Incorporar hash criptográfico SHA-256 en base de datos, firma digital institucional y código QR dinámico que apunta al validador oficial. \\
 \midrule
-\textbf{R04} & \textbf{Colapso del servidor por generación masiva de PDFs} tras finalizar cursos con cientos de inscritos. & Media & Medio & \textbf{Medio} & Procesamiento asíncrono en segundo plano mediante colas de tareas (\textit{worker queues}) y almacenamiento directo en buckets en la nube. \\
+\textbf{R04} & \textbf{Sobrecarga del servidor por emisión masiva} de cientos de PDFs simultáneos. & Media & Medio & \textbf{Medio} & Procesamiento asíncrono en segundo plano mediante colas de tareas (\textit{worker queues}) y almacenamiento en buckets cloud. \\
 \midrule
-\textbf{R05} & \textbf{Suplantación de identidad en el marcado de asistencia} (compartir códigos QR entre compañeros). & Alta & Medio & \textbf{Alto} & Generación de códigos QR efímeros que expiran cada 45 segundos en la pantalla del proyector o escaneo directo del DNI del participante por el capacitador. \\
-\midrule
-\textbf{R06} & \textbf{Resistencia institucional a abandonar Excel} por costumbre burocrática. & Alta & Alto & \textbf{Alto} & Módulo de exportación e importación masiva compatible al 100\,\% con plantillas de Microsoft Excel (.xlsx) y reportes en formato oficial requerido por OCI/OSCE. \\
+\textbf{R05} & \textbf{Resistencia institucional a abandonar Excel} por costumbre burocrática. & Alta & Alto & \textbf{Alto} & Módulo de exportación e importación masiva compatible al 100\,\% con Microsoft Excel (.xlsx) y formatos requeridos por OSCE/OCI. \\
 \bottomrule
 \end{tabularx}
-\caption{Matriz de Riesgos Iniciales y Planes de Mitigación del SIGC\_V0.1.}
+\caption{Matriz de riesgos y mitigación técnica del proyecto SIGC-CUSCO.}
 \label{tab:riesgos}
 \end{table}
 
-\subsection{Análisis del Nivel de Severidad}
-El riesgo más crítico identificado es el \textbf{R03 (Falsificación documental)}, puesto que las capacitaciones en normativas públicas (OSCE/SIGA) otorgan puntajes en convocatorias CAS y licitaciones del Estado. Cualquier vulnerabilidad en la integridad del certificado invalidaría la credibilidad del sistema. Por ello, el verificador público de certificados con código QR representa un requerimiento no funcional de seguridad de máxima prioridad.
+\subsection{Prioridad Crítica: Integridad Documental}
+El riesgo prioritario es el \textbf{R03 (Falsificación documental)}, debido a que los certificados sobre normativas estatales otorgan puntaje en concursos públicos y convocatorias CAS. La certeza jurídica se garantiza combinando el hash criptográfico SHA-256 y la verificación pública instantánea vía código QR.

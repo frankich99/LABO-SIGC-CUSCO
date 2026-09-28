@@ -1,61 +1,44 @@
 % ==============================================================================
-% SECCIÓN 7: GESTIÓN ÁGIL CON TRELLO (HERRAMIENTA SELECCIONADA)
+% SECCIÓN 7: GESTIÓN ÁGIL CON TRELLO (PROYECTO SIGC-CUSCO)
 % ==============================================================================
 
 \section{Gestión Ágil del Proyecto con Trello}
 
-En cumplimiento de las pautas del laboratorio y adoptando un marco de trabajo visual ágil (Kanban), se ha diseñado la estructura operativa del proyecto en la plataforma \textbf{Trello}. Esta configuración permite una trazabilidad completa de los entregables de la fase de \textit{Inception} y de las futuras historias de usuario del sistema.
+Bajo los principios ágiles y el marco visual Kanban, el equipo implementa el seguimiento del proyecto en el tablero oficial de Trello denominado \textbf{SIGC-CUSCO}, sincronizado con las tareas y versiones del repositorio de GitHub.
 
-\subsection{Estructura del Tablero Kanban (SIGC\_V0.1)}
+\subsection{Estructura del Tablero Kanban (SIGC-CUSCO)}
 
-El tablero se organiza en cinco columnas principales con políticas de flujo explícitas:
+El tablero se organiza en cinco columnas con reglas de flujo explícitas:
 
-\begin{enumerate}
+\begin{enumerate}\setlength\itemsep{0.2em}
     \item \textbf{01. Product Backlog (Épicas del Sistema):}
-    Contiene los requerimientos macro del sistema clasificados por módulos:
-    \begin{itemize}
-        \item \textit{Épica 1:} Gestión Multientidad (Municipalidades y Empresas Turísticas).
-        \item \textit{Épica 2:} Catálogo de Capacitaciones y Motor de Inscripción Pública.
-        \item \textit{Épica 3:} Control de Asistencia Digital en Tiempo Real (Marcado QR).
-        \item \textit{Épica 4:} Registro Académico y Actas de Evaluación.
-        \item \textit{Épica 5:} Emisión Automatizada y Validación Pública de Certificados QR.
+    \begin{itemize}\setlength\itemsep{0.1em}
+        \item \textit{Épica 1:} Gestión Multientidad (Municipalidades y Turismo).
+        \item \textit{Épica 2:} Convocatoria, Catálogo de Cursos e Inscripción Digital.
+        \item \textit{Épica 3:} Marcado de Asistencia en Tiempo Real (QR / Offline).
+        \item \textit{Épica 4:} Registro Académico y Cierre de Actas de Notas.
+        \item \textit{Épica 5:} Emisión Masiva y Validación Pública de Certificados QR.
         \item \textit{Épica 6:} Dashboard Gerencial y Reportes de Impacto.
     \end{itemize}
 
-    \item \textbf{02. Sprint Inception (To Do):}
-    Actividades inmediatas correspondientes al Laboratorio 02:
-    \begin{itemize}
-        \item Redactar Documento de Visión bajo la plantilla de Geoffrey Moore.
-        \item Diseñar y validar el Lean Canvas completo en formato horizontal.
-        \item Elaborar la Matriz de Stakeholders con necesidades y dolores de Cusco.
-        \item Identificar riesgos tempranos y formular planes de contingencia técnica.
-        \item Configurar repositorio colaborativo en GitHub con políticas de ramas.
+    \item \textbf{02. Sprint Inception (To Do):} Tareas inmediatas del Laboratorio 02:
+    \begin{itemize}\setlength\itemsep{0.1em}
+        \item Formalizar Documento de Visión bajo la plantilla de Geoffrey Moore.
+        \item Diseñar y verificar el Lean Canvas de 9 bloques en formato horizontal.
+        \item Elaborar la Matriz de Stakeholders para el sector público y turismo en Cusco.
+        \item Establecer la Matriz de Riesgos Iniciales y estrategias de mitigación.
+        \item Configurar el repositorio oficial en GitHub (\texttt{SIGC-CUSCO}).
     \end{itemize}
 
-    \item \textbf{03. In Progress (En Proceso):}
-    Tareas asignadas a los integrantes del equipo (Choquenaira, Yaranga, Ccama) con un límite estricto de trabajo en curso (\textit{WIP Limit} = 3 tarjetas activas simultáneamente para evitar cuellos de botella).
+    \item \textbf{03. In Progress (En Proceso):} Tareas en desarrollo activo asignadas a los integrantes del equipo (Choquenaira, Yaranga, Ccama), con un límite estricto de trabajo en curso (\textit{WIP Limit} = 3 tarjetas simultáneas).
 
-    \item \textbf{04. Review / QA (Revisión de Calidad):}
-    Revisión de la documentación y artefactos técnicos: verificación de formato APA 7ma edición, compilación limpia en \LaTeX{} y comprobación de criterios de aceptación.
+    \item \textbf{04. Review / QA (Revisión de Calidad):} Verificación de formato APA 7ma edición, compilación limpia en \LaTeX{} sin errores y validación de criterios de aceptación.
 
-    \item \textbf{05. Done (Completado y Validado):}
-    Entregables listos para su presentación académica y posterior paso a la fase de diseño arquitectónico.
+    \item \textbf{05. Done (Completado y Validado):} Entregables terminados conforme a la rúbrica de evaluación del laboratorio.
 \end{enumerate}
 
-\subsection{Esquema de Etiquetas y Asignaciones}
-Para una identificación visual inmediata en Trello, se establecen etiquetas cromáticas estándar:
-\begin{itemize}
-    \item \textbf{Verde:} Módulo de Certificación y Validación QR.
-    \item \textbf{Azul:} Módulo de Capacitaciones e Inscripción.
-    \item \textbf{Naranja:} Control de Asistencia y Evaluaciones.
-    \item \textbf{Rojo:} Gestión de Riesgos y Seguridad Criptográfica.
-    \item \textbf{Púrpura:} Documentación y Metodología Agile Inception.
+\subsection{Etiquetas y Definición de Terminado (DoD)}
+\begin{itemize}\setlength\itemsep{0.15em}
+    \item \textbf{Etiquetas:} Verde (Certificados QR), Azul (Capacitaciones/Inscripción), Naranja (Asistencia/Notas), Rojo (Seguridad/Riesgos), Púrpura (Documentación e Inception).
+    \item \textbf{Definition of Done (DoD):} Redacción técnica sin ambigüedades, compilación limpia en \LaTeX{} sin errores, y aprobación por revisión de pares mediante \textit{Pull Request} en GitHub.
 \end{itemize}
-
-\subsection{Definición de Terminado (\textit{Definition of Done - DoD})}
-Una tarjeta en Trello solo puede promoverse a la columna \textbf{Done} si cumple concurrentemente con:
-\begin{enumerate}
-    \item Redacción técnica rigurosa y sin ambigüedades.
-    \item Integración verificada en el documento formal \LaTeX{} sin advertencias críticas de compilación.
-    \item Revisión y aprobación por al menos dos miembros del equipo mediante un \textit{Pull Request} en GitHub.
-\end{enumerate}

@@ -1,20 +1,32 @@
-# Archivos auxiliares de LaTeX
+# ==============================================================================
+# .gitignore para el proyecto SIGC-CUSCO (LaTeX & Software Engineering)
+# ==============================================================================
+
+# Archivos auxiliares e intermedios generados por LaTeX
 *.aux
 *.log
 *.out
 *.toc
+*.bbl
+*.blg
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-*.bbl
-*.blg
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml
+*.lot
+*.lof
 
-# Mantener PDF principal entregable
-!docs/latex/main.pdf
-
-# Configuración de editores y SO
+# Archivos de configuración de editores y sistemas operativos
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Archivos temporales
+*.tmp
+*.bak

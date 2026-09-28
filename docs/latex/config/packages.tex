@@ -1,6 +1,6 @@
 % ==============================================================================
 % CONFIGURACIÓN DE PAQUETES - LATEX (ESTÁNDAR ACADÉMICO UNSAAC / APA 7)
-% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC_V0.1)
+% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)
 % ==============================================================================
 
 \usepackage[utf8]{inputenc}
@@ -9,20 +9,20 @@
 \spanishdeactivate{"}
 \usepackage{csquotes}
 
-% Configuración de Márgenes APA 7 (2.54 cm / 1 pulgada)
+% Márgenes formales (2.54 cm estándar APA 7)
 \usepackage[margin=2.54cm, headheight=18pt]{geometry}
 
-% Tipografía formal Times / Mathptmx y espaciado
+% Tipografía Times y espaciado interlineal
 \usepackage{mathptmx}
 \usepackage{setspace}
 \onehalfspacing
 
-% Paquetes matemáticos y de símbolos
+% Paquetes matemáticos y símbolos
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 
-% Tablas y Figuras Profesionales
+% Tablas y Figuras
 \usepackage{graphicx}
 \graphicspath{{./}{imagenes/}{./imagenes/}}
 \usepackage{float}
@@ -30,28 +30,28 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{array}
-\usepackage{pdflscape} % Para páginas en orientación horizontal (Lean Canvas)
+\usepackage{pdflscape} % Para el Lean Canvas horizontal
 \usepackage{caption}
 \usepackage{subcaption}
 
-% Cajas estilizadas para Lean Canvas y Callouts
+% Cajas estilizadas para Visión y destacados
 \usepackage[most]{tcolorbox}
 
 % Diagramas vectoriales TikZ
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, calc, shadows}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, calc}
 
 % Encabezados y pies de página
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\itshape UNSAAC -- Ingeniería de Software I}
-\fancyhead[R]{\small\itshape SIGC -- Laboratorio 02}
+\fancyhead[R]{\small\itshape SIGC-CUSCO -- Lab 02}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Enlaces y URLs
+% Enlaces y URLs con soporte de tablas coloreadas
 \usepackage{xurl}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{hyperref}
@@ -61,16 +61,37 @@
     linkcolor=blue!75!black,
     citecolor=blue!75!black,
     urlcolor=blue!75!black,
-    pdftitle={Laboratorio 2: Agile Inception - SIGC v0.1},
+    pdftitle={Laboratorio 2: Agile Inception - SIGC-CUSCO},
     pdfauthor={Choquenaira, Yaranga, Ccama - UNSAAC}
 }
 
-% Microtipografía para evitar overfull hboxes
+% Microtipografía para balance estético de bloques de texto
 \usepackage{microtype}
 \emergencystretch=2.5em
 \tolerance=2000
 \hbadness=2000
 
-% Sangría de párrafos
-\setlength{\parindent}{1.27cm}
-\setlength{\parskip}{0.3em}
+% Sangría de párrafos y espaciado compacto
+\setlength{\parindent}{0.8cm}
+\setlength{\parskip}{0.2em}
+
+% ==============================================================================
+% DEFINICIONES DE COLOR Y COLUMNAS PARA EL LEAN CANVAS (1 PÁGINA HORIZONTAL)
+% ==============================================================================
+\definecolor{SIGCRed}{HTML}{8E1B2D}
+\definecolor{SIGCBlue}{HTML}{174A6E}
+\definecolor{CanvasLight}{HTML}{EEF5F9}
+\definecolor{CanvasAccent}{HTML}{FFF2D8}
+\definecolor{CanvasGreen}{HTML}{EAF4EA}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% Celda con alto fijo garantizado para mantener el lienzo en exactamente 1 página
+\newcommand{\CanvasCell}[3]{%
+  \begin{minipage}[t][#2][t]{\linewidth}%
+    \setlength{\parindent}{0pt}%
+    \scriptsize
+    \textbf{\color{SIGCBlue}#1}\par\vspace{0.25em}%
+    #3%
+  \end{minipage}%
+}

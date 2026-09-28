@@ -1,58 +1,58 @@
-# Sistema Integral de Gestión de Capacitaciones (SIGC)
+# SIGC-CUSCO: Sistema Integral de Gestión de Capacitaciones
 
-[![Versión](https://img.shields.io/badge/versión-SIGC__V0.1-blue.svg)](https://github.com/)
-[![Universidad](https://img.shields.io/badge/UNSAAC-Ingeniería_de_Sistemas-red.svg)](https://www.unsaac.edu.pe/)
+[![Repositorio](https://img.shields.io/badge/GitHub-SIGC--CUSCO-blue.svg)](https://github.com/frankich99/SIGC-CUSCO)
+[![Universidad](https://img.shields.io/badge/UNSAAC-Ingeniería_Informática_y_de_Sistemas-red.svg)](https://www.unsaac.edu.pe/)
 [![Curso](https://img.shields.io/badge/Curso-Ingeniería_de_Software_I-orange.svg)](https://www.unsaac.edu.pe/)
 [![Documentación](https://img.shields.io/badge/LaTeX-APA_7ma_Edición-brightgreen.svg)](docs/latex/main.pdf)
-[![Gestión](https://img.shields.io/badge/Metodología-Agile_Inception_%26_Trello-0079BF.svg)](docs/trello/estructura_trello.md)
+[![Trello](https://img.shields.io/badge/Trello-SIGC--CUSCO-0079BF.svg)](docs/trello/SIGC-CUSCO.md)
 
 ---
 
 ## 📌 Descripción del Proyecto
 
-El **Sistema Integral de Gestión de Capacitaciones (SIGC)** es una plataforma de software concebida para centralizar, automatizar, gestionar y auditar todo el ciclo formativo en instituciones públicas (como municipalidades de la región Cusco) y entidades privadas (con especial énfasis en empresas del sector turismo: hoteles, agencias y gastronomía).
+**SIGC-CUSCO** es una plataforma web integral diseñada para centralizar, automatizar y auditar el ciclo completo de capacitación en instituciones públicas (como municipalidades de la región Cusco) y empresas privadas (con foco especial en el sector turismo: hoteles, agencias y restaurantes).
 
-El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas impresas de asistencia y diplomas manuales en Word o Canva, garantizando **trazabilidad completa desde la convocatoria e inscripción digital hasta la emisión instantánea de certificados digitales infalsificables respaldados con código QR y validación pública**.
-
----
-
-## 👥 Integrantes del Equipo (Grupo de Trabajo)
-
-* **Choquenaira Quispe, Noe Franklin** — *Código: 133962* — [GitHub: @frankich99](https://github.com/frankich99)
-* **Yaranga Achahui, Aldo** — *Código: 103179*
-* **Ccama Enriquez, Carolay** — *Código: 210921*
-
-**Institución:** Universidad Nacional de San Antonio Abad del Cusco (UNSAAC)  
-**Facultad:** Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica  
-**Escuela Profesional:** Ingeniería Informática y de Sistemas  
-**Asignatura:** Ingeniería de Software I (Semestre 2026-II)  
-**Docente:** _____________________________________________
+El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas físicas de asistencia y diplomas manuales en Word o Canva, garantizando **trazabilidad completa desde la convocatoria e inscripción digital con DNI hasta la emisión masiva de certificados PDF respaldados con código QR y verificación pública**.
 
 ---
 
-## 🚀 Entregables del Laboratorio 2 (Agile Inception)
+## 👥 Datos Académicos y Equipo de Trabajo
 
-En cumplimiento riguroso de la **Guía de Laboratorio 02: Agile Inception**, este repositorio alberga la documentación técnica formal:
+* **Institución:** Universidad Nacional de San Antonio Abad del Cusco (UNSAAC)
+* **Facultad:** Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica
+* **Escuela Profesional:** Ingeniería Informática y de Sistemas
+* **Asignatura:** Ingeniería de Software I (Semestre 2026-II)
+* **Docente:** Ing. Lisha Sabah Diaz Caceres
+
+### Integrantes:
+* **Choquenaira Quispe, Noe Franklin** — 133962 — [GitHub: @frankich99](https://github.com/frankich99)
+* **Yaranga Achahui, Aldo** — 103179
+* **Ccama Enriquez, Carolay** — 210921
+
+---
+
+## 🚀 Contenido del Laboratorio 02 (Agile Inception)
 
 1. **Identificación y Matriz de Stakeholders:** Caracterización de Municipalidades (OSCE/SIGA), Empresas Turísticas (Atención al cliente), Participantes, Capacitadores y Administradores TI.
-2. **Definición de la Visión (Geoffrey Moore):** Posicionamiento claro del producto, frontera de alcance (*Es / No Es / Hace / No Hace*) y objetivos SMART.
-3. **Lean Canvas Refinado (9 Bloques):** Modelado ágil de negocio en orientación horizontal (`docs/latex/secciones/04_lean_canvas.tex`).
-4. **Matriz de Riesgos Iniciales:** Mitigación de brecha digital, conectividad offline, y prevención de falsificación documental vía SHA-256 + QR.
-5. **Gestión Ágil con Trello:** Tablero Kanban con políticas de flujo (Backlog, To Do, In Progress, QA, Done).
-6. **Reflexión sobre Control de Versiones con Git:** Sustento de desarrollo colaborativo concurrente, trazabilidad y prevención de conflictos.
-7. **Trabajo Extra (Benchmarking de Mercado):** Comparativa frente a Moodle, Google Workspace, LMS corporativos (Crehana/Platzi) y portales estatales (OSCE).
+2. **Definición de la Visión (Geoffrey Moore):** Declaración canónica, matriz de alcance (*Es / No Es / Hace / No Hace*) y objetivos SMART.
+3. **Lean Canvas Refinado (9 Bloques):** Modelado ágil de negocio en orientación horizontal ajustado a una sola página (`docs/latex/secciones/04_lean_canvas.tex`).
+4. **Matriz de Riesgos Iniciales:** Mitigación técnica para brecha digital, conectividad *Offline-First* y autenticidad documental (hash SHA-256 + QR público).
+5. **Arquitectura y Flujo del Sistema:** 8 módulos funcionales, diccionario de datos y flujo operativo.
+6. **Gestión Ágil con Trello:** Tablero Kanban `SIGC-CUSCO` con políticas de flujo (Backlog, To Do, In Progress, QA, Done).
+7. **Reflexión sobre Control de Versiones con Git:** Sustento de desarrollo colaborativo concurrente, trazabilidad y prevención de fallos.
+8. **Trabajo Extra (Benchmarking de Mercado):** Comparativa frente a Moodle, Google Workspace, LMS corporativos (Crehana/Platzi) y portales estatales (OSCE).
 
 ---
 
 ## 📂 Estructura del Repositorio
 
 ```text
-SIGC_V0.1/
-├── README.md                          # Presentación oficial y documentación del proyecto
+SIGC-CUSCO/
+├── README.md                          # Presentación oficial del proyecto para GitHub
 ├── docs/                              # Documentación técnica formal
-│   ├── latex/                         # Código fuente completo en LaTeX (APA 7ma Edición)
+│   ├── latex/                         # Código fuente modular en LaTeX (APA 7ma Edición)
 │   │   ├── main.tex                   # Archivo raíz que ensambla todas las secciones
-│   │   ├── main.pdf                   # Documento PDF compilado (27 páginas con carátula)
+│   │   ├── main.pdf                   # Documento PDF compilado limpio y compacto
 │   │   ├── config/
 │   │   │   └── packages.tex           # Configuración tipográfica, márgenes y paquetes
 │   │   ├── secciones/
@@ -60,7 +60,7 @@ SIGC_V0.1/
 │   │   │   ├── 01_objetivo_fundamento.tex
 │   │   │   ├── 02_stakeholders.tex
 │   │   │   ├── 03_vision_sistema.tex
-│   │   │   ├── 04_lean_canvas.tex     # Lean Canvas de 9 bloques en formato horizontal
+│   │   │   ├── 04_lean_canvas.tex     # Lean Canvas de 9 bloques horizontal (1 página)
 │   │   │   ├── 05_gestion_riesgos.tex
 │   │   │   ├── 06_arquitectura_modulos.tex
 │   │   │   ├── 07_herramienta_trello.tex
@@ -69,42 +69,38 @@ SIGC_V0.1/
 │   │   └── imagenes/
 │   │       └── escudo.png             # Escudo oficial de la UNSAAC en alta resolución
 │   └── trello/
-│       └── estructura_trello.md       # Configuración detallada de listas, etiquetas y tareas
-└── src/                               # (Próxima fase) Código fuente de la implementación web
+│       └── SIGC-CUSCO.md              # Configuración del tablero Trello (mismo nombre que GitHub)
+└── src/                               # (Próxima fase) Código fuente del desarrollo de software
 ```
 
 ---
 
-## 🛠️ Cómo Compilar el Documento LaTeX
-
-El documento está optimizado para compilar de forma ultra rápida sin requerir dependencias externas complejas:
+## 🛠️ Compilación Rápida del Documento LaTeX
 
 ```bash
 # Navegar a la carpeta de LaTeX
 cd docs/latex
 
-# Compilación con pdflatex (dos pasadas para resolver referencias y tabla de contenidos)
+# Compilación con pdflatex (dos pasadas para resolver tabla de contenidos e índices)
 pdflatex -interaction=nonstopmode main.tex
 pdflatex -interaction=nonstopmode main.tex
 ```
 
-El resultado se genera directamente como `main.pdf`.
-
 ---
 
-## 🔄 Flujo del Sistema (Ciclo Formativo SIGC)
+## 🔄 Flujo del Sistema (SIGC-CUSCO)
 
 ```text
 [INSTITUCIÓN (Municipalidad / Empresa Turística)]
    │
    ▼
-[Creación del Curso (Fechas, Vacantes, Modalidad, Capacitador)]
+[Creación del Curso (Fechas, Vacantes, Modalidad, Docente)]
    │
    ▼
-[Publicación e Inscripción Digital con Validación de DNI]
+[Inscripción Digital con Validación de DNI]
    │
    ▼
-[Control de Asistencia Digital (Marcado QR o Lista Rápida)]
+[Control de Asistencia Digital (Marcado QR / Offline)]
    │
    ▼
 [Evaluación Académica y Cierre de Actas en Línea]
@@ -113,21 +109,5 @@ El resultado se genera directamente como `main.pdf`.
 [Emisión Automática de Certificado PDF con Código QR Único]
    │
    ▼
-[Verificación Documental Pública + Reporte Gerencial de Impacto]
+[Verificación Documental Pública + Reporte Gerencial para Auditoría]
 ```
-
----
-
-## 📋 Tablero de Trello
-
-El seguimiento visual del proyecto se realiza en Trello bajo la siguiente convención:
-* **Backlog:** Épicas de desarrollo (Usuarios, Cursos, Asistencia, Certificados, Reportes).
-* **Sprint Inception (To Do):** Tareas del Laboratorio 2 completadas y validadas.
-* **WIP Limit:** Máximo 3 tareas simultáneas en proceso.
-* **Definition of Done:** Documento en LaTeX sin errores de compilación, aprobado por revisión de pares en GitHub.
-
----
-
-## 📄 Licencia y Derechos
-
-Desarrollado con fines estrictamente académicos para el curso de **Ingeniería de Software I** en la **Universidad Nacional de San Antonio Abad del Cusco (UNSAAC)**, Semestre 2026-II.
