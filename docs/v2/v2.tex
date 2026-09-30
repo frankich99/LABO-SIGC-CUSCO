@@ -34,7 +34,7 @@
 \usepackage[most]{tcolorbox}
 
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, calc, trees, fit}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, calc, trees, fit, shadows}
 
 % Encabezados
 \usepackage{fancyhdr}
@@ -162,6 +162,107 @@ A continuación, se presentan las soluciones técnicas y metodológicas a los do
 \end{itemize}
 \end{tcolorbox}
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.82, transform shape,
+    colbox/.style={rectangle, draw=blue!70!black, fill=blue!2!white, rounded corners=4pt, minimum width=3.0cm, minimum height=7.2cm, inner sep=4pt, anchor=north},
+    colheader/.style={rectangle, draw=blue!85!black, fill=blue!15, rounded corners=3pt, font=\scriptsize\bfseries, minimum width=2.6cm, minimum height=0.75cm, align=center},
+    card/.style={rectangle, draw=gray!60, fill=white, rounded corners=2pt, font=\tiny, text width=2.45cm, inner sep=3.5pt, drop shadow={opacity=0.12}},
+    cardblocked/.style={rectangle, draw=red!80!black, fill=red!6!white, rounded corners=2pt, font=\tiny, text width=2.45cm, inner sep=3.5pt, thick},
+    cardbottle/.style={rectangle, draw=orange!90!black, fill=orange!8!white, rounded corners=2pt, font=\tiny, text width=2.45cm, inner sep=3.5pt, thick},
+    flowarrow/.style={draw=blue!80!black, -Latex, ultra thick}
+]
+
+% 5 Columnas
+\node[colbox] (c1) at (-6.4, 0.4) {};
+\node[colheader] at (-6.4, 0.4) {Backlog Priorizado\\(Sin Límite WIP)};
+
+\node[colbox] (c2) at (-3.2, 0.4) {};
+\node[colheader] at (-3.2, 0.4) {To Do\\(WIP $\le$ 5)};
+
+\node[colbox] (c3) at (0.0, 0.4) {};
+\node[colheader] at (0.0, 0.4) {In Progress\\(WIP $\le$ 2)};
+
+\node[colbox, draw=orange!85!black, fill=orange!3!white] (c4) at (3.2, 0.4) {};
+\node[colheader, fill=orange!20, draw=orange!90!black] at (3.2, 0.4) {Review / QA\\(\textbf{WIP = 1: SATURADO})};
+
+\node[colbox, draw=green!75!black, fill=green!3!white] (c5) at (6.4, 0.4) {};
+\node[colheader, fill=green!15, draw=green!80!black] at (6.4, 0.4) {Done (DoD 100\%)\\(Flujo Continuo)};
+
+% Flechas de Flujo Superior
+\draw[flowarrow] (-4.95, 0.4) -- (-4.65, 0.4);
+\draw[flowarrow] (-1.75, 0.4) -- (-1.45, 0.4);
+\draw[flowarrow] (1.45, 0.4) -- (1.75, 0.4);
+\draw[flowarrow] (4.65, 0.4) -- (4.95, 0.4);
+
+% Tarjetas Backlog
+\node[card] at (-6.4, -0.9) {\textbf{US-08: Reportes Excel}\\Filtros para auditoría OSCE};
+\node[card] at (-6.4, -2.4) {\textbf{US-09: Modo Offline}\\Persistencia IndexedDB};
+
+% Tarjetas To Do
+\node[card] at (-3.2, -0.9) {\textbf{US-04: Formulario DNI}\\Validación con padrón};
+\node[card] at (-3.2, -2.4) {\textbf{US-05: Generador QR}\\Firma HMAC por sesión};
+
+% Tarjetas In Progress
+\node[cardblocked] (block) at (0.0, -1.0) {
+    \textbf{US-03: API RENIEC}\\
+    \textcolor{red!80!black}{\textbf{[BLOQUEADA]}}\\
+    \textit{Falta token externo}\\
+    \textit{No consume WIP dev}
+};
+
+\node[card] (prog) at (0.0, -3.1) {
+    \textbf{US-06: Calificaciones}\\
+    Notas vigesimales (0--20)\\
+    \textit{Dev:} Marco Ccama\\
+    \textit{Estado:} Listo para PR
+};
+
+% Tarjetas Review (Cuello de Botella)
+\node[cardbottle] (rev) at (3.2, -1.0) {
+    \textbf{US-02: Inscripción Web}\\
+    \textbf{\color{orange!90!black}[EN REVISIÓN ACTIVA]}\\
+    \textit{PR \#14 en GitHub}\\
+    \textit{Revisor:} Aldo Yaranga
+};
+
+\node[card, dashed, draw=orange!90!black, fill=orange!2!white] (buff) at (3.2, -3.1) {
+    \textbf{US-01: Autenticación}\\
+    \textbf{\color{orange!90!black}[EN COLA / ESPERA]}\\
+    \textit{Detenida: Límite WIP = 1}\\
+    \textit{No iniciar recordatorios}
+};
+
+% Tarjetas Done
+\node[card, draw=green!70!black] at (6.4, -1.0) {
+    \textbf{US-00: Arquitectura}\\
+    Setup Git + PostgreSQL\\
+    \checkmark Cobertura $> 85\%$\\
+    \checkmark Revisión par aprobada
+};
+
+% Caja de Desbloqueo Scrum Master
+\node[rectangle, draw=red!80!black, fill=red!10, rounded corners=3pt, font=\tiny\bfseries, align=center, text width=3.4cm, inner sep=3pt] (sm_box) at (0.0, 1.7) {
+    Scrum Master (Carolay Ccama)\\
+    \color{red!80!black}Gestión de Bloqueos (SLA $< 2$h)
+};
+\draw[draw=red!80!black, -Latex, thick, dashed] (block.north) -- (sm_box.south);
+
+% Swarming Arrow: curva limpia abajo de las tarjetas
+\draw[draw=green!60!black, -Latex, ultra thick, dashed] 
+    (prog.south) to[out=-30, in=-150] node[below, font=\tiny\bfseries\color{green!60!black}, align=center] {Swarming (Mob Review): Dev apoya al revisor para liberar el cuello de botella} (rev.south);
+
+% Leyenda inferior
+\node[draw=blue!40!black, fill=blue!4!white, rounded corners=3pt, font=\scriptsize, align=center, text width=15.5cm] at (0, -6.1) {
+    \textbf{Políticas de Flujo SIGC-CUSCO:} 1. Límite WIP Review = 1 estricto. 2. Ante saturación, rige \textit{“Stop Starting, Start Finishing”} mediante Swarming (dev apoya al revisor). 3. Tarjetas bloqueadas se aíslan para no contar en WIP activo y se destraban en el Daily Standup.
+};
+
+\end{tikzpicture}
+\caption{Visualización del flujo de trabajo Kanban, gestión del cuello de botella en Review y política de bloqueo.}
+\label{fig:kanban_flow}
+\end{figure}
+
 \subsection{Ejercicio 2: Coordinar una Entrega (Objetivo de Ciclo y Roles)}
 \textbf{Escenario Planteado:} \textit{El equipo debe demostrar una funcionalidad utilizable en una entrega incremental.}
 
@@ -264,142 +365,206 @@ El modelo de casos de uso (Figura~\ref{fig:casos_uso}) define los límites del s
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-    scale=0.92, transform shape,
+    scale=0.86, transform shape,
     actor/.style={rectangle, draw=blue!75!black, fill=blue!10, rounded corners=4pt, font=\footnotesize\bfseries, minimum width=2.6cm, minimum height=0.75cm, align=center},
-    usecase/.style={ellipse, draw=black!85, fill=gray!8, font=\scriptsize, align=center, text width=3.0cm, minimum height=0.75cm},
+    usecase/.style={ellipse, draw=black!85, fill=gray!6, font=\scriptsize, align=center, text width=2.9cm, minimum height=0.75cm},
     rel/.style={draw=black!75, -Latex, thick},
     incl/.style={draw=blue!75!black, -Latex, dashed, thick}
 ]
 
 % Límite del Sistema (System Boundary)
-\draw[draw=blue!80!black, thick, fill=blue!1!white, rounded corners=6pt] (-2.2, -4.8) rectangle (6.8, 4.3);
-\node[font=\footnotesize\bfseries\color{blue!80!black}, anchor=north west] at (-2.0, 4.1) {Límite del Sistema: SIGC-CUSCO};
+\draw[draw=blue!85!black, very thick, fill=white, rounded corners=8pt] (-2.2, -6.6) rectangle (6.8, 5.0);
+\node[font=\footnotesize\bfseries\color{blue!85!black}, anchor=north west] at (-2.0, 4.8) {Frontera del Sistema: SIGC-CUSCO};
+
+% Divisores y Etiquetas de Sub-sistemas
+\draw[dashed, draw=blue!30!black] (-2.2, 1.8) -- (6.8, 1.8);
+\draw[dashed, draw=blue!30!black] (-2.2, -3.0) -- (6.8, -3.0);
+
+\node[font=\tiny\bfseries\color{blue!80!black}, fill=blue!8, rounded corners=2pt, anchor=north west] at (-2.0, 4.3) {Módulo 1: Gestión y Parametrización Académica};
+\node[font=\tiny\bfseries\color{blue!80!black}, fill=blue!8, rounded corners=2pt, anchor=north west] at (-2.0, 1.5) {Módulo 2: Operación, Inscripción y Asistencia QR};
+\node[font=\tiny\bfseries\color{blue!80!black}, fill=blue!8, rounded corners=2pt, anchor=north west] at (-2.0, -3.3) {Módulo 3: Certificación Criptográfica y Auditoría};
+
+% Casos de Uso Sub-sistema 1
+\node[usecase] (uc1) at (0.3, 3.4) {Parametrizar Cursos\\y Horas Académicas};
+\node[usecase] (uc2) at (0.3, 2.3) {Gestionar Cupos\\y Asignar Docente};
+
+% Casos de Uso Sub-sistema 2
+\node[usecase] (uc3) at (0.3, 0.7) {Inscribirse en Línea\\a Capacitación};
+\node[usecase] (uc4) at (0.3, -0.6) {Controlar Asistencia\\Digital QR / Offline};
+\node[usecase] (uc5) at (0.3, -1.9) {Registrar Notas\\y Calificaciones (0--20)};
+\node[usecase] (uc_inc1) at (4.7, 0.7) {Validar Formato\\y Unicidad de DNI};
+
+% Casos de Uso Sub-sistema 3
+\node[usecase] (uc6) at (0.3, -4.1) {Emitir Certificado\\con Firma Digital};
+\node[usecase] (uc7) at (0.3, -5.4) {Consultar Validez\\en Verificador Web};
+\node[usecase] (uc_inc2) at (4.7, -4.75) {Validar Hash SHA-256\\Inmutable};
 
 % Actores Primarios (Izquierda)
-\node[actor] (admin) at (-4.8, 2.8) {Coordinador Edil /\\Turístico};
-\node[actor] (docente) at (-4.8, 0.2) {Docente /\\Capacitador};
-\node[actor] (alumno) at (-4.8, -2.6) {Participante /\\Ciudadano};
+\node[actor] (admin) at (-4.8, 2.85) {Coordinador Edil /\\Turístico};
+\node[actor] (docente) at (-4.8, -1.25) {Docente /\\Capacitador};
+\node[actor] (alumno) at (-4.8, -3.6) {Participante /\\Ciudadano};
 
-% Actor Secundario (Derecha)
-\node[actor] (auditor) at (9.4, -0.8) {Verificador /\\Auditor Público};
-
-% Casos de Uso Principales
-\node[usecase] (uc1) at (0.3, 3.2) {Parametrizar Capacitación\\y Asignar Cupos};
-\node[usecase] (uc2) at (0.3, 1.8) {Gestionar Inscripciones\\y Vacantes};
-\node[usecase] (uc3) at (0.3, 0.4) {Controlar Asistencia\\Digital (QR / Offline)};
-\node[usecase] (uc4) at (0.3, -1.0) {Registrar Evaluaciones\\y Cerrar Actas};
-\node[usecase] (uc5) at (0.3, -2.4) {Inscribirse en Línea\\a Capacitación};
-\node[usecase] (uc6) at (0.3, -3.8) {Descargar Certificado\\Digital Auténtico};
-
-% Casos de Uso Incluidos <<include>>
-\node[usecase] (uc7) at (4.7, -2.4) {Validar Formato\\y Unicidad de DNI};
-\node[usecase] (uc8) at (4.7, -0.8) {Verificar Hash SHA-256\\y Validez Pública};
+% Actor Auditor (Derecha)
+\node[actor] (auditor) at (9.4, -5.4) {Verificador /\\Auditor Público};
 
 % Conexiones de Actores a Casos de Uso
 \draw[rel] (admin) -- (uc1);
 \draw[rel] (admin) -- (uc2);
-\draw[rel] (docente) -- (uc3);
 \draw[rel] (docente) -- (uc4);
-\draw[rel] (alumno) -- (uc5);
-\draw[rel] (alumno) -- (uc6);
-\draw[rel] (auditor) -- (uc8);
+\draw[rel] (docente) -- (uc5);
+\draw[rel] (alumno) -- (uc3);
+\draw[rel] (alumno) -- (uc7);
+\draw[rel] (auditor) -- (uc7);
 
-% Inclusiones
-\draw[incl] (uc5) -- node[above, font=\tiny\bfseries] {$\ll$include$\gg$} (uc7);
-\draw[incl] (uc6) -- node[above, font=\tiny\bfseries, sloped] {$\ll$include$\gg$} (uc8);
+% Inclusiones <<include>>
+\draw[incl] (uc3) -- node[above, font=\tiny\bfseries] {$\ll$include$\gg$} (uc_inc1);
+\draw[incl] (uc6) -- node[above, font=\tiny\bfseries, sloped] {$\ll$include$\gg$} (uc_inc2);
+\draw[incl] (uc7) -- node[below, font=\tiny\bfseries, sloped] {$\ll$include$\gg$} (uc_inc2);
 
 \end{tikzpicture}
-\caption{Diagrama de Casos de Uso del Sistema SIGC-CUSCO con delimitación de frontera funcional.}
+\caption{Diagrama de Casos de Uso del Sistema SIGC-CUSCO con módulos funcionales delimitados.}
 \label{fig:casos_uso}
 \end{figure}
 
 \subsection{Diagrama de Clases del Dominio y Multiplicidades}
-El modelo de clases del dominio (Figura~\ref{fig:clases}) representa las entidades estructurales del negocio y sus multiplicidades formales.
+El modelo de clases del dominio (Figura~\ref{fig:clases}) representa las entidades estructurales del negocio y sus multiplicidades formales organizadas en una topología planar sin cruces.
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-    scale=0.92, transform shape,
-    classbox/.style={rectangle, draw=blue!85!black, fill=blue!4!white, rounded corners=2pt, font=\scriptsize, align=left, text width=4.3cm, inner sep=4pt},
+    scale=0.78, transform shape,
+    classbox/.style={rectangle, draw=blue!85!black, fill=blue!3!white, rounded corners=2pt, font=\scriptsize, align=left, inner sep=4pt},
     card/.style={font=\tiny\bfseries, text=blue!90!black},
-    link/.style={draw=black!80, thick}
+    link/.style={draw=black!75, thick}
 ]
 
-% Nodos de Clases
-\node[classbox] (inst) at (-4.8, 3.4) {
-\textbf{\centering Institucion}\\[0.08cm]
-\hrule\vspace{0.08cm}
+% FILA 1 (SUPERIOR): Institucion -> Capacitacion -> Sesion
+\node[classbox, text width=4.0cm] (inst) at (-5.6, 4.0) {
+\textbf{\centering Institucion}\\[0.06cm]
+\hrule\vspace{0.06cm}
 - id\_institucion: int [PK]\\
 - ruc: varchar(11) [UQ]\\
 - razon\_social: varchar(150)\\
 - tipo: enum(Publica, Privada)\\
-- logo\_url: text\\[0.08cm]
-\hrule\vspace{0.08cm}
+- logo\_url: text\\[0.06cm]
+\hrule\vspace{0.06cm}
 + crear\_curso()\\
-+ emitir\_reporte\_auditoria()
++ emitir\_reporte()
 };
 
-\node[classbox] (cap) at (1.2, 3.4) {
-\textbf{\centering Capacitacion}\\[0.08cm]
-\hrule\vspace{0.08cm}
+\node[classbox, text width=4.4cm] (cap) at (0.0, 4.0) {
+\textbf{\centering Capacitacion}\\[0.06cm]
+\hrule\vspace{0.06cm}
 - id\_capacitacion: int [PK]\\
 - id\_institucion: int [FK]\\
 - id\_docente: int [FK]\\
 - titulo: varchar(150)\\
 - horas\_academicas: int\\
-- vacantes\_max: int\\[0.08cm]
-\hrule\vspace{0.08cm}
-+ validar\_disponibilidad(): bool\\
-+ cerrar\_acta\_final()
+- vacantes\_max: int\\[0.06cm]
+\hrule\vspace{0.06cm}
++ validar\_cupos(): bool\\
++ cerrar\_acta()
 };
 
-\node[classbox] (user) at (-4.8, -1.8) {
-\textbf{\centering Usuario}\\[0.08cm]
-\hrule\vspace{0.08cm}
+\node[classbox, text width=4.0cm] (ses) at (5.6, 4.0) {
+\textbf{\centering Sesion}\\[0.06cm]
+\hrule\vspace{0.06cm}
+- id\_sesion: int [PK]\\
+- id\_capacitacion: int [FK]\\
+- numero\_sesion: int\\
+- fecha\_hora: timestamp\\
+- token\_hmac: varchar(64)\\[0.06cm]
+\hrule\vspace{0.06cm}
++ generar\_qr\_dinamico()\\
++ cerrar\_sesion()
+};
+
+% FILA 2 (MEDIA): Usuario -> Inscripcion -> Asistencia
+\node[classbox, text width=4.0cm] (user) at (-5.6, -1.6) {
+\textbf{\centering Usuario}\\[0.06cm]
+\hrule\vspace{0.06cm}
 - id\_usuario: int [PK]\\
 - dni: varchar(8) [UQ]\\
 - nombres: varchar(80)\\
 - correo: varchar(100) [UQ]\\
-- rol: enum(Admin, Doc, Part)\\[0.08cm]
-\hrule\vspace{0.08cm}
+- rol: enum(Admin, Doc, Part)\\[0.06cm]
+\hrule\vspace{0.06cm}
 + autenticar()\\
-+ consultar\_diplomas()
++ ver\_diplomas()
 };
 
-\node[classbox] (insc) at (1.2, -1.8) {
-\textbf{\centering Inscripcion}\\[0.08cm]
-\hrule\vspace{0.08cm}
+\node[classbox, text width=4.4cm] (insc) at (0.0, -1.6) {
+\textbf{\centering Inscripcion}\\[0.06cm]
+\hrule\vspace{0.06cm}
 - id\_inscripcion: int [PK]\\
 - id\_capacitacion: int [FK]\\
 - id\_participante: int [FK]\\
 - fecha\_registro: timestamp\\
-- estado: varchar(20)\\[0.08cm]
-\hrule\vspace{0.08cm}
-+ calcular\_asistencias(): float\\
+- estado: varchar(20)\\[0.06cm]
+\hrule\vspace{0.06cm}
++ calcular\_asistencia()\\
 + verificar\_aprobacion(): bool
 };
 
-\node[classbox] (cert) at (7.0, -1.8) {
-\textbf{\centering Certificado}\\[0.08cm]
-\hrule\vspace{0.08cm}
+\node[classbox, text width=4.0cm] (asist) at (5.6, -1.6) {
+\textbf{\centering Asistencia}\\[0.06cm]
+\hrule\vspace{0.06cm}
+- id\_asistencia: int [PK]\\
+- id\_sesion: int [FK]\\
+- id\_inscripcion: int [FK]\\
+- hora\_marcado: timestamp\\
+- metodo: enum(QR, Offline)\\[0.06cm]
+\hrule\vspace{0.06cm}
++ registrar\_qr()\\
++ sync\_offline()
+};
+
+% FILA 3 (INFERIOR): Evaluacion -> Certificado
+\node[classbox, text width=4.4cm] (eval) at (0.0, -6.6) {
+\textbf{\centering Evaluacion}\\[0.06cm]
+\hrule\vspace{0.06cm}
+- id\_evaluacion: int [PK]\\
+- id\_inscripcion: int [FK]\\
+- nota\_final: decimal(4,2)\\
+- condicion: enum(Aprob, Desap)\\
+- fecha\_acta: date\\[0.06cm]
+\hrule\vspace{0.06cm}
++ promediar\_notas()\\
++ cerrar\_calificacion()
+};
+
+\node[classbox, text width=4.0cm] (cert) at (5.6, -6.6) {
+\textbf{\centering Certificado}\\[0.06cm]
+\hrule\vspace{0.06cm}
 - id\_certificado: int [PK]\\
 - id\_inscripcion: int [FK, UQ]\\
 - codigo\_unico: varchar(32) [UQ]\\
 - hash\_sha256: char(64)\\
-- url\_pdf: text\\[0.08cm]
-\hrule\vspace{0.08cm}
+- url\_pdf: text\\[0.06cm]
+\hrule\vspace{0.06cm}
 + generar\_pdf\_qr()\\
-+ verificar\_autenticidad(): bool
++ validar\_autenticidad(): bool
 };
 
-% Conexiones con multiplicidades
-\draw[link] (inst) -- node[above, card] {1} node[above, card, pos=0.88] {1..*} (cap);
-\draw[link] (user) -- node[above, card] {1} node[above, card, pos=0.88] {0..*} (insc);
-\draw[link] (cap) -- node[right, card] {1} node[right, card, pos=0.88] {0..*} (insc);
-\draw[link] (insc) -- node[above, card] {1} node[above, card, pos=0.88] {0..1} (cert);
+% CONEXIONES ORTOGONALES Y CARDINALIDADES FORMALES CON POSICIONES CLARAS
+% Horizontales Fila 1
+\draw[link] (inst) -- node[above, card, pos=0.15] {1} node[above, card, pos=0.85] {1..*} (cap);
+\draw[link] (cap) -- node[above, card, pos=0.15] {1} node[above, card, pos=0.85] {1..*} (ses);
+
+% Horizontales Fila 2
+\draw[link] (user) -- node[above, card, pos=0.15] {1} node[above, card, pos=0.85] {0..*} (insc);
+\draw[link] (insc) -- node[above, card, pos=0.15] {1} node[above, card, pos=0.85] {0..*} (asist);
+
+% Horizontal Fila 3
+\draw[link] (eval) -- node[above, card, pos=0.15] {1} node[above, card, pos=0.85] {0..1} (cert);
+
+% Verticales
+\draw[link] (cap) -- node[right, card, pos=0.15] {1} node[right, card, pos=0.85] {0..*} (insc);
+\draw[link] (ses) -- node[right, card, pos=0.15] {1} node[right, card, pos=0.85] {0..*} (asist);
+\draw[link] (insc) -- node[right, card, pos=0.15] {1} node[right, card, pos=0.85] {1} (eval);
 
 \end{tikzpicture}
-\caption{Diagrama de Clases del Dominio con atributos, métodos y cardinalidades normalizadas.}
+\caption{Diagrama de clases del dominio con 7 entidades normalizadas en grilla ortogonal, multiplicidades y trazabilidad completa.}
 \label{fig:clases}
 \end{figure}
 
@@ -520,6 +685,60 @@ Para garantizar robustez, mantenibilidad y escalabilidad, el proyecto \textbf{SI
     \item \textbf{Capa de Lógica de Negocio (Backend API):} Implementada con \textbf{Node.js} y \textbf{Express} bajo el estándar tipado de \textbf{TypeScript}. Gestiona la validación algorítmica de DNIs, el control concurrente de cupos, la orquestación del marcado de asistencia y la cola asíncrona de procesamiento de PDFs.
     \item \textbf{Capa de Persistencia y Seguridad (Datos):} Motor \textbf{PostgreSQL 16} para el almacenamiento relacional estructurado. Generación de códigos QR mediante librerías nativas vectoriales y cálculo de resumen criptográfico inmutable mediante el algoritmo estándar SHA-256.
 \end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.84, transform shape,
+    tierbox/.style={rectangle, draw=#1!80!black, fill=#1!3!white, rounded corners=6pt, inner sep=12pt, thick},
+    layerlabel/.style={font=\footnotesize\bfseries\color{#1!85!black}, anchor=north west},
+    comp/.style={rectangle, draw=blue!80!black, fill=white, rounded corners=3pt, font=\scriptsize, align=center, text width=3.1cm, minimum height=1.1cm, drop shadow={opacity=0.12}},
+    datanode/.style={cylinder, shape border rotate=90, draw=teal!80!black, fill=teal!8!white, aspect=0.25, font=\scriptsize\bfseries, align=center, text width=3.1cm, minimum height=1.2cm},
+    carrow/.style={draw=blue!85!black, Latex-Latex, thick},
+    sqlarrow/.style={draw=teal!85!black, Latex-Latex, thick}
+]
+
+% Capa 1: Presentación (Frontend)
+\node[comp] (fe1) at (-4.4, 6.2) {\textbf{Portal Ciudadano}\\React 18 + Vite\\Tailwind CSS};
+\node[comp] (fe2) at (0.0, 6.2) {\textbf{App Móvil Docente}\\PWA + Cámara QR\\Offline IndexedDB};
+\node[comp] (fe3) at (4.4, 6.2) {\textbf{Verificador Web}\\Portal Público\\Hash SHA-256};
+\begin{scope}[on background layer]
+    \node[tierbox=blue, fit={(fe1) (fe3) (-4.8, 7.5) (4.8, 5.4)}] (tier_fe) {};
+\end{scope}
+\node[layerlabel=blue] at (tier_fe.north west) {\quad Capa de Presentación (Frontend Clients)};
+
+% Capa 2: Lógica de Negocio y API (Backend)
+\node[comp] (api1) at (-4.4, 2.0) {\textbf{API Gateway / RBAC}\\Node.js + Express\\JWT + Rate Limit};
+\node[comp] (api2) at (0.0, 2.0) {\textbf{Core de Servicios}\\Inscripciones \& Cupos\\Asistencia QR HMAC};
+\node[comp] (api3) at (4.4, 2.0) {\textbf{Motor Certificados}\\Generador PDFKit\\Hash Criptográfico};
+\begin{scope}[on background layer]
+    \node[tierbox=orange, fit={(api1) (api3) (-4.8, 3.3) (4.8, 1.2)}] (tier_api) {};
+\end{scope}
+\node[layerlabel=orange] at (tier_api.north west) {\quad Capa de Negocio y Servicios (Node.js / Express API REST)};
+
+% Capa 3: Persistencia y Datos (Data Tier)
+\node[datanode] (db1) at (-3.2, -2.5) {PostgreSQL 16\\BD Relacional ACID\\Índices B-Tree};
+\node[comp, draw=teal!80!black] (db2) at (3.2, -2.5) {\textbf{File Storage}\\Repositorio de PDFs\\y Diplomas Firmados};
+\begin{scope}[on background layer]
+    \node[tierbox=teal, fit={(db1) (db2) (-4.8, -1.6) (4.8, -3.7)}] (tier_db) {};
+\end{scope}
+\node[layerlabel=teal] at (tier_db.north west) {\quad Capa de Persistencia y Almacenamiento (PostgreSQL 16 \& Storage)};
+
+% Conexiones entre capas con suficiente espacio y etiquetas legibles
+\draw[carrow] (fe1.south) -- node[fill=white, inner sep=2pt, font=\tiny\bfseries] {HTTPS / JSON REST} (api1.north);
+\draw[carrow] (fe2.south) -- node[fill=white, inner sep=2pt, font=\tiny\bfseries] {JWT Bearer / API} (api2.north);
+\draw[carrow] (fe3.south) -- node[fill=white, inner sep=2pt, font=\tiny\bfseries] {Verificación Pública} (api3.north);
+
+\draw[carrow] (api1.east) -- (api2.west);
+\draw[carrow] (api2.east) -- (api3.west);
+
+\draw[sqlarrow] (api2.south) -- node[fill=white, inner sep=2pt, font=\tiny\bfseries] {TCP / Pool pg (SQL)} (db1.north);
+\draw[sqlarrow] (api3.south) -- node[fill=white, inner sep=2pt, font=\tiny\bfseries] {Almacén de PDFs} (db2.north);
+
+\end{tikzpicture}
+\caption{Arquitectura de software desacoplada en tres capas con protocolos de comunicación estandarizados.}
+\label{fig:arquitectura}
+\end{figure}
 
 \subsection{Resumen de Tecnologías y Entorno de Desarrollo}
 
