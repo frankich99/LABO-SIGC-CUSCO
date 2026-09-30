@@ -11,34 +11,54 @@ Bajo los principios ágiles y el marco visual Kanban, el equipo implementa el se
 El tablero se organiza en cinco columnas con reglas de flujo explícitas:
 
 \begin{enumerate}\setlength\itemsep{0.2em}
-    \item \textbf{01. Product Backlog (Épicas del Sistema):}
+    \item \textbf{01. Product Backlog (Épicas del Sistema), sin límite WIP:}
     \begin{itemize}\setlength\itemsep{0.1em}
-        \item \textit{Épica 1:} Gestión Multientidad (Municipalidades y Turismo).
-        \item \textit{Épica 2:} Convocatoria, Catálogo de Cursos e Inscripción Digital.
-        \item \textit{Épica 3:} Marcado de Asistencia en Tiempo Real (QR / Offline).
-        \item \textit{Épica 4:} Registro Académico y Cierre de Actas de Notas.
-        \item \textit{Épica 5:} Emisión Masiva y Validación Pública de Certificados QR.
-        \item \textit{Épica 6:} Dashboard Gerencial y Reportes de Impacto.
+        \item \textit{EP01:} Usuarios y Autenticación con Roles (RBAC).
+        \item \textit{EP02:} Gestión Multientidad (Municipalidades y Turismo).
+        \item \textit{EP03:} Convocatoria, Catálogo de Cursos e Inscripción con DNI.
+        \item \textit{EP04:} Marcado de Asistencia en Tiempo Real (QR / Offline-First).
+        \item \textit{EP05:} Registro Académico y Cierre de Actas de Notas.
+        \item \textit{EP06:} Generación Masiva de Certificados PDF con Firma y QR.
+        \item \textit{EP07:} Portal Público de Verificación Documental (hash SHA-256).
+        \item \textit{EP08:} Dashboard Gerencial y Reportes de Impacto para Auditoría.
     \end{itemize}
 
-    \item \textbf{02. Sprint Inception (To Do):} Tareas inmediatas del Laboratorio 02:
+    \item \textbf{02. Sprint Inception (To Do), WIP $\le$ 5:} tareas inmediatas del Laboratorio 02:
     \begin{itemize}\setlength\itemsep{0.1em}
-        \item Formalizar Documento de Visión bajo la plantilla de Geoffrey Moore.
+        \item Formalizar el Documento de Visión bajo la plantilla de Geoffrey Moore.
         \item Diseñar y verificar el Lean Canvas de 9 bloques en formato horizontal.
         \item Elaborar la Matriz de Stakeholders para el sector público y turismo en Cusco.
         \item Establecer la Matriz de Riesgos Iniciales y estrategias de mitigación.
         \item Configurar el repositorio oficial en GitHub (\texttt{SIGC-CUSCO}).
     \end{itemize}
 
-    \item \textbf{03. In Progress (En Proceso):} Tareas en desarrollo activo asignadas a los integrantes del equipo (Choquenaira, Yaranga, Ccama), con un límite estricto de trabajo en curso (\textit{WIP Limit} = 3 tarjetas simultáneas).
+    \item \textbf{03. In Progress (En Proceso), WIP $\le$ 2:} tareas en desarrollo activo asignadas a los integrantes del equipo (Choquenaira, Yaranga, Ccama). Una tarjeta terminada que espera cupo en \textit{Review} permanece aquí y sigue contando en el límite.
 
-    \item \textbf{04. Review / QA (Revisión de Calidad):} Verificación de formato APA 7ma edición, compilación limpia en \LaTeX{} sin errores y validación de criterios de aceptación.
+    \item \textbf{04. Review / QA (Revisión de Calidad), WIP $\le$ 1:} verificación de formato APA 7ma edición, compilación limpia en \LaTeX{} sin errores y validación de criterios de aceptación. El revisor nunca es el autor de la tarjeta.
 
-    \item \textbf{05. Done (Completado y Validado):} Entregables terminados conforme a la rúbrica de evaluación del laboratorio.
+    \item \textbf{05. Done (Completado y Validado), sin límite:} entregables que cumplen la Definition of Done.
 \end{enumerate}
 
-\subsection{Etiquetas y Definición de Terminado (DoD)}
+\subsection{Límites WIP y Política de Bloqueo}
 \begin{itemize}\setlength\itemsep{0.15em}
-    \item \textbf{Etiquetas:} Verde (Certificados QR), Azul (Capacitaciones/Inscripción), Naranja (Asistencia/Notas), Rojo (Seguridad/Riesgos), Púrpura (Documentación e Inception).
-    \item \textbf{Definition of Done (DoD):} Redacción técnica sin ambigüedades, compilación limpia en \LaTeX{} sin errores, y aprobación por revisión de pares mediante \textit{Pull Request} en GitHub.
+    \item \textbf{Justificación de los límites:} \textit{In Progress} = 2 porque el equipo es de 3 integrantes y siempre debe quedar una persona libre para revisar o apoyar; \textit{Review} = 1 porque hay un solo revisor activo; \textit{To Do} = 5 como reserva de trabajo equivalente a un ciclo.
+    \item \textbf{Regla ante saturación:} si \textit{Review} está llena, no se inicia trabajo nuevo. Se ayuda a terminar la revisión pendiente mediante \textit{swarming} (prueba y corrección en pareja), según el principio \textit{``Stop starting, start finishing''}.
+    \item \textbf{Tarjeta bloqueada:}
+    \begin{enumerate}\setlength\itemsep{0.1em}
+        \item Se marca de inmediato con la etiqueta \texttt{BLOQUEADA} y se anotan la causa, la dependencia y el responsable de destrabarla.
+        \item Sigue en su columna y cuenta en el WIP, para que el costo del bloqueo sea visible.
+        \item Se trata en los primeros 5 minutos del siguiente \textit{Daily Standup}.
+        \item Si supera 24 horas, se escala al docente o al responsable de la dependencia y se activa un plan alterno.
+        \item Mientras tanto, la persona asignada apoya a otra tarjeta por \textit{swarming} y no inicia elementos nuevos.
+    \end{enumerate}
 \end{itemize}
+
+\subsection{Objetivo de Ciclo, Responsabilidades y Calidad}
+\begin{itemize}\setlength\itemsep{0.15em}
+    \item \textbf{Objetivo del Sprint 3:} que un participante en Cusco pueda inscribirse en línea a un curso validando su DNI y obtenga en pantalla su credencial digital con código QR.
+    \item \textbf{Quién prioriza:} Aldo Yaranga (Product Owner). \textbf{Quién facilita:} Carolay Ccama (Scrum Master y facilitadora). \textbf{Quién construye:} Noe Franklin Choquenaira (Tech Lead y desarrollo). Regla: autor $\neq$ revisor.
+    \item \textbf{Definition of Done (dos evidencias):} (1) demostración funcional en vivo validada por el Product Owner; (2) \textit{Pull Request} aprobado por los dos integrantes que no son autores, con 0 advertencias del \textit{linter} y el script SQL sin errores.
+\end{itemize}
+
+\subsection{Etiquetas}
+Verde (Certificados QR), Azul (Capacitaciones e Inscripción), Naranja (Asistencia y Notas), Rojo (Seguridad y Riesgos), Púrpura (Documentación e Inception), Amarillo (Administración e Infraestructura) y Negro (\texttt{BLOQUEADA}, solo mientras la tarjeta esté bloqueada).
