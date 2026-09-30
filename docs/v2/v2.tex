@@ -1,0 +1,518 @@
+% ==============================================================================
+% DOCUMENTO TÉCNICO V2 - REQUERIMIENTOS Y DISEÑO ARQUITECTÓNICO
+% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)
+% Asignatura: Ingeniería de Software I - UNSAAC
+% ==============================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
+\spanishdeactivate{"}
+\usepackage{csquotes}
+
+% Márgenes formales
+\usepackage[margin=2.2cm, headheight=16pt]{geometry}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, backgrounds, calc, trees}
+
+% Encabezados
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape UNSAAC -- Ingeniería de Software I}
+\fancyhead[R]{\small\itshape SIGC-CUSCO -- V2 Requerimientos y Diseño}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\usepackage{xurl}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!75!black,
+    citecolor=blue!75!black,
+    urlcolor=blue!75!black,
+    pdftitle={SIGC-CUSCO V2 - Requerimientos y Modelado},
+    pdfauthor={Choquenaira, Yaranga, Ccama - UNSAAC}
+}
+
+\usepackage{microtype}
+\setlength{\parindent}{0.75cm}
+\setlength{\parskip}{0.25em}
+
+\definecolor{SIGCBlue}{HTML}{174A6E}
+\definecolor{BoxHeader}{HTML}{E8F1F5}
+\definecolor{CodeBg}{HTML}{F6F8FA}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+% ==============================================================================
+% PORTADA INSTITUCIONAL
+% ==============================================================================
+\begin{titlepage}
+    \centering
+    \vspace*{0.2cm}
+    
+    {\fontsize{13}{16}\selectfont \textbf{UNIVERSIDAD NACIONAL DE SAN ANTONIO ABAD DEL CUSCO}}\\[0.2cm]
+    {\fontsize{11}{14}\selectfont \textbf{FACULTAD DE INGENIERÍA ELÉCTRICA, ELECTRÓNICA, INFORMÁTICA Y MECÁNICA}}\\[0.2cm]
+    {\fontsize{11}{14}\selectfont \textbf{ESCUELA PROFESIONAL DE INGENIERÍA INFORMÁTICA Y DE SISTEMAS}}\\[0.4cm]
+    
+    \includegraphics[width=3.4cm]{escudo.png}\\[0.5cm]
+    
+    {\fontsize{13}{16}\selectfont \textbf{DOCUMENTO DE ESPECIFICACIÓN Y DISEÑO ARQUITECTÓNICO (V2)}}\\[0.15cm]
+    {\fontsize{10.5}{13.5}\selectfont \textit{Resolución de Ejercicios Ágiles, Requerimientos IEEE 830, Modelado UML y Base de Datos Relacional}}\\[0.25cm]
+    \rule{\textwidth}{1.2pt}\\[0.2cm]
+    {\fontsize{13}{16.5}\selectfont \textbf{“SISTEMA INTEGRAL DE GESTIÓN DE CAPACITACIONES (SIGC-CUSCO)”}}\\[0.15cm]
+    {\fontsize{11}{13}\selectfont \textbf{Incremento Iterativo -- Versión V2.0}}\\[0.15cm]
+    \rule{\textwidth}{1.2pt}\\[0.5cm]
+    
+    \begin{minipage}{0.92\textwidth}
+        \setstretch{1.2}
+        \textbf{Asignatura:} INGENIERÍA DE SOFTWARE I\\[0.2cm]
+        \textbf{Docente:} Ing. Lisha Sabah Diaz Caceres\\[0.2cm]
+        \textbf{Enfoque:} Desarrollo Incremental e Iterativo -- Ingeniería de Requisitos\\[0.2cm]
+        \textbf{Presentado por:}\\[0.15cm]
+        \hspace*{0.4cm}\textbullet\quad Choquenaira Quispe, Noe Franklin \hfill 133962\\[0.12cm]
+        \hspace*{0.4cm}\textbullet\quad Yaranga Achahui, Aldo \hfill 103179\\[0.12cm]
+        \hspace*{0.4cm}\textbullet\quad Ccama Enriquez, Carolay \hfill 210921
+    \end{minipage}\\[0.6cm]
+    
+    \vfill
+    {\textbf{Cusco -- Perú -- 2026}}\\[0.2cm]
+\end{titlepage}
+
+% ==============================================================================
+% ÍNDICE GENERAL
+% ==============================================================================
+\newpage
+{
+    \hypersetup{linkcolor=black}
+    \begin{spacing}{1.0}
+    \tableofcontents
+    \end{spacing}
+}
+\newpage
+
+% ==============================================================================
+% SECCIÓN 1: RESOLUCIÓN FORMAL DE EJERCICIOS DE CLASE
+% ==============================================================================
+\section{Resolución de Ejercicios Prácticos de Gestión de Flujo Ágil}
+
+A continuación, se presentan las respuestas fundamentadas a los dos ejercicios prácticos desarrollados en clase, aplicadas de manera directa y pedagógica a la realidad de nuestro proyecto \textbf{SIGC-CUSCO}.
+
+\subsection{Ejercicio 1: Una Revisión Saturada (Gestión de Flujo y Cuellos de Botella)}
+\textbf{Escenario Planteado:} \textit{El límite de la columna Revisión (Review) es 1 y ya existe un ítem esperando en cola.}
+
+\begin{enumerate}
+    \item \textbf{¿Conviene iniciar la tarea de recordatorios? Justificación:}
+    \begin{itemize}
+        \item \textbf{Respuesta: NO conviene iniciarla.}
+        \item \textbf{Fundamento Ágil:} En el marco Kanban rige el principio fundamental: \textit{“Stop starting, start finishing”} (Dejar de empezar cosas nuevas y enfocarse en terminar lo que está en curso). Si la columna de \textit{Revisión} tiene un límite WIP (\textit{Work In Progress}) de 1 y ya se encuentra saturada, abrir una nueva tarjeta de desarrollo (como "Módulo de Recordatorios") generará acumulación de inventario intermedio no validado, aumentará el tiempo de ciclo (\textit{Lead Time}) del equipo y saturará aún más el cuello de botella.
+    \end{itemize}
+
+    \item \textbf{Acuerdo de Colaboración: ¿Cómo ayudaremos a terminar la revisión?}
+    \begin{itemize}
+        \item Se aplica la técnica de \textbf{Swarming / Mob Review}: El desarrollador que terminó su tarjeta se pone a disposición del revisor en lugar de iniciar código nuevo.
+        \item El compañero apoya realizando pruebas cruzadas (\textit{peer testing}) en local, verificando que los criterios de aceptación se cumplan y ayudando a resolver inmediatamente las observaciones de código detectadas. De esta manera, el ítem en revisión se promueve rápidamente a \textbf{Done} y el flujo se reactiva de forma saludable.
+    \end{itemize}
+
+    \item \textbf{Protocolo de Actuación ante una Tarjeta Bloqueada:}
+    \begin{itemize}
+        \item \textbf{Señalización Visual Inmediata:} Se le asigna una etiqueta roja destacada con el estado \texttt{[BLOQUEADA]} en el tablero.
+        \item \textbf{Registro de Causa Raíz:} Se documenta en la tarjeta la causa exacta (ej. \textit{“Falta acceso a la API del validador de DNI”} o \textit{“Falta confirmación de firmas de la municipalidad”}).
+        \item \textbf{Regla de Escalamiento:} Una tarjeta bloqueada no cuenta para saturar el desarrollo de quien la ejecutaba, pero adquiere máxima prioridad para el facilitador del equipo, quien debe gestionar el impedimento en un plazo no mayor a 24 horas.
+    \end{itemize}
+\end{enumerate}
+
+\begin{tcolorbox}[colback=blue!4!white, colframe=blue!70!black, title=\textbf{Políticas de WIP y Bloqueo Adoptadas en SIGC-CUSCO}, arc=1.5mm]
+\begin{itemize}\setlength\itemsep{0.1em}
+    \item \textbf{Límites WIP Oficiales:} \textit{To Do} = 5 máx. \textbar{} \textit{In Progress} = 2 máx. \textbar{} \textit{Review / QA} = 1 estricto \textbar{} \textit{Done} = Ilimitado.
+    \item \textbf{Política de Bloqueo:} Si un ítem se bloquea, el equipo dedica la primera mitad de la reunión de coordinación (\textit{Daily}) a destrabarlo antes de iniciar cualquier otra discusión.
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Ejercicio 2: Coordinar una Entrega (Objetivo de Ciclo y Roles)}
+\textbf{Escenario Planteado:} \textit{El equipo debe demostrar una funcionalidad utilizable en una entrega incremental.}
+
+\begin{enumerate}
+    \item \textbf{Objetivo de Ciclo (Orientado a Valor, no lista de tareas):}
+    \begin{quote}
+        \textit{“Permitir que un participante de Cusco complete exitosamente su inscripción en línea a una capacitación municipal (ej. curso de SIGA) mediante la validación de su DNI en tiempo real, obteniendo en pantalla su credencial digital con código QR funcional para el control de asistencia.”}
+    \end{quote}
+    \textit{Justificación:} No es una lista de comandos ("crear tabla, hacer login"), sino un resultado funcional verificable por el usuario final.
+
+    \item \textbf{Distribución de Roles Operativos en el Equipo:}
+    \begin{itemize}
+        \item \textbf{Quién Prioriza (Product Owner):} \textbf{Aldo Yaranga.} Define qué requerimientos aportan mayor valor a las municipalidades y empresas turísticas, establece el orden del backlog y aprueba los criterios de aceptación.
+        \item \textbf{Quién Facilita (Scrum Master / Agile Coach):} \textbf{Carolay Ccama.} Vela por el cumplimiento de los límites WIP en Trello, remueve impedimentos externos y modera las sesiones de revisión.
+        \item \textbf{Quién Construye (Tech Lead / Dev Lead):} \textbf{Noe Franklin Choquenaira.} Diseña la arquitectura del software, programa el núcleo de la lógica de negocio, integra la base de datos y valida las pruebas unitarias.
+    \end{itemize}
+
+    \item \textbf{Dos Evidencias Objetivas para Considerar el Trabajo Hecho (Definition of Done):}
+    \begin{itemize}
+        \item \textbf{Evidencia 1 (Demostración Funcional en Vivo):} Prueba punta a punta en el navegador donde un participante ingresa sus datos, el sistema valida que hay vacantes disponibles, confirma la inscripción y renderiza el código QR en pantalla.
+        \item \textbf{Evidencia 2 (Garantía de Calidad de Código):} \textit{Pull Request} en GitHub revisado y aprobado por dos miembros del equipo, sin advertencias de linters y con el script de base de datos ejecutado con éxito.
+    \end{itemize}
+\end{enumerate}
+
+% ==============================================================================
+% SECCIÓN 2: REQUERIMIENTOS FUNCIONALES Y NO FUNCIONALES (IEEE 830)
+% ==============================================================================
+\section{Especificación Formal de Requerimientos de Software}
+
+Bajo el estándar IEEE 830 e ISO/IEC/IEEE 29148, se formalizan los requerimientos del sistema \textbf{SIGC-CUSCO} estructurados de forma incremental.
+
+\subsection{Requerimientos Funcionales (RF)}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{p{1.4cm}p{4.2cm}Xp{2.2cm}}
+\toprule
+\textbf{Código} & \textbf{Nombre del Requisito} & \textbf{Descripción Funcional} & \textbf{Prioridad (MoSCoW)} \\
+\midrule
+\textbf{RF-01} & Autenticación y Roles & El sistema debe autenticar a usuarios bajo esquema RBAC (Admin, Coordinador, Docente, Alumno). & Must Have \\
+\midrule
+\textbf{RF-02} & Gestión Multientidad & Permitir el registro y configuración independiente de municipalidades y empresas de turismo con su respectivo logo. & Must Have \\
+\midrule
+\textbf{RF-03} & Parametrización de Cursos & Crear capacitaciones definiendo título, horas pedagógicas, cupo máximo, fechas de sesión y docente asignado. & Must Have \\
+\midrule
+\textbf{RF-04} & Inscripción con DNI & Formulario público de registro que valida el formato y unicidad del DNI peruano en tiempo real y asigna vacante. & Must Have \\
+\midrule
+\textbf{RF-05} & Asistencia Digital QR & El docente debe registrar asistencia escaneando el código QR del alumno o mediante ingreso rápido de PIN de sesión. & Must Have \\
+\midrule
+\textbf{RF-06} & Calificación y Actas & Registrar notas en escala vigesimal (0 a 20) y calcular automáticamente la condición de aprobación final. & Should Have \\
+\midrule
+\textbf{RF-07} & Emisión Masiva de Certificados & Generar automáticamente los certificados en PDF firmados digitalmente para los participantes aprobados. & Must Have \\
+\midrule
+\textbf{RF-08} & Verificación Pública QR & Portal web de libre acceso donde cualquier persona puede ingresar el código único o escanear el QR y ver la validez del diploma. & Must Have \\
+\midrule
+\textbf{RF-09} & Modo Offline de Asistencia & La aplicación del docente debe permitir tomar asistencia sin conexión a internet y sincronizar al recuperar red. & Should Have \\
+\midrule
+\textbf{RF-10} & Reportes para Fiscalización & Exportar padrones oficiales de participantes, asistencia y notas en formato compatible con Excel/OSCE. & Could Have \\
+\bottomrule
+\end{tabularx}
+\caption{Matriz de Requerimientos Funcionales priorizados bajo técnica MoSCoW.}
+\label{tab:rf}
+\end{table}
+
+\subsection{Requerimientos No Funcionales (RNF) según ISO/IEC 25010}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{p{1.6cm}p{3.2cm}X}
+\toprule
+\textbf{Código} & \textbf{Dimensión de Calidad} & \textbf{Especificación Técnica y Criterio de Aceptación} \\
+\midrule
+\textbf{RNF-01} & \textbf{Seguridad e Integridad} & Cada certificado debe poseer un hash criptográfico SHA-256 inmutable registrado en base de datos. Contraseñas protegidas con \textit{bcrypt}. \\
+\midrule
+\textbf{RNF-02} & \textbf{Rendimiento} & La emisión masiva de 100 certificados PDF debe completarse en segundo plano en menos de 15 segundos sin bloquear la navegación del usuario. \\
+\midrule
+\textbf{RNF-03} & \textbf{Disponibilidad} & La plataforma debe operar bajo arquitectura en la nube con un tiempo de actividad (\textit{uptime}) mínimo del 99.5\,\% durante horarios laborales. \\
+\midrule
+\textbf{RNF-04} & \textbf{Usabilidad Móvil} & El diseño debe ser 100\,\% adaptable (\textit{Responsive Design}), permitiendo inscribirse en no más de 3 pantallas en teléfonos inteligentes. \\
+\midrule
+\textbf{RNF-05} & \textbf{Tolerancia a Fallos} & El módulo de asistencia debe utilizar almacenamiento local del navegador (\textit{IndexedDB}) para tolerar cortes de red en locales comunales. \\
+\bottomrule
+\end{tabularx}
+\caption{Requerimientos No Funcionales bajo estándar de calidad ISO/IEC 25010.}
+\label{tab:rnf}
+\end{table}
+
+% ==============================================================================
+% SECCIÓN 3: MODELADO VISUAL UML
+% ==============================================================================
+\section{Modelado Visual del Sistema (UML)}
+
+\subsection{Diagrama de Casos de Uso del Sistema (UML)}
+El diagrama identifica a los cuatro actores principales y las relaciones de inclusión (\textit{include}) que garantizan la integridad del flujo formativo.
+
+\begin{center}
+\begin{tikzpicture}[
+    actor/.style={rectangle, draw=blue!75!black, fill=blue!10, rounded corners=3pt, font=\small\bfseries, minimum width=2.8cm, minimum height=0.7cm, text centered},
+    usecase/.style={ellipse, draw=black!80, fill=gray!8, font=\scriptsize, align=center, text width=3.3cm, minimum height=0.8cm},
+    rel/.style={draw=black!70, -Latex, thick},
+    incl/.style={draw=blue!70!black, -Latex, dashed, thick}
+]
+
+% Actores
+\node[actor] (admin) at (-5.5, 3.0) {Coordinador Edil / Turístico};
+\node[actor] (docente) at (-5.5, 0.0) {Docente / Capacitador};
+\node[actor] (alumno) at (-5.5, -3.0) {Participante / Ciudadano};
+\node[actor] (publico) at (5.5, 0.0) {Verificador / Auditor};
+
+% Casos de Uso
+\node[usecase] (uc1) at (0, 3.5) {Parametrizar Capacitación y Cupos};
+\node[usecase] (uc2) at (0, 2.0) {Gestionar Inscripciones};
+\node[usecase] (uc3) at (0, 0.5) {Controlar Asistencia Digital};
+\node[usecase] (uc4) at (0, -1.0) {Registrar Evaluaciones};
+\node[usecase] (uc5) at (0, -2.5) {Inscribirse a Capacitación};
+\node[usecase] (uc6) at (0, -4.0) {Descargar Certificado QR};
+\node[usecase] (uc7) at (4.5, 2.0) {Validar DNI en Base Oficial};
+\node[usecase] (uc8) at (4.5, -2.5) {Verificar Autenticidad QR};
+
+% Relaciones
+\draw[rel] (admin) -- (uc1);
+\draw[rel] (admin) -- (uc2);
+\draw[rel] (docente) -- (uc3);
+\draw[rel] (docente) -- (uc4);
+\draw[rel] (alumno) -- (uc5);
+\draw[rel] (alumno) -- (uc6);
+\draw[rel] (publico) -- (uc8);
+
+% Inclusiones <<include>>
+\draw[incl] (uc5) -- node[above, sloped, font=\tiny] {$\ll$include$\gg$} (uc7);
+\draw[incl] (uc6) -- node[above, sloped, font=\tiny] {$\ll$include$\gg$} (uc8);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Diagrama de Clases del Dominio y Multiplicidades}
+El modelo de clases del dominio estructura las relaciones del negocio respetando las cardinalidades del proceso formativo (ver Figura~\ref{fig:clases}).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    classbox/.style={rectangle, draw=blue!80!black, fill=blue!5, rounded corners=2pt, font=\scriptsize, align=left, text width=4.4cm, inner sep=4pt},
+    card/.style={font=\tiny\bfseries, text=blue!85!black},
+    link/.style={draw=black!75, thick}
+]
+
+% Nodos de Clases
+\node[classbox] (inst) at (-5.0, 3.5) {
+\textbf{\centering Institucion}\\[0.1cm]
+\hrule\vspace{0.1cm}
+- id\_institucion: int [PK]\\
+- ruc: varchar(11)\\
+- razon\_social: varchar(150)\\
+- tipo: enum(Pública, Privada)\\[0.1cm]
+\hrule\vspace{0.1cm}
++ crear\_curso()\\
++ emitir\_reporte()
+};
+
+\node[classbox] (cap) at (1.0, 3.5) {
+\textbf{\centering Capacitacion}\\[0.1cm]
+\hrule\vspace{0.1cm}
+- id\_capacitacion: int [PK]\\
+- titulo: varchar(120)\\
+- horas\_academicas: int\\
+- vacantes\_max: int\\[0.1cm]
+\hrule\vspace{0.1cm}
++ verificar\_cupo(): bool\\
++ cerrar\_acta()
+};
+
+\node[classbox] (user) at (-5.0, -1.5) {
+\textbf{\centering Usuario / Participante}\\[0.1cm]
+\hrule\vspace{0.1cm}
+- id\_usuario: int [PK]\\
+- dni: varchar(8) [UNIQUE]\\
+- nombres: varchar(80)\\
+- correo: varchar(100)\\[0.1cm]
+\hrule\vspace{0.1cm}
++ registrarse()\\
++ consultar\_diplomas()
+};
+
+\node[classbox] (insc) at (1.0, -1.5) {
+\textbf{\centering Inscripcion}\\[0.1cm]
+\hrule\vspace{0.1cm}
+- id\_inscripcion: int [PK]\\
+- fecha\_registro: timestamp\\
+- estado: enum(Activa, Anulada)\\[0.1cm]
+\hrule\vspace{0.1cm}
++ validar\_asistencias(): float\\
++ es\_aprobado(): bool
+};
+
+\node[classbox] (cert) at (6.5, -1.5) {
+\textbf{\centering Certificado}\\[0.1cm]
+\hrule\vspace{0.1cm}
+- id\_certificado: int [PK]\\
+- codigo\_unico: varchar(20)\\
+- hash\_sha256: varchar(64)\\
+- url\_qr: text\\[0.1cm]
+\hrule\vspace{0.1cm}
++ renderizar\_pdf()\\
++ verificar\_hash(): bool
+};
+
+% Conexiones con multiplicidades
+\draw[link] (inst) -- node[above, card] {1} node[below, card, pos=0.85] {1..*} (cap);
+\draw[link] (user) -- node[above, card] {1} node[below, card, pos=0.85] {0..*} (insc);
+\draw[link] (cap) -- node[right, card] {1} node[right, card, pos=0.85] {0..*} (insc);
+\draw[link] (insc) -- node[above, card] {1} node[above, card, pos=0.85] {0..1} (cert);
+
+\end{tikzpicture}
+\caption{Diagrama de Clases del Dominio con atributos y multiplicidades formales.}
+\label{fig:clases}
+\end{figure}
+
+% ==============================================================================
+% SECCIÓN 4: BASE DE DATOS Y CONEXIONES RELACIONALES
+% ==============================================================================
+\section{Diseño de Base de Datos y Esquema Relacional}
+
+Para implementar el sistema con máxima integridad referencial y soporte transaccional ACID, se emplea el gestor relacional \textbf{PostgreSQL}.
+
+\subsection{Explicación Didáctica de las Conexiones Relacionales}
+Para explicar a nuestros compañeros cómo interactúan las tablas en la base de datos, se establecen tres patrones relacionales:
+
+\begin{enumerate}
+    \item \textbf{Relación Uno a Muchos (1 a N):}
+    \begin{itemize}
+        \item \textbf{Ejemplo:} \texttt{Institución} (1) $\longrightarrow$ \texttt{Capacitación} (N).
+        \item \textbf{Explicación simple:} Una sola municipalidad puede dictar muchos cursos durante el año, pero cada curso pertenece exclusivamente a una sola institución responsable. La llave primaria \texttt{id\_institucion} viaja a la tabla \texttt{capacitacion} como llave foránea (\textit{Foreign Key}).
+    \end{itemize}
+
+    \item \textbf{Relación Muchos a Muchos (N a M) resuelta por Tabla Intermedia:}
+    \begin{itemize}
+        \item \textbf{Ejemplo:} \texttt{Participante} (N) $\longleftrightarrow$ \texttt{Capacitación} (M).
+        \item \textbf{Explicación simple:} Un participante puede inscribirse a varios cursos a lo largo del tiempo, y a su vez un curso tiene decenas de participantes. En bases de datos relacionales no se conectan directamente; se crea la tabla intermedia \textbf{\texttt{inscripcion}}, que guarda la combinación de ambos con su fecha y estado.
+    \end{itemize}
+
+    \item \textbf{Relación Uno a Uno (1 a 1 Condicional):}
+    \begin{itemize}
+        \item \textbf{Ejemplo:} \texttt{Inscripción} (1) $\longrightarrow$ \texttt{Certificado} (0..1).
+        \item \textbf{Explicación simple:} Cada registro de inscripción que cumpla con asistencia y nota aprobatoria genera exactamente un único certificado oficial. No pueden existir dos certificados distintos para la misma inscripción.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Esquema Físico de Base de Datos (Script DDL en PostgreSQL)}
+A continuación se detalla el código SQL listo para ser ejecutado:
+
+\begin{tcolorbox}[breakable, colback=CodeBg, colframe=black!40, title=\textbf{Script DDL PostgreSQL -- SIGC-CUSCO}, arc=1mm]
+\small
+\begin{verbatim}
+-- 1. Tabla de Instituciones (Multitenancy)
+CREATE TABLE instituciones (
+    id_institucion SERIAL PRIMARY KEY,
+    ruc VARCHAR(11) UNIQUE NOT NULL,
+    razon_social VARCHAR(150) NOT NULL,
+    tipo VARCHAR(20) CHECK (tipo IN ('Publica', 'Privada')),
+    logo_url TEXT,
+    activo BOOLEAN DEFAULT TRUE
+);
+
+-- 2. Tabla de Usuarios (RBAC)
+CREATE TABLE usuarios (
+    id_usuario SERIAL PRIMARY KEY,
+    dni VARCHAR(8) UNIQUE NOT NULL,
+    nombres VARCHAR(80) NOT NULL,
+    apellidos VARCHAR(80) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    rol VARCHAR(20) CHECK (rol IN ('Admin', 'Coordinador', 'Docente', 'Alumno'))
+);
+
+-- 3. Tabla de Capacitaciones
+CREATE TABLE capacitaciones (
+    id_capacitacion SERIAL PRIMARY KEY,
+    id_institucion INT REFERENCES instituciones(id_institucion) ON DELETE CASCADE,
+    id_docente INT REFERENCES usuarios(id_usuario),
+    titulo VARCHAR(150) NOT NULL,
+    horas_academicas INT NOT NULL CHECK (horas_academicas > 0),
+    vacantes_max INT NOT NULL CHECK (vacantes_max > 0),
+    fecha_inicio DATE NOT NULL,
+    estado VARCHAR(20) DEFAULT 'Planificada'
+);
+
+-- 4. Tabla Intermedia: Inscripciones
+CREATE TABLE inscripciones (
+    id_inscripcion SERIAL PRIMARY KEY,
+    id_capacitacion INT REFERENCES capacitaciones(id_capacitacion),
+    id_participante INT REFERENCES usuarios(id_usuario),
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(20) DEFAULT 'Confirmada',
+    CONSTRAINT uq_participante_curso UNIQUE (id_capacitacion, id_participante)
+);
+
+-- 5. Tabla de Asistencias (Con soporte QR y Offline)
+CREATE TABLE asistencias (
+    id_asistencia SERIAL PRIMARY KEY,
+    id_inscripcion INT REFERENCES inscripciones(id_inscripcion) ON DELETE CASCADE,
+    numero_sesion INT NOT NULL,
+    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(15) CHECK (estado IN ('Presente', 'Tardanza', 'Falta')),
+    metodo VARCHAR(15) DEFAULT 'QR_Digital'
+);
+
+-- 6. Tabla de Certificados Criptográficos
+CREATE TABLE certificados (
+    id_certificado SERIAL PRIMARY KEY,
+    id_inscripcion INT UNIQUE REFERENCES inscripciones(id_inscripcion),
+    codigo_unico VARCHAR(32) UNIQUE NOT NULL,
+    hash_sha256 CHAR(64) NOT NULL,
+    fecha_emision TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    url_pdf TEXT NOT NULL
+);
+\end{verbatim}
+\end{tcolorbox}
+
+% ==============================================================================
+% SECCIÓN 5: HERRAMIENTAS RECOMENDADAS PARA DIAGRAMADO ÁGIL
+% ==============================================================================
+\section{Herramientas para Diagramado Rápido y Colaborativo}
+
+Para que cualquier integrante del equipo pueda elaborar y editar los diagramas de manera simple, se recomiendan las siguientes herramientas:
+
+\begin{enumerate}
+    \item \textbf{dbdiagram.io (Bases de Datos Relacionales):}
+    \begin{itemize}
+        \item \textbf{¿Por qué usarla?} Es la herramienta más rápida del mercado para crear modelos relacionales. Se escribe en lenguaje simple DBML (\textit{Database Markup Language}) y dibuja las tablas y las líneas de conexión automáticamente.
+        \item \textbf{Sintaxis de ejemplo para conectar tablas:}
+        \begin{verbatim}
+        Ref: capacitaciones.id_institucion > instituciones.id_institucion
+        Ref: inscripciones.id_capacitacion > capacitaciones.id_capacitacion
+        \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{Mermaid.js (Diagramas UML directo en GitHub y Markdown):}
+    \begin{itemize}
+        \item Permite crear diagramas de secuencia, casos de uso y entidad-relación sin instalar ningún software, renderizándose automáticamente en los archivos \texttt{README.md} de GitHub.
+    \end{itemize}
+
+    \item \textbf{Draw.io / diagrams.net (Modelado Visual Libre):}
+    \begin{itemize}
+        \item Herramienta gráfica gratuita conectada a Google Drive o VS Code para bocetar flujos y casos de uso en minutos.
+    \end{itemize}
+\end{enumerate}
+
+% ==============================================================================
+% SECCIÓN 6: ENFOQUE INCREMENTAL E ITERATIVO
+% ==============================================================================
+\section{Plan de Evolución Incremental e Iterativo por Sprints}
+
+Para cumplir con la premisa de evolución continua en cada clase, el desarrollo de \textbf{SIGC-CUSCO} se estructura en incrementos progresivos:
+
+\begin{itemize}
+    \item \textbf{Incremento 1 (Sprint Inception - Actual):} Definición de visión, mapa de interesados, Lean Canvas y políticas de flujo Kanban.
+    \item \textbf{Incremento 2 (Sprint Requerimientos y Datos):} Especificación de casos de uso detallados, diagramas relacionales y script de base de datos PostgreSQL.
+    \item \textbf{Incremento 3 (Sprint Core Transaccional):} Implementación de portal de inscripción con validación de DNI y módulo de asistencia QR.
+    \item \textbf{Incremento 4 (Sprint Certificación y Seguridad):} Renderizado de certificados PDF con código QR y validador público con hash SHA-256.
+    \item \textbf{Incremento 5 (Sprint Analítica):} Dashboard institucional para municipalidades y empresas turísticas de Cusco.
+\end{itemize}
+
+\end{document}
