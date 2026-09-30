@@ -11,7 +11,7 @@ El sistema se organiza en ocho módulos funcionales coordinados (Tabla~\ref{tab:
 \centering
 \small
 \renewcommand{\arraystretch}{1.18}
-\begin{tabularx}{\textwidth}{p{3.2cm}p{5.4cm}X}
+\begin{tabularx}{\textwidth}{P{3.2cm}P{5.0cm}Y}
 \toprule
 \textbf{Módulo} & \textbf{Responsabilidad Principal} & \textbf{Operaciones Clave} \\
 \midrule
@@ -59,15 +59,15 @@ El ciclo de vida de una capacitación en el sistema sigue una secuencia verifica
 \end{tikzpicture}
 \end{center}
 
-\subsection{Modelo de Datos Esencial}
-\begin{itemize}\setlength\itemsep{0.1em}
-    \item \textbf{Institución:} \texttt{id\_institucion, ruc, razon\_social, tipo, logo\_url, estado}.
-    \item \textbf{Usuario:} \texttt{id\_usuario, dni, nombres, apellidos, correo, password\_hash, rol}.
-    \item \textbf{Capacitación:} \texttt{id\_capacitacion, id\_institucion, id\_docente, titulo, fecha\_inicio, horas, cupos}.
-    \item \textbf{Inscripción:} \texttt{id\_inscripcion, id\_capacitacion, id\_participante, fecha\_registro, estado}.
-    \item \textbf{Asistencia:} \texttt{id\_asistencia, id\_inscripcion, fecha\_sesion, estado (presente/falta), metodo}.
-    \item \textbf{Evaluación:} \texttt{id\_evaluacion, id\_inscripcion, nota (0--20), estado\_aprobado}.
-    \item \textbf{Certificado:} \texttt{id\_certificado, codigo\_unico, hash\_sha256, fecha\_emision, url\_pdf, url\_qr}.
+\subsection{Modelo de Datos Esencial (Entidades Principales)}
+\begin{itemize}\setlength\itemsep{0.15em}\raggedright
+    \item \textbf{Institución:} \texttt{id\_institucion}, \texttt{ruc}, \texttt{razon\_social}, \texttt{tipo}, \texttt{logo\_url}, \texttt{estado}.
+    \item \textbf{Usuario:} \texttt{id\_usuario}, \texttt{dni}, \texttt{nombres}, \texttt{apellidos}, \texttt{correo}, \texttt{password\_hash}, \texttt{rol}.
+    \item \textbf{Capacitación:} \texttt{id\_capacitacion}, \texttt{id\_institucion}, \texttt{id\_docente}, \texttt{titulo}, \texttt{horas}, \texttt{cupos}.
+    \item \textbf{Inscripción:} \texttt{id\_inscripcion}, \texttt{id\_capacitacion}, \texttt{id\_participante}, \texttt{fecha\_registro}, \texttt{estado}.
+    \item \textbf{Asistencia:} \texttt{id\_asistencia}, \texttt{id\_inscripcion}, \texttt{fecha\_sesion}, \texttt{estado}, \texttt{metodo}.
+    \item \textbf{Evaluación:} \texttt{id\_evaluacion}, \texttt{id\_inscripcion}, \texttt{nota\_final} (0 a 20), \texttt{condicion}.
+    \item \textbf{Certificado:} \texttt{id\_certificado}, \texttt{codigo\_unico}, \texttt{hash\_sha256}, \texttt{url\_pdf}, \texttt{url\_qr}.
 \end{itemize}
 
 \subsection{Plan de Escalabilidad en 5 Fases}
