@@ -10,12 +10,15 @@
 \input{config/packages.tex}
 
 \begin{document}
+\hypersetup{pageanchor=false}
 
 % 1. Portada Institucional Oficial
 \input{secciones/00_portada.tex}
 
 % 2. Tabla de Contenidos (Ajustada a exactamente 1 página)
 \newpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
 {
     \hypersetup{linkcolor=black}
     \begin{spacing}{0.90}
@@ -23,6 +26,7 @@
     \end{spacing}
 }
 \newpage
+\pagenumbering{arabic}
 
 % 3. Secciones del Informe Técnico (Flujo continuo y compacto)
 \input{secciones/01_objetivo_fundamento.tex}

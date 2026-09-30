@@ -34,6 +34,9 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+% Colores y tablas coloreadas (cargado antes de tcolorbox para evitar warnings)
+\usepackage[table,xcdraw]{xcolor}
+
 % Cajas estilizadas para Visión y destacados
 \usepackage[most]{tcolorbox}
 
@@ -51,9 +54,8 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Enlaces y URLs con soporte de tablas coloreadas
+% Enlaces y URLs
 \usepackage{xurl}
-\usepackage[table,xcdraw]{xcolor}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -85,6 +87,7 @@
 \definecolor{CanvasGreen}{HTML}{EAF4EA}
 
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 % Celda con alto fijo garantizado para mantener el lienzo en exactamente 1 página
 \newcommand{\CanvasCell}[3]{%
