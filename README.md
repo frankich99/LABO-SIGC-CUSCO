@@ -44,32 +44,35 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 
 ---
 
+## 📋 Contenido del Laboratorio 03 (Historias de Usuario y Product Backlog)
+
+1. **Parte 1 — Identificación de Funcionalidades:** Mapeo de 12 requerimientos funcionales aterrizados al SIGC-CUSCO (autenticación RBAC, cursos, inscripción con DNI, control de asistencia QR, evaluaciones, certificados PDF y verificación pública).
+2. **Parte 2 — Historias de Usuario:** Redacción de historias en formato estándar (*Como [usuario], quiero [funcionalidad], para [beneficio]*) cubriendo los roles del sistema (Participante, Docente, Administrador, Gerente Municipal y Ciudadano).
+3. **Parte 3 — Product Backlog Priorizado:** Ordenamiento ágil aplicando la técnica MoSCoW (*Must Have, Should Have, Could Have*).
+4. **Trabajo Extra — Criterios de Aceptación:** Definición de escenarios de validación bajo el formato BDD (*Dado / Cuando / Entonces*) para las historias prioritarias.
+
+---
+
 ## 📂 Estructura del Repositorio
 
 ```text
 SIGC-CUSCO/
 ├── README.md                          # Presentación oficial del proyecto para GitHub
-├── docs/                              # Documentación técnica formal
-│   ├── latex/                         # Código fuente modular en LaTeX (APA 7ma Edición)
-│   │   ├── main.tex                   # Archivo raíz que ensambla todas las secciones
-│   │   ├── main.pdf                   # Documento PDF compilado limpio y compacto
-│   │   ├── config/
-│   │   │   └── packages.tex           # Configuración tipográfica, márgenes y paquetes
-│   │   ├── secciones/
-│   │   │   ├── 00_portada.tex         # Portada oficial institucional UNSAAC
-│   │   │   ├── 01_objetivo_fundamento.tex
-│   │   │   ├── 02_stakeholders.tex
-│   │   │   ├── 03_vision_sistema.tex
-│   │   │   ├── 04_lean_canvas.tex     # Lean Canvas de 9 bloques horizontal (1 página)
-│   │   │   ├── 05_gestion_riesgos.tex
-│   │   │   ├── 06_arquitectura_modulos.tex
-│   │   │   ├── 07_herramienta_trello.tex
-│   │   │   ├── 08_reflexion_git.tex
-│   │   │   └── 09_benchmarking_soluciones.tex
-│   │   └── imagenes/
-│   │       └── escudo.png             # Escudo oficial de la UNSAAC en alta resolución
-│   └── trello/
-│       └── SIGC-CUSCO.md              # Configuración del tablero Trello (mismo nombre que GitHub)
+├── lab03/                             # Laboratorio 03: Elicitación de Requerimientos
+│   ├── Lab 3 ING. DE SOFTWARE.pdf     # Guía oficial del laboratorio
+│   └── docs/
+│       ├── latex/                     # Informe técnico modular en LaTeX
+│       │   ├── main.tex               # Documento principal
+│       │   ├── main.pdf               # Documento PDF compilado
+│       │   ├── config/packages.tex    # Paquetes y estilos
+│       │   ├── secciones/             # Portada, objetivos, historias, backlog, criterios
+│       │   └── imagenes/              # Escudo oficial UNSAAC
+│       └── trello/
+│           └── SIGC-CUSCO-lab03.md    # Tarjetas para tablero Kanban / Backlog
+├── docs/                              # Documentación del Laboratorio 02 y arquitectura
+│   ├── latex/                         # Fuente LaTeX del Lab 02
+│   ├── trello/                        # Tablero Trello inicial
+│   └── v2/                            # Especificación técnica v2
 └── src/                               # (Próxima fase) Código fuente del desarrollo de software
 ```
 
