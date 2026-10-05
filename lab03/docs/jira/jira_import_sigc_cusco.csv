@@ -1,0 +1,61 @@
+﻿Issue Type,Summary,Description,Priority,Component/s,Labels,Epic Name,Epic Link
+Epic,[EP-01] Módulo de Autenticación y Control de Acceso (RBAC),"Épica encargada de la seguridad, autenticación y gestión de roles diferenciados (Administrador, Docente, Participante).",Highest,Seguridad,"seguridad,rbac,epica",Autenticación y Roles,
+Epic,[EP-02] Módulo de Capacitaciones y Gestión Académica,"Épica para la parametrización de cursos, vacantes, cronogramas y asignación de docentes para municipalidades y turismo.",Highest,Gestión Académica,"cursos,academico,epica",Gestión de Cursos,
+Epic,[EP-03] Módulo de Inscripciones y Control de Vacantes,Épica para la inscripción digital de ciudadanos y servidores públicos con validación de DNI peruano.,Highest,Inscripciones,"inscripcion,dni,epica",Inscripciones DNI,
+Epic,[EP-04] Módulo de Asistencia Digital en Tiempo Real,Épica para el control ágil de asistencia mediante código QR dinámico y soporte offline en auditorios.,High,Asistencia,"asistencia,qr,offline,epica",Control Asistencia,
+Epic,[EP-05] Módulo de Evaluaciones y Cierre de Actas,Épica para el registro de calificaciones (0-20) y cálculo automatizado del estado de aprobación.,High,Evaluaciones,"evaluaciones,notas,actas,epica",Evaluaciones y Actas,
+Epic,[EP-06] Módulo de Certificación Digital y Verificación Pública,Épica para la emisión masiva de certificados PDF con código QR y portal de consulta con hash SHA-256.,High,Certificación,"certificados,qr,sha256,epica",Certificación Digital,
+Story,HU-10: Asignar roles a los usuarios para controlar el acceso,"Como administrador quiero asignar roles a cada usuario (admin, docente, alumno) para que cada uno vea solo lo que le corresponde.
+
+Criterios de Aceptación:
+- Dado un usuario nuevo en el sistema, cuando el admin le asigna un rol, entonces sus permisos se actualizan en el acto.
+- Dado un usuario sin rol asignado, cuando inicia sesión, entonces solo ve la vista básica de participante.",Highest,Seguridad,"moscow-must,roles,seguridad",,Autenticación y Roles
+Story,"HU-06: Crear capacitaciones con fechas, cupos y docente asignado","Como admin quiero crear una capacitación nueva con fechas y cupos para que los participantes se puedan inscribir.
+
+Criterios de Aceptación:
+- Dado que lleno todos los campos obligatorios (título, fecha, cupos, docente), cuando guardo, entonces el curso aparece en el catálogo como Abierto.
+- Dado que dejo campos vacíos, cuando intento guardar, entonces el sistema me indica qué datos faltan.",Highest,Gestión Académica,"moscow-must,capacitaciones,cursos",,Gestión de Cursos
+Story,HU-01: Inscribirme a una capacitación usando mi DNI,"Como participante quiero inscribirme a una capacitación usando mi DNI para no tener que ir presencialmente a anotarme.
+
+Criterios de Aceptación:
+- Dado que ingreso un DNI de 8 dígitos válido, cuando envío el formulario, entonces quedo inscrito y veo un mensaje de confirmación.
+- Dado que el curso ya no tiene cupos, cuando intento inscribirme, entonces me sale un aviso de que no hay vacantes.",Highest,Inscripciones,"moscow-must,inscripciones,dni",,Inscripciones DNI
+Story,HU-03: Pasar asistencia escaneando un código QR,"Como docente quiero pasar asistencia escaneando un código QR para no perder tiempo con listas en papel.
+
+Criterios de Aceptación:
+- Dado que el docente genera el QR de la sesión, cuando el participante lo escanea, entonces se registra su asistencia con la fecha y hora.
+- Dado que ya marqué asistencia, cuando escaneo de nuevo, entonces me dice que ya estoy registrado.",High,Asistencia,"moscow-must,asistencia,qr",,Control Asistencia
+Story,HU-04: Registrar notas y calcular aprobación automáticamente,"Como docente quiero ingresar las notas de los participantes para que el sistema diga quién aprobó y quién no.
+
+Criterios de Aceptación:
+- Dado que el docente ingresa notas entre 0 y 20, cuando confirma el cierre de actas, entonces el sistema marca Aprobado con nota mayor o igual a 11.",High,Evaluaciones,"moscow-must,evaluaciones,notas",,Evaluaciones y Actas
+Story,HU-05: Generar y descargar certificado PDF con código QR,"Como participante quiero descargar mi certificado en PDF con QR para tener un documento válido que pueda mostrar.
+
+Criterios de Aceptación:
+- Dado que aprobé el curso (nota mayor o igual a 11), cuando pido mi certificado, entonces se genera un PDF con mi nombre, el curso, las horas y un código QR.
+- Dado que no aprobé, cuando quiero descargar el certificado, entonces me indica que no cumplo los requisitos.",High,Certificación,"moscow-must,certificados,pdf,qr",,Certificación Digital
+Story,HU-07: Registrar diferentes instituciones en el sistema,"Como admin quiero registrar diferentes instituciones en el sistema para que cada municipalidad o empresa maneje sus cursos aparte.
+
+Criterios de Aceptación:
+- Dado que se registra una nueva institución (RUC, razón social, logo), cuando se guarda, entonces se genera un espacio de trabajo aislado para sus capacitaciones.",Medium,Gestión Académica,"moscow-should,multientidad,instituciones",,Gestión de Cursos
+Story,HU-08: Verificar autenticidad de certificado mediante código QR,"Como ciudadano quiero escanear el QR de un certificado para verificarlo y comprobar que no es falso.
+
+Criterios de Aceptación:
+- Dado que escaneo el QR de un certificado real, cuando entro al portal, entonces veo los datos del certificado (nombre, curso, institución).
+- Dado que el QR no existe en el sistema, cuando lo consulto, entonces dice que no se encontró el certificado.",Medium,Certificación,"moscow-should,verificacion,seguridad",,Certificación Digital
+Story,HU-09: Generar reportes de capacitaciones para auditorías,"Como gerente quiero sacar reportes de las capacitaciones realizadas para presentarlos en auditorías (OSCE / control institucional).
+
+Criterios de Aceptación:
+- Dado un rango de fechas y cursos seleccionados, cuando genero el reporte, entonces se descarga en formato Excel con asistencia y notas consolidadas.",Medium,Gestión Académica,"moscow-should,reportes,excel",,Gestión de Cursos
+Story,HU-02: Recibir correo de confirmación al inscribirme,"Como participante quiero que me llegue un correo cuando me inscriba para saber que mi registro se hizo bien.
+
+Criterios de Aceptación:
+- Dado que la inscripción fue aceptada, cuando termina el registro, entonces se envía un correo con los datos del curso, fechas y enlace al aula.",Medium,Inscripciones,"moscow-should,notificaciones,correo",,Inscripciones DNI
+Story,HU-12: Consultar catálogo público de cursos disponibles,"Como participante quiero ver los cursos disponibles en un catálogo para decidir a cuál inscribirme.
+
+Criterios de Aceptación:
+- Dado que accedo al portal público, cuando busco cursos, entonces veo la lista de capacitaciones abiertas con fechas, temarios y vacantes libres.",Low,Portal Web,"moscow-could,catalogo,cursos",,Gestión de Cursos
+Story,HU-11: Marcar asistencia en modo offline con sincronización,"Como docente quiero marcar asistencia aunque no haya internet para que se sincronice después automáticamente.
+
+Criterios de Aceptación:
+- Dado que no hay conexión de datos en el auditorio, cuando los alumnos marcan presencia, entonces las asistencias se guardan localmente y se sincronizan al conectarse a red.",Low,Asistencia,"moscow-could,offline,sincronizacion",,Control Asistencia

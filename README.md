@@ -38,7 +38,7 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 3. **Lean Canvas Refinado (9 Bloques):** Modelado ágil de negocio en orientación horizontal ajustado a una sola página (`docs/latex/secciones/04_lean_canvas.tex`).
 4. **Matriz de Riesgos Iniciales:** Mitigación técnica para brecha digital, conectividad *Offline-First* y autenticidad documental (hash SHA-256 + QR público).
 5. **Arquitectura y Flujo del Sistema:** 8 módulos funcionales, diccionario de datos y flujo operativo.
-6. **Gestión Ágil con Trello / Jira:** Tablero Kanban con políticas de flujo (Backlog, To Do, In Progress, QA, Done).
+6. **Gestión Ágil con Jira Software:** Configuración del proyecto de desarrollo con políticas de flujo (Backlog, To Do, In Progress, QA, Done).
 7. **Reflexión sobre Control de Versiones con Git:** Sustento de desarrollo colaborativo concurrente, trazabilidad y prevención de fallos.
 8. **Trabajo Extra (Benchmarking de Mercado):** Comparativa frente a Moodle, Google Workspace, LMS corporativos (Crehana/Platzi) y portales estatales (OSCE).
 
@@ -49,7 +49,8 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 1. **Parte 1 — Identificación de Funcionalidades:** Mapeo de 12 requerimientos funcionales aterrizados al SIGC-CUSCO (autenticación RBAC, cursos, inscripción con DNI, control de asistencia QR, evaluaciones, certificados PDF y verificación pública).
 2. **Parte 2 — Historias de Usuario:** Redacción de historias en formato estándar (*Como [usuario], quiero [funcionalidad], para [beneficio]*) cubriendo los roles del sistema (Participante, Docente, Administrador, Gerente Municipal y Ciudadano).
 3. **Parte 3 — Product Backlog Priorizado (Jira Software):** Ordenamiento ágil aplicando la técnica MoSCoW (*Must Have, Should Have, Could Have*) y estructuración en Jira (`lab03/docs/jira/SIGC-CUSCO-jira.md`).
-4. **Trabajo Extra — Criterios de Aceptación:** Definición de escenarios de validación bajo el formato BDD (*Dado / Cuando / Entonces*) para las historias prioritarias.
+4. **Archivo de Importación Automática para Jira:** Archivo `.csv` estructurado listo para carga masiva (`lab03/docs/jira/jira_import_sigc_cusco.csv`).
+5. **Trabajo Extra — Criterios de Aceptación:** Definición de escenarios de validación bajo el formato BDD (*Dado / Cuando / Entonces*) para las historias prioritarias.
 
 ---
 
@@ -60,6 +61,7 @@ SIGC-CUSCO/
 ├── README.md                          # Presentación oficial del proyecto para GitHub
 ├── lab03/                             # Laboratorio 03: Elicitación de Requerimientos
 │   ├── Lab 3 ING. DE SOFTWARE.pdf     # Guía oficial del laboratorio
+│   ├── jira_import_sigc_cusco.csv     # Plantilla CSV para importación masiva en Jira
 │   └── docs/
 │       ├── latex/                     # Informe técnico modular en LaTeX
 │       │   ├── main.tex               # Documento principal
@@ -68,10 +70,10 @@ SIGC-CUSCO/
 │       │   ├── secciones/             # Portada, objetivos, historias, backlog, criterios
 │       │   └── imagenes/              # Escudo oficial UNSAAC
 │       └── jira/
-│           └── SIGC-CUSCO-jira.md     # Backlog de Historias de Usuario en Jira Software
+│           ├── SIGC-CUSCO-jira.md     # Backlog de Historias de Usuario en Jira Software
+│           └── jira_import_sigc_cusco.csv # Archivo de importación oficial para Jira
 ├── docs/                              # Documentación del Laboratorio 02 y arquitectura
 │   ├── latex/                         # Fuente LaTeX del Lab 02
-│   ├── trello/                        # Tablero inicial
 │   └── v2/                            # Especificación técnica v2
 └── src/                               # (Próxima fase) Código fuente del desarrollo de software
 ```
