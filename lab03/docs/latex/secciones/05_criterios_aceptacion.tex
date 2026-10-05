@@ -1,0 +1,33 @@
+\section{Trabajo extra: Criterios de aceptación}
+
+Para las historias más importantes definimos criterios de aceptación con el formato \textit{Dado / Cuando / Entonces}.
+
+\subsection{HU-01: Inscripción con DNI}
+\begin{itemize}[nosep]
+    \item \textbf{Dado} que ingreso un DNI de 8 dígitos válido, \textbf{cuando} envío el formulario, \textbf{entonces} quedo inscrito y veo un mensaje de confirmación.
+    \item \textbf{Dado} que el curso ya no tiene cupos, \textbf{cuando} intento inscribirme, \textbf{entonces} me sale un aviso de que no hay vacantes.
+\end{itemize}
+
+\subsection{HU-03: Asistencia por QR}
+\begin{itemize}[nosep]
+    \item \textbf{Dado} que el docente genera el QR de la sesión, \textbf{cuando} el participante lo escanea, \textbf{entonces} se registra su asistencia con la fecha y hora.
+    \item \textbf{Dado} que ya marqué asistencia, \textbf{cuando} escaneo de nuevo, \textbf{entonces} me dice que ya estoy registrado.
+\end{itemize}
+
+\subsection{HU-05: Certificado PDF}
+\begin{itemize}[nosep]
+    \item \textbf{Dado} que aprobé el curso (nota mayor o igual a 11), \textbf{cuando} pido mi certificado, \textbf{entonces} se genera un PDF con mi nombre, el curso, las horas y un código QR.
+    \item \textbf{Dado} que no aprobé, \textbf{cuando} quiero descargar el certificado, \textbf{entonces} me indica que no cumplo los requisitos.
+\end{itemize}
+
+\subsection{HU-06: Crear capacitación}
+\begin{itemize}[nosep]
+    \item \textbf{Dado} que lleno todos los campos obligatorios (título, fecha, cupos, docente), \textbf{cuando} guardo, \textbf{entonces} el curso aparece en el catálogo como ``Abierto''.
+    \item \textbf{Dado} que dejo campos vacíos, \textbf{cuando} intento guardar, \textbf{entonces} el sistema me indica qué falta.
+\end{itemize}
+
+\subsection{HU-08: Verificación de certificado}
+\begin{itemize}[nosep]
+    \item \textbf{Dado} que escaneo el QR de un certificado real, \textbf{cuando} entro al portal, \textbf{entonces} veo los datos del certificado (nombre, curso, institución).
+    \item \textbf{Dado} que el QR no existe en el sistema, \textbf{cuando} lo consulto, \textbf{entonces} dice que no se encontró el certificado.
+\end{itemize}

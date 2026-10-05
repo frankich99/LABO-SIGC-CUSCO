@@ -1,0 +1,47 @@
+% ==============================================================================
+% DOCUMENTO PRINCIPAL - LATEX
+% Proyecto: SIGC-CUSCO | Lab 03 - Elicitación de Requerimientos
+% Asignatura: Ingeniería de Software I - UNSAAC
+% ==============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\input{config/packages.tex}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+% 1. Portada
+\input{secciones/00_portada.tex}
+
+% 2. Tabla de Contenidos
+\newpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+{
+    \hypersetup{linkcolor=black}
+    \begin{spacing}{0.95}
+    \tableofcontents
+    \end{spacing}
+}
+\newpage
+\pagenumbering{arabic}
+
+% 3. Objetivo, Fundamento y Funcionalidades
+\input{secciones/01_objetivo.tex}
+\vspace{0.2cm}
+\input{secciones/02_funcionalidades.tex}
+
+% 4. Historias de Usuario
+\newpage
+\input{secciones/03_historias_usuario.tex}
+
+% 5. Product Backlog Priorizado
+\newpage
+\input{secciones/04_product_backlog.tex}
+
+% 6. Criterios de Aceptación (Trabajo Extra)
+\newpage
+\input{secciones/05_criterios_aceptacion.tex}
+
+\end{document}

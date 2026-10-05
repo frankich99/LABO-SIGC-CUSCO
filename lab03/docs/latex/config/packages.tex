@@ -1,0 +1,57 @@
+% ==============================================================================
+% CONFIGURACIÓN DE PAQUETES - LATEX
+% SIGC-CUSCO | Lab 03
+% ==============================================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
+\spanishdeactivate{"}
+\usepackage{csquotes}
+
+\usepackage[margin=2.54cm, headheight=18pt]{geometry}
+
+\usepackage{mathptmx}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{graphicx}
+\graphicspath{{./}{imagenes/}{./imagenes/}}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{caption}
+
+\usepackage[table]{xcolor}
+
+\usepackage{enumitem}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape UNSAAC -- Ingeniería de Software I}
+\fancyhead[R]{\small\itshape SIGC-CUSCO -- Lab 03}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    breaklinks=true,
+    linkcolor=blue!75!black,
+    urlcolor=blue!75!black,
+    pdftitle={Lab 03 - SIGC-CUSCO},
+    pdfauthor={Choquenaira, Yaranga, Ccama}
+}
+
+\usepackage{microtype}
+\emergencystretch=2.5em
+
+\setlength{\parindent}{0.8cm}
+\setlength{\parskip}{0.2em}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
