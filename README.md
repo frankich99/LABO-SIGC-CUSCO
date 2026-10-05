@@ -3,8 +3,8 @@
 [![Repositorio](https://img.shields.io/badge/GitHub-SIGC--CUSCO-blue.svg)](https://github.com/frankich99/SIGC-CUSCO)
 [![Universidad](https://img.shields.io/badge/UNSAAC-Ingeniería_Informática_y_de_Sistemas-red.svg)](https://www.unsaac.edu.pe/)
 [![Curso](https://img.shields.io/badge/Curso-Ingeniería_de_Software_I-orange.svg)](https://www.unsaac.edu.pe/)
-[![Documentación](https://img.shields.io/badge/LaTeX-APA_7ma_Edición-brightgreen.svg)](docs/latex/main.pdf)
-[![Trello](https://img.shields.io/badge/Trello-SIGC--CUSCO-0079BF.svg)](docs/trello/SIGC-CUSCO.md)
+[![Jira](https://img.shields.io/badge/Jira_Software-SIGC--CUSCO-0052CC.svg?logo=jira&logoColor=white)](lab03/docs/jira/SIGC-CUSCO-jira.md)
+[![Documentación Lab 03](https://img.shields.io/badge/LaTeX-Lab_03_PDF-brightgreen.svg)](lab03/docs/latex/main.pdf)
 
 ---
 
@@ -38,17 +38,17 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 3. **Lean Canvas Refinado (9 Bloques):** Modelado ágil de negocio en orientación horizontal ajustado a una sola página (`docs/latex/secciones/04_lean_canvas.tex`).
 4. **Matriz de Riesgos Iniciales:** Mitigación técnica para brecha digital, conectividad *Offline-First* y autenticidad documental (hash SHA-256 + QR público).
 5. **Arquitectura y Flujo del Sistema:** 8 módulos funcionales, diccionario de datos y flujo operativo.
-6. **Gestión Ágil con Trello:** Tablero Kanban `SIGC-CUSCO` con políticas de flujo (Backlog, To Do, In Progress, QA, Done).
+6. **Gestión Ágil con Trello / Jira:** Tablero Kanban con políticas de flujo (Backlog, To Do, In Progress, QA, Done).
 7. **Reflexión sobre Control de Versiones con Git:** Sustento de desarrollo colaborativo concurrente, trazabilidad y prevención de fallos.
 8. **Trabajo Extra (Benchmarking de Mercado):** Comparativa frente a Moodle, Google Workspace, LMS corporativos (Crehana/Platzi) y portales estatales (OSCE).
 
 ---
 
-## 📋 Contenido del Laboratorio 03 (Historias de Usuario y Product Backlog)
+## 📋 Contenido del Laboratorio 03 (Historias de Usuario y Product Backlog en Jira)
 
 1. **Parte 1 — Identificación de Funcionalidades:** Mapeo de 12 requerimientos funcionales aterrizados al SIGC-CUSCO (autenticación RBAC, cursos, inscripción con DNI, control de asistencia QR, evaluaciones, certificados PDF y verificación pública).
 2. **Parte 2 — Historias de Usuario:** Redacción de historias en formato estándar (*Como [usuario], quiero [funcionalidad], para [beneficio]*) cubriendo los roles del sistema (Participante, Docente, Administrador, Gerente Municipal y Ciudadano).
-3. **Parte 3 — Product Backlog Priorizado:** Ordenamiento ágil aplicando la técnica MoSCoW (*Must Have, Should Have, Could Have*).
+3. **Parte 3 — Product Backlog Priorizado (Jira Software):** Ordenamiento ágil aplicando la técnica MoSCoW (*Must Have, Should Have, Could Have*) y estructuración en Jira (`lab03/docs/jira/SIGC-CUSCO-jira.md`).
 4. **Trabajo Extra — Criterios de Aceptación:** Definición de escenarios de validación bajo el formato BDD (*Dado / Cuando / Entonces*) para las historias prioritarias.
 
 ---
@@ -67,11 +67,11 @@ SIGC-CUSCO/
 │       │   ├── config/packages.tex    # Paquetes y estilos
 │       │   ├── secciones/             # Portada, objetivos, historias, backlog, criterios
 │       │   └── imagenes/              # Escudo oficial UNSAAC
-│       └── trello/
-│           └── SIGC-CUSCO-lab03.md    # Tarjetas para tablero Kanban / Backlog
+│       └── jira/
+│           └── SIGC-CUSCO-jira.md     # Backlog de Historias de Usuario en Jira Software
 ├── docs/                              # Documentación del Laboratorio 02 y arquitectura
 │   ├── latex/                         # Fuente LaTeX del Lab 02
-│   ├── trello/                        # Tablero Trello inicial
+│   ├── trello/                        # Tablero inicial
 │   └── v2/                            # Especificación técnica v2
 └── src/                               # (Próxima fase) Código fuente del desarrollo de software
 ```
