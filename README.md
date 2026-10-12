@@ -3,8 +3,8 @@
 [![Repositorio](https://img.shields.io/badge/GitHub-SIGC--CUSCO-blue.svg)](https://github.com/frankich99/SIGC-CUSCO)
 [![Universidad](https://img.shields.io/badge/UNSAAC-Ingeniería_Informática_y_de_Sistemas-red.svg)](https://www.unsaac.edu.pe/)
 [![Curso](https://img.shields.io/badge/Curso-Ingeniería_de_Software_I-orange.svg)](https://www.unsaac.edu.pe/)
-[![Jira](https://img.shields.io/badge/Jira_Software-SIGC--CUSCO-0052CC.svg?logo=jira&logoColor=white)](lab03/docs/jira/SIGC-CUSCO-jira.md)
 [![Documentación Lab 03](https://img.shields.io/badge/LaTeX-Lab_03_PDF-brightgreen.svg)](lab03/docs/latex/main.pdf)
+[![Documentación Lab 04](https://img.shields.io/badge/LaTeX-Lab_04_PDF-purple.svg)](lab04/Lab_04_Informe_SIGC_CUSCO.pdf)
 
 ---
 
@@ -21,7 +21,7 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 * **Institución:** Universidad Nacional de San Antonio Abad del Cusco (UNSAAC)
 * **Facultad:** Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica
 * **Escuela Profesional:** Ingeniería Informática y de Sistemas
-* **Asignatura:** Ingeniería de Software I (Semestre 2026-II)
+* **Asignatura:** Ingeniería de Software I
 * **Docente:** Ing. Lisha Sabah Diaz Caceres
 
 ### Integrantes:
@@ -44,7 +44,7 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 
 ---
 
-## 📋 Contenido del Laboratorio 03 (Historias de Usuario y Product Backlog en Jira)
+## 📋 Contenido del Laboratorio 03 (Historias de Usuario y Product Backlog)
 
 1. **Parte 1 — Identificación de Funcionalidades:** Mapeo de 12 requerimientos funcionales aterrizados al SIGC-CUSCO (autenticación RBAC, cursos, inscripción con DNI, control de asistencia QR, evaluaciones, certificados PDF y verificación pública).
 2. **Parte 2 — Historias de Usuario:** Redacción de historias en formato estándar (*Como [usuario], quiero [funcionalidad], para [beneficio]*) cubriendo los roles del sistema (Participante, Docente, Administrador, Gerente Municipal y Ciudadano).
@@ -54,11 +54,47 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 
 ---
 
-## 📂 Estructura del Repositorio
+## 🎨 Contenido del Laboratorio 04 (Modelado del Sistema: UML y Prototipos)
+
+1. **Parte 1 — Diagrama de Casos de Uso (UML):**
+   * Modelado completo de fronteras del sistema, actores principales (*Participante*, *Docente*, *Administrador*, *Sistema Central/RENIEC*) y 11 casos de uso centrales con relaciones `<<include>>` y `<<extend>>`.
+   * Formato editable nativo en **Draw.io**: [`lab04/diagramas/casos_de_uso.drawio`](lab04/diagramas/casos_de_uso.drawio).
+2. **Parte 2 — Diagrama de Clases (UML):**
+   * Modelo del dominio tipado con atributos, métodos de negocio, visibilidad y multiplicidades (`User`, `Course`, `Enrollment`, `AttendanceRecord`, `CertificateService`, `UserRole`, `CourseStatus`).
+   * Formato editable nativo en **Draw.io**: [`lab04/diagramas/clases.drawio`](lab04/diagramas/clases.drawio).
+3. **Parte 3 — Prototipos y Capturas del Sistema en Ejecución:**
+   * **Login:** Prototipo interactivo y captura real del login en Laravel 13 e Inertia Vue 3 (`localhost:8000/login`).
+   * **Alertas:** Centro de notificaciones con códigos de urgencia (cierre de actas, inasistencia crítica al 25% y diplomas emitidos).
+   * **Reportes:** Dashboard analítico e interfaz de validación pública de diplomas con código, nota y hash SHA-256 verificado (`localhost:8000/certificates`).
+4. **Trabajo Extra — Experiencia de Usuario (UX) y Validación con Usuarios:**
+   * Aplicación de heurísticas de usabilidad de Jakob Nielsen en el software real.
+   * Evidencias de interfaces reales: Dashboard autenticado, portal de convocatorias y ficha de curso con control de vacantes en tiempo real.
+   * Protocolo de evaluación con usuarios representativos y consolidación en la escala **SUS (System Usability Scale: 86.5/100 - Grado A)**.
+5. **Informe Técnico Final en LaTeX:**
+   * Código fuente modular en [`lab04/latex/`](lab04/latex/).
+   * Documento compilado con formato sobrio oficial de la UNSAAC: [`lab04/Lab_04_Informe_SIGC_CUSCO.pdf`](lab04/Lab_04_Informe_SIGC_CUSCO.pdf).
+
+---
+
+## 📂 Estructura General del Repositorio
 
 ```text
-SIGC-CUSCO/
-├── README.md                          # Presentación oficial del proyecto para GitHub
+LABO-SIGC-CUSCO/
+├── README.md                          # Presentación oficial del repositorio y los laboratorios
+│
+├── lab04/                             # Laboratorio 04: Modelado UML y Prototipos
+│   ├── Lab_04_Informe_SIGC_CUSCO.pdf  # Informe técnico oficial compilado (PDF)
+│   ├── diagramas/                     # Modelos nativos editables en Draw.io y PlantUML
+│   │   ├── casos_de_uso.drawio        # Diagrama de Casos de Uso editable
+│   │   ├── clases.drawio              # Diagrama de Clases editable
+│   │   ├── casos_de_uso.puml          # Código fuente PlantUML
+│   │   └── clases.puml                # Código fuente PlantUML
+│   └── latex/                         # Código fuente modular en LaTeX
+│       ├── main.tex                   # Documento principal LaTeX
+│       ├── config/packages.tex        # Configuración formal institucional
+│       ├── secciones/                 # Portada, Casos de Uso, Clases, Prototipos, UX
+│       └── imagenes/                  # Capturas reales del sistema en localhost y diagramas
+│
 ├── lab03/                             # Laboratorio 03: Elicitación de Requerimientos
 │   ├── Lab 3 ING. DE SOFTWARE.pdf     # Guía oficial del laboratorio
 │   ├── jira_import_sigc_cusco.csv     # Plantilla CSV para importación masiva en Jira
@@ -66,53 +102,51 @@ SIGC-CUSCO/
 │       ├── latex/                     # Informe técnico modular en LaTeX
 │       │   ├── main.tex               # Documento principal
 │       │   ├── main.pdf               # Documento PDF compilado
-│       │   ├── config/packages.tex    # Paquetes y estilos
-│       │   ├── secciones/             # Portada, objetivos, historias, backlog, criterios
-│       │   └── imagenes/              # Escudo oficial UNSAAC
-│       └── jira/
-│           ├── SIGC-CUSCO-jira.md     # Backlog de Historias de Usuario en Jira Software
-│           └── jira_import_sigc_cusco.csv # Archivo de importación oficial para Jira
-├── docs/                              # Documentación del Laboratorio 02 y arquitectura
-│   ├── latex/                         # Fuente LaTeX del Lab 02
-│   └── v2/                            # Especificación técnica v2
-└── src/                               # (Próxima fase) Código fuente del desarrollo de software
+│       │   └── secciones/             # Secciones del Lab 03
+│       └── jira/                      # Backlog e historias en Jira
+│
+└── docs/                              # Documentación del Laboratorio 02 (Agile Inception)
+    ├── latex/                         # Fuente LaTeX del Lab 02
+    └── v2/                            # Especificación técnica v2
 ```
 
 ---
 
-## 🛠️ Compilación Rápida del Documento LaTeX
+## 🛠️ Compilación de Documentos LaTeX
+
+Para compilar el informe técnico del **Laboratorio 04**:
 
 ```bash
-# Navegar a la carpeta de LaTeX
-cd docs/latex
+# Navegar al directorio de LaTeX del Lab 04
+cd lab04/latex
 
-# Compilación con pdflatex (dos pasadas para resolver tabla de contenidos e índices)
+# Compilar con pdflatex (dos pasadas para actualizar tabla de contenidos y referencias cruzadas)
 pdflatex -interaction=nonstopmode main.tex
 pdflatex -interaction=nonstopmode main.tex
 ```
 
 ---
 
-## 🔄 Flujo del Sistema (SIGC-CUSCO)
+## 🔄 Flujo Operativo del Sistema (SIGC-CUSCO)
 
 ```text
-[INSTITUCIÓN (Municipalidad / Empresa Turística)]
+[INSTITUCIÓN (Municipalidad / DIRCETUR / Empresa)]
    │
    ▼
-[Creación del Curso (Fechas, Vacantes, Modalidad, Docente)]
+[Creación del Curso y Asignación Docente (Capacidad, Horas, Fechas)]
    │
    ▼
-[Inscripción Digital con Validación de DNI]
+[Inscripción Digital con Validación de Identidad por DNI]
    │
    ▼
-[Control de Asistencia Digital (Marcado QR / Offline)]
+[Control de Asistencia Digital con Token QR Dinámico]
    │
    ▼
-[Evaluación Académica y Cierre de Actas en Línea]
+[Registro de Notas y Cierre Formal de Acta Académica]
    │
    ▼
-[Emisión Automática de Certificado PDF con Código QR Único]
+[Emisión Masiva de Certificados Digitales con Hash Criptográfico SHA-256]
    │
    ▼
-[Verificación Documental Pública + Reporte Gerencial para Auditoría]
+[Verificación Pública con QR/Código + Analítica de Reportes]
 ```
