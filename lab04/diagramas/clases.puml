@@ -1,0 +1,188 @@
+@startuml Clases_SIGC_CUSCO
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam class {
+    BackgroundColor #F8FAFC
+    BorderColor #0284C7
+    ArrowColor #0369A1
+}
+
+enum RolUsuario {
+    ADMINISTRADOR
+    DOCENTE
+    PARTICIPANTE
+}
+
+enum EstadoCurso {
+    BORRADOR
+    ABIERTO
+    EN_CURSO
+    FINALIZADO
+    CERRADO
+}
+
+enum EstadoInscripcion {
+    INSCRITO
+    EN_PROCESO
+    APROBADO
+    DESAPROBADO
+    INHABILITADO
+}
+
+enum TipoAlerta {
+    URGENTE_PLAZO
+    ADVERTENCIA_ASISTENCIA
+    CERTIFICADO_EMITIDO
+    SESION_PROXIMA
+    SISTEMA
+}
+
+class Usuario {
+    - id : int
+    - dni : string
+    - nombres : string
+    - apellidos : string
+    - email : string
+    - passwordHash : string
+    - rol : RolUsuario
+    - activo : boolean
+    - fechaRegistro : datetime
+    + iniciarSesion(credencial, password) : boolean
+    + recuperarPassword() : void
+    + actualizarDatos(email, telefono) : boolean
+    + getNombreCompleto() : string
+}
+
+class Participante {
+    - institucionProcedencia : string
+    - cargo : string
+    - telefono : string
+    + inscribirseCurso(cursoId) : Inscripcion
+    + marcarAsistenciaQR(tokenQR) : boolean
+    + consultarCalificaciones() : List<Evaluacion>
+    + descargarCertificadoDigital(cursoId) : Certificado
+}
+
+class Docente {
+    - especialidad : string
+    - gradoAcademico : string
+    - firmaDigitalPath : string
+    + iniciarSesionClase(cursoId) : SesionClase
+    + generarCodigoQR(sesionId) : string
+    + registrarNota(inscripcionId, nota) : void
+    + cerrarActaFinal(cursoId) : void
+}
+
+class Administrador {
+    - oficina : string
+    + registrarInstitucion(datos) : Institucion
+    + crearCapacitacion(datos) : Capacitacion
+    + asignarDocente(cursoId, docenteId) : void
+    + emitirReporteAuditoria(periodo) : Reporte
+    + configurarAlertasGlobales() : void
+}
+
+class Institucion {
+    - id : int
+    - ruc : string
+    - razonSocial : string
+    - tipo : string
+    - logoUrl : string
+    + listarCursos() : List<Capacitacion>
+}
+
+class Capacitacion {
+    - id : int
+    - codigo : string
+    - titulo : string
+    - descripcion : string
+    - horasAcademicas : int
+    - fechaInicio : date
+    - fechaFin : date
+    - cuposTotales : int
+    - cuposDisponibles : int
+    - estado : EstadoCurso
+    + hayVacantes() : boolean
+    + descontarCupo() : void
+    + calcularPorcentajeAsistencia() : float
+    + calcularTasaAprobacion() : float
+}
+
+class Inscripcion {
+    - id : int
+    - fechaInscripcion : datetime
+    - estado : EstadoInscripcion
+    - notaFinal : float
+    - porcentajeAsistencia : float
+    + registrarNotaFinal(nota) : void
+    + cumpleRequisitosCertificacion() : boolean
+}
+
+class SesionClase {
+    - id : int
+    - numeroSesion : int
+    - fecha : date
+    - horaInicio : time
+    - horaFin : time
+    - tema : string
+    - tokenQR : string
+    - expiracionToken : datetime
+    + generarNuevoTokenQR() : string
+    + validarVigenciaToken(token) : boolean
+}
+
+class Asistencia {
+    - id : int
+    - fechaHoraMarcado : datetime
+    - estado : string
+    - metodoMarcado : string
+    - ipMarcado : string
+    + registrarMarcacion() : boolean
+}
+
+class Certificado {
+    - id : int
+    - codigoVerificacion : string
+    - hashSHA256 : string
+    - fechaEmision : datetime
+    - rutaArchivoPDF : string
+    - qrValidacionUrl : string
+    + generarHashCriptografico() : string
+    + validarAutenticidad(hash) : boolean
+}
+
+class AlertaNotificacion {
+    - id : int
+    - tipo : TipoAlerta
+    - titulo : string
+    - mensaje : string
+    - fechaCreacion : datetime
+    - leida : boolean
+    - enlaceAccion : string
+    + marcarComoLeida() : void
+    + dispararNotificacion() : void
+}
+
+' Herencia
+Usuario <|-- Participante
+Usuario <|-- Docente
+Usuario <|-- Administrador
+
+' Asociaciones y Cardinalidades
+Institucion "1" -- "0..*" Capacitacion : promueve >
+Capacitacion "1" -- "1..*" SesionClase : contiene >
+Docente "1" -- "0..*" Capacitacion : dicta >
+
+Capacitacion "1" -- "0..*" Inscripcion : registra >
+Participante "1" -- "0..*" Inscripcion : realiza >
+
+SesionClase "1" -- "0..*" Asistencia : registra >
+Inscripcion "1" -- "0..*" Asistencia : consolida >
+
+Inscripcion "1" -- "0..1" Certificado : genera >
+Usuario "1" -- "0..*" AlertaNotificacion : recibe >
+
+@enduml

@@ -1,0 +1,109 @@
+<mxfile host="Electron" modified="2026-10-12T19:38:00.000Z" agent="Antigravity" version="22.1.16" type="device">
+  <diagram id="Clases_SIGC" name="Diagrama de Clases - SIGC-CUSCO">
+    <mxGraphModel dx="1422" dy="880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Enums -->
+        <mxCell id="enum_userrole" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&#xa;UserRole&#xa;-------------------&#xa;+ ADMIN : string = 'admin'&#xa;+ DOCENTE : string = 'docente'&#xa;+ PARTICIPANTE : string = 'participante'" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8fafc;strokeColor=#64748b;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="40" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="enum_coursestatus" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&#xa;CourseStatus&#xa;-------------------&#xa;+ ABIERTO : string = 'abierto'&#xa;+ EN_CURSO : string = 'en_curso'&#xa;+ CONCLUIDO : string = 'concluido'&#xa;+ CANCELADO : string = 'cancelado'" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8fafc;strokeColor=#64748b;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="160" width="180" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Clase User -->
+        <mxCell id="class_user" value="User&#xa;-------------------&#xa;- id : int&#xa;- dni : string&#xa;- name : string&#xa;- paterno : string&#xa;- materno : string&#xa;- email : string&#xa;- role : UserRole&#xa;- phone : string&#xa;- password : string&#xa;-------------------&#xa;+ isAdmin() : boolean&#xa;+ isDocente() : boolean&#xa;+ isParticipante() : boolean&#xa;+ getFullNameAttribute() : string" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#eff6ff;strokeColor=#1d4ed8;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="40" width="220" height="230" as="geometry" />
+        </mxCell>
+
+        <!-- Clase Course -->
+        <mxCell id="class_course" value="Course&#xa;-------------------&#xa;- id : int&#xa;- code : string&#xa;- title : string&#xa;- institution : string&#xa;- description : string&#xa;- instructor_id : int&#xa;- start_date : date&#xa;- end_date : date&#xa;- hours : int&#xa;- total_sessions : int&#xa;- min_attendance_percentage : int&#xa;- capacity : int&#xa;- status : CourseStatus&#xa;- acta_closed_at : datetime&#xa;- acta_closed_by : int&#xa;-------------------&#xa;+ isActaClosed() : boolean&#xa;+ getInstructorDisplayName() : string&#xa;+ getAvailableSpots() : int&#xa;+ hasAvailableSpots() : boolean&#xa;+ scopeFilter(query, filters) : void" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f0fdf4;strokeColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="40" width="240" height="310" as="geometry" />
+        </mxCell>
+
+        <!-- Clase Enrollment -->
+        <mxCell id="class_enrollment" value="Enrollment&#xa;-------------------&#xa;- id : int&#xa;- course_id : int&#xa;- user_id : int&#xa;- credential_code : string&#xa;- dni : string&#xa;- nombres : string&#xa;- paterno : string&#xa;- materno : string&#xa;- email : string&#xa;- phone : string&#xa;- status : string&#xa;- attended_sessions : int&#xa;- final_grade : decimal&#xa;- certificate_code : string&#xa;- certificate_hash : string&#xa;- certificate_issued_at : datetime&#xa;-------------------&#xa;+ getFullName() : string&#xa;+ getAttendancePercentage() : float&#xa;+ meetsPassingCriteria() : boolean" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fefce8;strokeColor=#a16207;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="380" width="220" height="300" as="geometry" />
+        </mxCell>
+
+        <!-- Clase AttendanceRecord -->
+        <mxCell id="class_attendance" value="AttendanceRecord&#xa;-------------------&#xa;- id : int&#xa;- course_id : int&#xa;- enrollment_id : int&#xa;- session_number : int&#xa;- status : string&#xa;- method : string&#xa;- recorded_at : datetime&#xa;- recorded_by : int&#xa;-------------------&#xa;+ course() : BelongsTo&#xa;+ enrollment() : BelongsTo&#xa;+ recorder() : BelongsTo" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fdf2f8;strokeColor=#be185d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="630" y="440" width="220" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- Clase CertificateService -->
+        <mxCell id="class_certservice" value="&amp;lt;&amp;lt;service&amp;gt;&amp;gt;&#xa;CertificateService&#xa;-------------------&#xa;+ issue(enrollment) : string&#xa;+ verify(code) : array&#xa;+ getCertificatePayload(enrollment) : array&#xa;+ generateHashSHA256(data) : string" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f3ff;strokeColor=#6d28d9;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="930" y="160" width="210" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Relaciones -->
+        <!-- User 1 -> 0..* Course (Instructor) -->
+        <mxCell id="rel_user_course" edge="1" source="class_user" target="class_course" parent="1" style="endArrow=none;html=1;strokeColor=#1d4ed8;strokeWidth=1.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_user_course_1" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_user_course">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_user_course_2" value="0..* (dicta)" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_user_course">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Course 1 -> 0..* Enrollment -->
+        <mxCell id="rel_course_enrollment" edge="1" source="class_course" target="class_enrollment" parent="1" style="endArrow=none;html=1;strokeColor=#15803d;strokeWidth=1.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_c_e_1" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_course_enrollment">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_c_e_2" value="0..* (contiene)" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_course_enrollment">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- User 1 -> 0..* Enrollment -->
+        <mxCell id="rel_user_enrollment" edge="1" source="class_user" target="class_enrollment" parent="1" style="endArrow=none;html=1;strokeColor=#1d4ed8;strokeWidth=1.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_e_1" value="0..1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_user_enrollment">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_u_e_2" value="0..* (se matricula)" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_user_enrollment">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Enrollment 1 -> 0..* AttendanceRecord -->
+        <mxCell id="rel_enroll_attend" edge="1" source="class_enrollment" target="class_attendance" parent="1" style="endArrow=none;html=1;strokeColor=#a16207;strokeWidth=1.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_e_a_1" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_enroll_attend">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_e_a_2" value="0..* (registra)" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_enroll_attend">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Course 1 -> 0..* AttendanceRecord -->
+        <mxCell id="rel_course_attend" edge="1" source="class_course" target="class_attendance" parent="1" style="endArrow=none;html=1;strokeColor=#15803d;strokeWidth=1.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_c_a_1" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_course_attend">
+          <mxGeometry x="-0.8" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_c_a_2" value="0..* (acumula)" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_course_attend">
+          <mxGeometry x="0.8" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CertificateService -> Enrollment -->
+        <mxCell id="rel_serv_enroll" edge="1" source="class_certservice" target="class_enrollment" parent="1" style="endArrow=open;dashed=1;html=1;strokeColor=#6d28d9;strokeWidth=1.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_serv_e" value="&amp;lt;&amp;lt;emite y valida&amp;gt;&amp;gt;" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="rel_serv_enroll">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
