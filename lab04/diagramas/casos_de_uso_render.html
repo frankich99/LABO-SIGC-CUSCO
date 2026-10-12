@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagrama de Casos de Uso - SIGC-CUSCO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #ffffff; }
+    .usecase { fill: #f8fafc; stroke: #0284c7; stroke-width: 2; rx: 25; ry: 25; }
+    .usecase-inc { fill: #f0fdf4; stroke: #16a34a; stroke-width: 1.5; stroke-dasharray: 4,4; rx: 20; ry: 20; }
+    .usecase-ext { fill: #fefce8; stroke: #ca8a04; stroke-width: 1.5; stroke-dasharray: 4,4; rx: 20; ry: 20; }
+    .label { font-size: 11px; font-weight: 600; fill: #0f172a; text-anchor: middle; }
+    .label-sub { font-size: 9px; fill: #64748b; text-anchor: middle; font-weight: 500; }
+    .label-stereo { font-size: 9px; font-style: italic; font-weight: bold; fill: #0284c7; text-anchor: middle; }
+    .line { stroke: #475569; stroke-width: 1.5; }
+    .line-dash { stroke: #0284c7; stroke-width: 1.5; stroke-dasharray: 5,4; marker-end: url(#arrow); }
+    .line-sys { stroke: #0d9488; stroke-width: 1.5; }
+  </style>
+</head>
+<body class="p-6 flex flex-col items-center justify-center min-h-screen">
+  <div class="w-full max-w-6xl bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+    <div class="border-b border-slate-200 pb-4 mb-4 text-center">
+      <h2 class="text-xl font-bold text-slate-800">Diagrama de Casos de Uso del Sistema</h2>
+      <p class="text-xs text-slate-500 font-medium">Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO) • UNSAAC</p>
+    </div>
+
+    <svg viewBox="0 0 1000 650" width="100%" height="650" class="overflow-visible">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+        </marker>
+      </defs>
+
+      <!-- Limite del Sistema -->
+      <rect x="230" y="20" width="540" height="610" rx="16" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="230" y="20" width="540" height="35" rx="16" fill="#0369a1"/>
+      <rect x="230" y="40" width="540" height="15" fill="#0369a1"/>
+      <text x="500" y="43" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">
+        Límite del Sistema: Plataforma Web SIGC-CUSCO
+      </text>
+
+      <!-- ================= ACTORES ================= -->
+      <!-- Actor: Participante (Izquierda Arriba) -->
+      <g transform="translate(80, 110)">
+        <circle cx="30" cy="20" r="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="30" y1="34" x2="30" y2="70" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="8" y1="46" x2="52" y2="46" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="30" y1="70" x2="12" y2="100" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="30" y1="70" x2="48" y2="100" stroke="#0284c7" stroke-width="2.5"/>
+        <text x="30" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Participante</text>
+        <text x="30" y="133" text-anchor="middle" font-size="9" fill="#64748b">(Ciudadano / Servidor)</text>
+      </g>
+
+      <!-- Actor: Docente (Izquierda Abajo) -->
+      <g transform="translate(80, 390)">
+        <circle cx="30" cy="20" r="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="30" y1="34" x2="30" y2="70" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="8" y1="46" x2="52" y2="46" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="30" y1="70" x2="12" y2="100" stroke="#0284c7" stroke-width="2.5"/>
+        <line x1="30" y1="70" x2="48" y2="100" stroke="#0284c7" stroke-width="2.5"/>
+        <text x="30" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Docente</text>
+        <text x="30" y="133" text-anchor="middle" font-size="9" fill="#64748b">(Capacitador)</text>
+      </g>
+
+      <!-- Actor: Administrador (Derecha Arriba) -->
+      <g transform="translate(860, 110)">
+        <circle cx="30" cy="20" r="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5"/>
+        <line x1="30" y1="34" x2="30" y2="70" stroke="#dc2626" stroke-width="2.5"/>
+        <line x1="8" y1="46" x2="52" y2="46" stroke="#dc2626" stroke-width="2.5"/>
+        <line x1="30" y1="70" x2="12" y2="100" stroke="#dc2626" stroke-width="2.5"/>
+        <line x1="30" y1="70" x2="48" y2="100" stroke="#dc2626" stroke-width="2.5"/>
+        <text x="30" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Administrador</text>
+        <text x="30" y="133" text-anchor="middle" font-size="9" fill="#64748b">(Gestión Académica)</text>
+      </g>
+
+      <!-- Actor: Sistema / RENIEC (Derecha Abajo) -->
+      <g transform="translate(860, 410)">
+        <rect x="0" y="20" width="60" height="55" rx="8" fill="#ccfbf1" stroke="#0d9488" stroke-width="2.5"/>
+        <text x="30" y="45" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f766e">&lt;&lt;system&gt;&gt;</text>
+        <text x="30" y="60" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f766e">Servicio API</text>
+        <text x="30" y="95" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Sistema Central</text>
+        <text x="30" y="108" text-anchor="middle" font-size="9" fill="#64748b">(Validación &amp; Hashing)</text>
+      </g>
+
+      <!-- ================= CASOS DE USO ================= -->
+
+      <!-- CU-01: Login -->
+      <g transform="translate(260, 75)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-01: Iniciar Sesión</text>
+        <text class="label-sub" x="90" y="32">(DNI o Correo Institucional)</text>
+      </g>
+
+      <!-- CU-02: Explorar Catálogo -->
+      <g transform="translate(260, 135)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-02: Consultar Catálogo</text>
+        <text class="label-sub" x="90" y="32">de Capacitaciones y Cupos</text>
+      </g>
+
+      <!-- CU-03: Inscribirse -->
+      <g transform="translate(260, 195)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-03: Inscribirse a Curso</text>
+        <text class="label-sub" x="90" y="32">Validación de DNI peruano</text>
+      </g>
+
+      <!-- Sub: Validar DNI y Cupos (Include de CU-03) -->
+      <g transform="translate(540, 195)">
+        <rect class="usecase-inc" x="0" y="0" width="190" height="42" />
+        <text class="label-stereo" x="95" y="16">&lt;&lt;include&gt;&gt;</text>
+        <text class="label" x="95" y="30">Validar DNI y Vacantes</text>
+      </g>
+
+      <!-- CU-04: Gestionar Cursos (Admin) -->
+      <g transform="translate(540, 80)">
+        <rect class="usecase" x="0" y="0" width="190" height="42" />
+        <text class="label" x="95" y="20">CU-04: Gestionar Cursos</text>
+        <text class="label-sub" x="95" y="32">Crear, Asignar Docente, Cupos</text>
+      </g>
+
+      <!-- CU-05: Generar QR (Docente) -->
+      <g transform="translate(260, 265)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-05: Generar QR de Sesión</text>
+        <text class="label-sub" x="90" y="32">Token dinámico en aula</text>
+      </g>
+
+      <!-- CU-06: Marcar Asistencia QR (Participante) -->
+      <g transform="translate(260, 325)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-06: Marcar Asistencia QR</text>
+        <text class="label-sub" x="90" y="32">Escaneo móvil con georef</text>
+      </g>
+
+      <!-- Sub: Validar Vigencia QR (Include de CU-06) -->
+      <g transform="translate(540, 325)">
+        <rect class="usecase-inc" x="0" y="0" width="190" height="42" />
+        <text class="label-stereo" x="95" y="16">&lt;&lt;include&gt;&gt;</text>
+        <text class="label" x="95" y="30">Validar Expiración de Token</text>
+      </g>
+
+      <!-- CU-07: Registrar Notas y Actas (Docente) -->
+      <g transform="translate(260, 395)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-07: Registrar Calificaciones</text>
+        <text class="label-sub" x="90" y="32">Cierre de actas finales (0-20)</text>
+      </g>
+
+      <!-- CU-08: Descargar Certificado (Participante) -->
+      <g transform="translate(260, 465)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-08: Descargar Certificado</text>
+        <text class="label-sub" x="90" y="32">Documento digital oficial PDF</text>
+      </g>
+
+      <!-- Sub: Verificar Requisitos (Extend de CU-08) -->
+      <g transform="translate(540, 465)">
+        <rect class="usecase-ext" x="0" y="0" width="190" height="42" />
+        <text class="label-stereo" x="95" y="16">&lt;&lt;extend&gt;&gt;</text>
+        <text class="label" x="95" y="30">Verif. Nota ≥ 11 y Asist. ≥ 70%</text>
+      </g>
+
+      <!-- CU-09: Centro de Alertas -->
+      <g transform="translate(260, 535)">
+        <rect class="usecase" x="0" y="0" width="180" height="42" />
+        <text class="label" x="90" y="20">CU-09: Centro de Alertas</text>
+        <text class="label-sub" x="90" y="32">Avisos de faltas y actas</text>
+      </g>
+
+      <!-- CU-10: Generar Reportes y Auditoría (Admin) -->
+      <g transform="translate(540, 535)">
+        <rect class="usecase" x="0" y="0" width="190" height="42" />
+        <text class="label" x="95" y="20">CU-10: Reportes y Auditoría</text>
+        <text class="label-sub" x="95" y="32">Exportación Excel / PDF</text>
+      </g>
+
+      <!-- CU-11: Verificación Pública QR -->
+      <g transform="translate(540, 260)">
+        <rect class="usecase" x="0" y="0" width="190" height="42" />
+        <text class="label" x="95" y="20">CU-11: Verificación Pública</text>
+        <text class="label-sub" x="95" y="32">Validación Hash SHA-256</text>
+      </g>
+
+      <!-- ================= CONEXIONES (LÍNEAS) ================= -->
+
+      <!-- Participante lines -->
+      <line class="line" x1="140" y1="165" x2="260" y2="95"/>
+      <line class="line" x1="140" y1="170" x2="260" y2="155"/>
+      <line class="line" x1="140" y1="180" x2="260" y2="215"/>
+      <line class="line" x1="140" y1="200" x2="260" y2="345"/>
+      <line class="line" x1="140" y1="220" x2="260" y2="485"/>
+      <line class="line" x1="140" y1="230" x2="260" y2="555"/>
+
+      <!-- Docente lines -->
+      <line class="line" x1="140" y1="440" x2="260" y2="105"/>
+      <line class="line" x1="140" y1="445" x2="260" y2="285"/>
+      <line class="line" x1="140" y1="455" x2="260" y2="415"/>
+      <line class="line" x1="140" y1="465" x2="260" y2="560"/>
+
+      <!-- Admin lines -->
+      <line class="line" x1="860" y1="160" x2="440" y2="95"/>
+      <line class="line" x1="860" y1="165" x2="730" y2="100"/>
+      <line class="line" x1="860" y1="180" x2="730" y2="555"/>
+      <line class="line" x1="860" y1="190" x2="440" y2="555"/>
+
+      <!-- Sistema lines -->
+      <line class="line-sys" x1="860" y1="450" x2="730" y2="215"/>
+      <line class="line-sys" x1="860" y1="455" x2="730" y2="345"/>
+      <line class="line-sys" x1="860" y1="460" x2="730" y2="280"/>
+      <line class="line-sys" x1="860" y1="470" x2="730" y2="485"/>
+
+      <!-- Includes & Extends (Dashed with arrows) -->
+      <!-- CU-03 include Validar DNI -->
+      <line class="line-dash" x1="440" y1="216" x2="540" y2="216"/>
+      <text class="label-stereo" x="490" y="210">&lt;&lt;include&gt;&gt;</text>
+
+      <!-- CU-06 include Validar QR -->
+      <line class="line-dash" x1="440" y1="346" x2="540" y2="346"/>
+      <text class="label-stereo" x="490" y="340">&lt;&lt;include&gt;&gt;</text>
+
+      <!-- CU-08 extend Verif Nota/Asist -->
+      <line class="line-dash" x1="540" y1="486" x2="440" y2="486"/>
+      <text class="label-stereo" x="490" y="480">&lt;&lt;extend&gt;&gt;</text>
+
+    </svg>
+  </div>
+</body>
+</html>

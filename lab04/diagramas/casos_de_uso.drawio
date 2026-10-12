@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" modified="2026-10-12T19:40:00.000Z" agent="Mozilla/5.0" version="21.6.8" type="device">
+  <diagram id="casos_uso_sigc" name="Casos de Uso - SIGC-CUSCO">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <!-- Límite del Sistema -->
+        <mxCell id="system_boundary" value="Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)" style="shape=swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=13;fontColor=#0369a1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="620" height="740" as="geometry" />
+        </mxCell>
+        <!-- Actores -->
+        <mxCell id="actor_participante" value="Participante&#xa;(Ciudadano / Servidor)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="50" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="actor_docente" value="Docente&#xa;(Capacitador)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="460" width="50" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="actor_admin" value="Administrador&#xa;(Gestión Central)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="140" width="50" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="actor_sistema" value="&amp;lt;&amp;lt;system&amp;gt;&amp;gt;&#xa;Sistema / RENIEC&#xa;(Validación y Hash)" style="shape=rect;html=1;whiteSpace=wrap;fillColor=#ccfbf1;strokeColor=#0d9488;strokeWidth=2;fontStyle=1;fontSize=11;fontColor=#0f766e;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <!-- Casos de Uso -->
+        <mxCell id="cu_01" value="CU-01: Iniciar Sesión&#xa;(DNI / Correo)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="50" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_02" value="CU-02: Consultar Catálogo&#xa;de Capacitaciones" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="120" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_03" value="CU-03: Inscribirse con DNI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="190" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_03_inc" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&#xa;Validar DNI y Cupos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=1.5;strokeDasharray=4;fontStyle=1;fontSize=10;fontColor=#166534;" vertex="1" parent="system_boundary">
+          <mxGeometry x="370" y="190" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_04" value="CU-04: Gestionar Cursos y&#xa;Asignación de Docente" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="370" y="60" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_05" value="CU-05: Generar Código QR&#xa;Dinámico de Sesión" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="270" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_06" value="CU-06: Escanear QR y&#xa;Marcar Asistencia" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="340" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_06_inc" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&#xa;Validar Token Temporal" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=1.5;strokeDasharray=4;fontStyle=1;fontSize=10;fontColor=#166534;" vertex="1" parent="system_boundary">
+          <mxGeometry x="370" y="340" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_07" value="CU-07: Registrar Calificaciones&#xa;y Cierre de Actas" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="420" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_08" value="CU-08: Descargar Certificado&#xa;Digital en PDF" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="500" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_08_ext" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;&#xa;Verificar Nota ≥ 11 y&#xa;Asistencia ≥ 70%" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=1.5;strokeDasharray=4;fontStyle=1;fontSize=10;fontColor=#854d0e;" vertex="1" parent="system_boundary">
+          <mxGeometry x="370" y="500" width="190" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_09" value="CU-09: Centro de Alertas&#xa;(Plazos, Asistencia, Actas)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="50" y="580" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_10" value="CU-10: Emitir Reportes de&#xa;Auditoría y Rendimiento" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="370" y="590" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cu_11" value="CU-11: Verificación Pública QR&#xa;(Hash SHA-256)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#0284c7;strokeWidth=2;fontStyle=1;fontSize=11;" vertex="1" parent="system_boundary">
+          <mxGeometry x="370" y="420" width="200" height="50" as="geometry" />
+        </mxCell>
+        <!-- Enlaces -->
+        <mxCell id="edge_p_01" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_participante" target="cu_01"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_p_02" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_participante" target="cu_02"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_p_03" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_participante" target="cu_03"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_p_06" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_participante" target="cu_06"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_p_08" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_participante" target="cu_08"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_p_09" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_participante" target="cu_09"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_d_01" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_docente" target="cu_01"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_d_05" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_docente" target="cu_05"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_d_07" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_docente" target="cu_07"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_d_09" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_docente" target="cu_09"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_a_01" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_admin" target="cu_01"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_a_04" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_admin" target="cu_04"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_a_10" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_admin" target="cu_10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- Includes & Extends -->
+        <mxCell id="edge_inc_03" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;rounded=0;endFill=0;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0284c7;fontStyle=2;fontSize=10;" edge="1" parent="system_boundary" source="cu_03" target="cu_03_inc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_inc_06" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;rounded=0;endFill=0;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0284c7;fontStyle=2;fontSize=10;" edge="1" parent="system_boundary" source="cu_06" target="cu_06_inc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_ext_08" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;rounded=0;endFill=0;strokeColor=#0284c7;strokeWidth=1.5;fontColor=#0284c7;fontStyle=2;fontSize=10;" edge="1" parent="system_boundary" source="cu_08_ext" target="cu_08"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_sys_03" style="endArrow=none;html=1;rounded=0;strokeColor=#0d9488;strokeWidth=1.5;" edge="1" parent="1" source="actor_sistema" target="cu_03_inc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_sys_06" style="endArrow=none;html=1;rounded=0;strokeColor=#0d9488;strokeWidth=1.5;" edge="1" parent="1" source="actor_sistema" target="cu_06_inc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edge_sys_11" style="endArrow=none;html=1;rounded=0;strokeColor=#0d9488;strokeWidth=1.5;" edge="1" parent="1" source="actor_sistema" target="cu_11"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

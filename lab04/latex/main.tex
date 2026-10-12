@@ -1,0 +1,54 @@
+% ==============================================================================
+% DOCUMENTO PRINCIPAL - LATEX
+% Asignatura: Ingeniería de Software I - UNSAAC
+% Laboratorio N° 04: Modelado del sistema: UML y prototipos
+% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)
+% ==============================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+\input{config/packages.tex}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+% 1. Portada Oficial
+\input{secciones/00_portada.tex}
+
+% 2. Tabla de Contenidos
+\newpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+{
+    \hypersetup{linkcolor=black}
+    \begin{spacing}{0.95}
+    \tableofcontents
+    \end{spacing}
+}
+\newpage
+\pagenumbering{arabic}
+
+% 3. Introducción y Objetivo
+\input{secciones/01_introduccion_objetivo.tex}
+\vspace{0.2cm}
+
+% 4. Parte 1: Diagrama de Casos de Uso (UML)
+\input{secciones/02_diagrama_casos_de_uso.tex}
+\vspace{0.2cm}
+
+% 5. Parte 2: Diagrama de Clases (UML)
+\input{secciones/03_diagrama_de_clases.tex}
+\vspace{0.2cm}
+
+% 6. Parte 3: Prototipos y Capturas del Sistema en Ejecución
+\input{secciones/04_prototipos_capturas_sistema.tex}
+\vspace{0.2cm}
+
+% 7. Trabajo Extra: UX y Validación con Usuarios
+\input{secciones/05_ux_validacion_usuarios.tex}
+\vspace{0.2cm}
+
+% 8. Conclusiones
+\input{secciones/06_conclusiones.tex}
+
+\end{document}

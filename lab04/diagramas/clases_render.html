@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagrama de Clases UML - SIGC-CUSCO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Consolas', 'Segoe UI', Arial, monospace; background: #ffffff; }
+    .uml-box { fill: #ffffff; stroke: #0284c7; stroke-width: 1.8; rx: 6; }
+    .uml-header { fill: #0284c7; }
+    .uml-header-enum { fill: #475569; }
+    .uml-divider { stroke: #cbd5e1; stroke-width: 1.2; }
+    .class-title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: bold; fill: #ffffff; text-anchor: middle; }
+    .class-content { font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5px; fill: #1e293b; }
+    .rel-line { stroke: #334155; stroke-width: 1.5; fill: none; }
+    .rel-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5px; font-weight: bold; fill: #0f172a; }
+  </style>
+</head>
+<body class="p-4 flex flex-col items-center justify-center min-h-screen">
+  <div class="w-full max-w-7xl bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+    <div class="border-b border-slate-200 pb-3 mb-4 text-center">
+      <h2 class="text-xl font-bold font-sans text-slate-800">Diagrama de Clases del Dominio</h2>
+      <p class="text-xs font-sans text-slate-500 font-medium">Modelo Conceptual y de Entidades • Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)</p>
+    </div>
+
+    <svg viewBox="0 0 1150 780" width="100%" height="780" class="overflow-visible">
+      <defs>
+        <!-- Flecha de Herencia (Triángulo blanco hueco UML) -->
+        <marker id="inheritance" viewBox="0 0 16 16" refX="15" refY="8" markerWidth="14" markerHeight="14" orient="auto-start-reverse">
+          <polygon points="0 2, 14 8, 0 14" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+        </marker>
+        <!-- Flecha de Asociación -->
+        <marker id="assoc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 8 5 L 0 9" fill="none" stroke="#334155" stroke-width="1.5" />
+        </marker>
+      </defs>
+
+      <!-- ================= 1. CLASE BASE: USUARIO ================= -->
+      <g transform="translate(420, 20)">
+        <rect class="uml-box" x="0" y="0" width="280" height="150" />
+        <rect x="0" y="0" width="280" height="24" rx="6" fill="#0284c7" />
+        <rect x="0" y="18" width="280" height="6" fill="#0284c7" />
+        <text class="class-title" x="140" y="16">Usuario &lt;&lt;Abstract&gt;&gt;</text>
+        <!-- Atributos -->
+        <text class="class-content" x="10" y="40">- id : int</text>
+        <text class="class-content" x="10" y="54">- dni : string [8]</text>
+        <text class="class-content" x="10" y="68">- nombres : string</text>
+        <text class="class-content" x="10" y="82">- apellidos : string</text>
+        <text class="class-content" x="10" y="96">- email : string</text>
+        <text class="class-content" x="10" y="110">- passwordHash : string</text>
+        <line class="uml-divider" x1="0" y1="116" x2="280" y2="116" />
+        <!-- Métodos -->
+        <text class="class-content" x="10" y="130">+ iniciarSesion(pass) : boolean</text>
+        <text class="class-content" x="10" y="144">+ recuperarPassword() : void</text>
+      </g>
+
+      <!-- ================= HERENCIA: PARTICIPANTE ================= -->
+      <g transform="translate(180, 220)">
+        <rect class="uml-box" x="0" y="0" width="210" height="110" />
+        <rect x="0" y="0" width="210" height="22" rx="6" fill="#0369a1" />
+        <rect x="0" y="16" width="210" height="6" fill="#0369a1" />
+        <text class="class-title" x="105" y="15">Participante</text>
+        <text class="class-content" x="8" y="38">- entidadProcedencia : string</text>
+        <text class="class-content" x="8" y="52">- telefono : string</text>
+        <line class="uml-divider" x1="0" y1="58" x2="210" y2="58" />
+        <text class="class-content" x="8" y="74">+ inscribirse(cursoId)</text>
+        <text class="class-content" x="8" y="88">+ marcarQR(tokenQR)</text>
+        <text class="class-content" x="8" y="102">+ descargarCertificado()</text>
+      </g>
+
+      <!-- ================= HERENCIA: DOCENTE ================= -->
+      <g transform="translate(460, 220)">
+        <rect class="uml-box" x="0" y="0" width="200" height="110" />
+        <rect x="0" y="0" width="200" height="22" rx="6" fill="#0369a1" />
+        <rect x="0" y="16" width="200" height="6" fill="#0369a1" />
+        <text class="class-title" x="100" y="15">Docente</text>
+        <text class="class-content" x="8" y="38">- especialidad : string</text>
+        <text class="class-content" x="8" y="52">- gradoAcademico : string</text>
+        <line class="uml-divider" x1="0" y1="58" x2="200" y2="58" />
+        <text class="class-content" x="8" y="74">+ iniciarSesionClase()</text>
+        <text class="class-content" x="8" y="88">+ generarQR(sesionId)</text>
+        <text class="class-content" x="8" y="102">+ registrarNotas(actaId)</text>
+      </g>
+
+      <!-- ================= HERENCIA: ADMINISTRADOR ================= -->
+      <g transform="translate(730, 220)">
+        <rect class="uml-box" x="0" y="0" width="200" height="110" />
+        <rect x="0" y="0" width="200" height="22" rx="6" fill="#0369a1" />
+        <rect x="0" y="16" width="200" height="6" fill="#0369a1" />
+        <text class="class-title" x="100" y="15">Administrador</text>
+        <text class="class-content" x="8" y="38">- cargoOficina : string</text>
+        <line class="uml-divider" x1="0" y1="44" x2="200" y2="44" />
+        <text class="class-content" x="8" y="62">+ crearCapacitacion()</text>
+        <text class="class-content" x="8" y="78">+ asignarDocente()</text>
+        <text class="class-content" x="8" y="94">+ emitirReporteAuditoria()</text>
+      </g>
+
+      <!-- Líneas de Herencia -->
+      <!-- Hacia Participante -->
+      <path d="M 285 220 L 285 190 L 560 190 L 560 170" class="rel-line" marker-end="url(#inheritance)" />
+      <!-- Hacia Docente -->
+      <path d="M 560 220 L 560 170" class="rel-line" />
+      <!-- Hacia Admin -->
+      <path d="M 830 220 L 830 190 L 560 190" class="rel-line" />
+
+      <!-- ================= INSTITUCION ================= -->
+      <g transform="translate(20, 400)">
+        <rect class="uml-box" x="0" y="0" width="180" height="95" />
+        <rect x="0" y="0" width="180" height="22" rx="6" fill="#0284c7" />
+        <rect x="0" y="16" width="180" height="6" fill="#0284c7" />
+        <text class="class-title" x="90" y="15">Institucion</text>
+        <text class="class-content" x="8" y="38">- id : int</text>
+        <text class="class-content" x="8" y="52">- ruc : string [11]</text>
+        <text class="class-content" x="8" y="66">- razonSocial : string</text>
+        <line class="uml-divider" x1="0" y1="72" x2="180" y2="72" />
+        <text class="class-content" x="8" y="88">+ listarCursos()</text>
+      </g>
+
+      <!-- ================= CAPACITACION ================= -->
+      <g transform="translate(260, 390)">
+        <rect class="uml-box" x="0" y="0" width="240" height="160" />
+        <rect x="0" y="0" width="240" height="22" rx="6" fill="#0284c7" />
+        <rect x="0" y="16" width="240" height="6" fill="#0284c7" />
+        <text class="class-title" x="120" y="15">Capacitacion</text>
+        <text class="class-content" x="8" y="38">- id : int</text>
+        <text class="class-content" x="8" y="52">- codigo : string</text>
+        <text class="class-content" x="8" y="66">- titulo : string</text>
+        <text class="class-content" x="8" y="80">- horasAcademicas : int</text>
+        <text class="class-content" x="8" y="94">- fechaInicio : date</text>
+        <text class="class-content" x="8" y="108">- cuposDisponibles : int</text>
+        <text class="class-content" x="8" y="122">- estado : EstadoCurso</text>
+        <line class="uml-divider" x1="0" y1="128" x2="240" y2="128" />
+        <text class="class-content" x="8" y="142">+ hayVacantes() : boolean</text>
+        <text class="class-content" x="8" y="154">+ calcularTasaAprobacion()</text>
+      </g>
+
+      <!-- Conexión Institución 1 -- 0..* Capacitacion -->
+      <line class="rel-line" x1="200" y1="440" x2="260" y2="440" />
+      <text class="rel-text" x="206" y="432">1</text>
+      <text class="rel-text" x="238" y="432">0..*</text>
+
+      <!-- Conexión Docente 1 -- 0..* Capacitacion -->
+      <path d="M 530 330 L 530 360 L 450 360 L 450 390" class="rel-line" />
+      <text class="rel-text" x="535" y="345">1</text>
+      <text class="rel-text" x="455" y="380">0..*</text>
+
+      <!-- ================= INSCRIPCION ================= -->
+      <g transform="translate(570, 390)">
+        <rect class="uml-box" x="0" y="0" width="220" height="150" />
+        <rect x="0" y="0" width="220" height="22" rx="6" fill="#0284c7" />
+        <rect x="0" y="16" width="220" height="6" fill="#0284c7" />
+        <text class="class-title" x="110" y="15">Inscripcion</text>
+        <text class="class-content" x="8" y="38">- id : int</text>
+        <text class="class-content" x="8" y="52">- fechaInscripcion : datetime</text>
+        <text class="class-content" x="8" y="66">- estado : EstadoInscripcion</text>
+        <text class="class-content" x="8" y="80">- notaFinal : float [0..20]</text>
+        <text class="class-content" x="8" y="94">- pctAsistencia : float</text>
+        <line class="uml-divider" x1="0" y1="102" x2="220" y2="102" />
+        <text class="class-content" x="8" y="118">+ registrarNota(nota)</text>
+        <text class="class-content" x="8" y="132">+ esAprobado() : boolean</text>
+        <text class="class-content" x="8" y="144">+ cumpleAsistencia() : bool</text>
+      </g>
+
+      <!-- Conexión Capacitación 1 -- 0..* Inscripción -->
+      <line class="rel-line" x1="500" y1="440" x2="570" y2="440" />
+      <text class="rel-text" x="506" y="432">1</text>
+      <text class="rel-text" x="548" y="432">0..*</text>
+
+      <!-- Conexión Participante 1 -- 0..* Inscripción -->
+      <path d="M 285 330 L 285 365 L 610 365 L 610 390" class="rel-line" />
+      <text class="rel-text" x="290" y="350">1</text>
+      <text class="rel-text" x="615" y="382">0..*</text>
+
+      <!-- ================= SESION DE CLASE ================= -->
+      <g transform="translate(180, 600)">
+        <rect class="uml-box" x="0" y="0" width="220" height="140" />
+        <rect x="0" y="0" width="220" height="22" rx="6" fill="#0284c7" />
+        <rect x="0" y="16" width="220" height="6" fill="#0284c7" />
+        <text class="class-title" x="110" y="15">SesionClase</text>
+        <text class="class-content" x="8" y="38">- id : int</text>
+        <text class="class-content" x="8" y="52">- fecha : date</text>
+        <text class="class-content" x="8" y="66">- horaInicio / Fin : time</text>
+        <text class="class-content" x="8" y="80">- tokenQR : string</text>
+        <text class="class-content" x="8" y="94">- expiracionToken : datetime</text>
+        <line class="uml-divider" x1="0" y1="102" x2="220" y2="102" />
+        <text class="class-content" x="8" y="118">+ generarTokenQR() : string</text>
+        <text class="class-content" x="8" y="132">+ validarVigencia() : boolean</text>
+      </g>
+
+      <!-- Conexión Capacitacion 1 -- 1..* SesionClase -->
+      <path d="M 330 550 L 330 600" class="rel-line" />
+      <text class="rel-text" x="336" y="565">1</text>
+      <text class="rel-text" x="336" y="590">1..*</text>
+
+      <!-- ================= ASISTENCIA ================= -->
+      <g transform="translate(470, 600)">
+        <rect class="uml-box" x="0" y="0" width="220" height="140" />
+        <rect x="0" y="0" width="220" height="22" rx="6" fill="#0284c7" />
+        <rect x="0" y="16" width="220" height="6" fill="#0284c7" />
+        <text class="class-title" x="110" y="15">Asistencia</text>
+        <text class="class-content" x="8" y="38">- id : int</text>
+        <text class="class-content" x="8" y="52">- fechaHoraMarcado : datetime</text>
+        <text class="class-content" x="8" y="66">- estado : EstadoAsistencia</text>
+        <text class="class-content" x="8" y="80">- metodo : string (QR/Manual)</text>
+        <line class="uml-divider" x1="0" y1="92" x2="220" y2="92" />
+        <text class="class-content" x="8" y="112">+ registrarMarcacion()</text>
+        <text class="class-content" x="8" y="128">+ validarTolerancia() : bool</text>
+      </g>
+
+      <!-- Conexión SesionClase 1 -- 0..* Asistencia -->
+      <line class="rel-line" x1="400" y1="660" x2="470" y2="660" />
+      <text class="rel-text" x="408" y="652">1</text>
+      <text class="rel-text" x="448" y="652">0..*</text>
+
+      <!-- Conexión Inscripcion 1 -- 0..* Asistencia -->
+      <path d="M 640 540 L 640 600" class="rel-line" />
+      <text class="rel-text" x="646" y="555">1</text>
+      <text class="rel-text" x="646" y="590">0..*</text>
+
+      <!-- ================= CERTIFICADO ================= -->
+      <g transform="translate(850, 400)">
+        <rect class="uml-box" x="0" y="0" width="240" height="140" />
+        <rect x="0" y="0" width="240" height="22" rx="6" fill="#059669" />
+        <rect x="0" y="16" width="240" height="6" fill="#059669" />
+        <text class="class-title" x="120" y="15">Certificado</text>
+        <text class="class-content" x="8" y="38">- id : int</text>
+        <text class="class-content" x="8" y="52">- codigoVerificacion : string</text>
+        <text class="class-content" x="8" y="66">- hashSHA256 : string</text>
+        <text class="class-content" x="8" y="80">- fechaEmision : datetime</text>
+        <text class="class-content" x="8" y="94">- pdfUrl : string</text>
+        <line class="uml-divider" x1="0" y1="100" x2="240" y2="100" />
+        <text class="class-content" x="8" y="116">+ generarHashSHA256()</text>
+        <text class="class-content" x="8" y="130">+ validarAutenticidad(hash)</text>
+      </g>
+
+      <!-- Conexión Inscripcion 1 -- 0..1 Certificado -->
+      <line class="rel-line" x1="790" y1="460" x2="850" y2="460" />
+      <text class="rel-text" x="796" y="452">1</text>
+      <text class="rel-text" x="824" y="452">0..1</text>
+
+      <!-- ================= ALERTA / NOTIFICACION ================= -->
+      <g transform="translate(850, 60)">
+        <rect class="uml-box" x="0" y="0" width="230" height="130" />
+        <rect x="0" y="0" width="230" height="22" rx="6" fill="#d97706" />
+        <rect x="0" y="16" width="230" height="6" fill="#d97706" />
+        <text class="class-title" x="115" y="15">AlertaNotificacion</text>
+        <text class="class-content" x="8" y="38">- id : int</text>
+        <text class="class-content" x="8" y="52">- tipo : TipoAlertaEnum</text>
+        <text class="class-content" x="8" y="66">- titulo : string</text>
+        <text class="class-content" x="8" y="80">- mensaje : string</text>
+        <text class="class-content" x="8" y="94">- leida : boolean</text>
+        <line class="uml-divider" x1="0" y1="100" x2="230" y2="100" />
+        <text class="class-content" x="8" y="116">+ marcarComoLeida()</text>
+      </g>
+
+      <!-- Conexión Usuario 1 -- 0..* Alerta -->
+      <line class="rel-line" x1="700" y1="110" x2="850" y2="110" />
+      <text class="rel-text" x="710" y="102">1</text>
+      <text class="rel-text" x="825" y="102">0..*</text>
+
+      <!-- Enums legend -->
+      <g transform="translate(800, 600)">
+        <rect class="uml-box" x="0" y="0" width="260" height="110" fill="#f8fafc" stroke="#64748b"/>
+        <rect x="0" y="0" width="260" height="20" rx="6" fill="#475569" />
+        <text class="class-title" x="130" y="14">&lt;&lt;Enumeraciones del Sistema&gt;&gt;</text>
+        <text class="class-content" x="10" y="36">• <b>RolUsuario:</b> ADMIN, DOCENTE, PARTICIPANTE</text>
+        <text class="class-content" x="10" y="52">• <b>EstadoCurso:</b> BORRADOR, ABIERTO, EN_CURSO, CERRADO</text>
+        <text class="class-content" x="10" y="68">• <b>EstadoInscripcion:</b> INSCRITO, APROBADO, DESAPROBADO</text>
+        <text class="class-content" x="10" y="84">• <b>TipoAlerta:</b> URGENTE, ASISTENCIA, CERTIFICADO, SISTEMA</text>
+      </g>
+
+    </svg>
+  </div>
+</body>
+</html>

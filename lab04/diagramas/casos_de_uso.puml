@@ -1,0 +1,89 @@
+@startuml CasosDeUso_SIGC_CUSCO
+left to right direction
+skinparam packageStyle rectangle
+skinparam handwritten false
+skinparam monochrome false
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+skinparam actor {
+    BackgroundColor #E0F2FE
+    BorderColor #0369A1
+}
+
+skinparam usecase {
+    BackgroundColor #F8FAFC
+    BorderColor #0284C7
+    ArrowColor #0369A1
+}
+
+actor "Participante\n(Ciudadano/Servidor)" as Participante
+actor "Docente\n(Capacitador)" as Docente
+actor "Administrador\nGeneral" as Admin
+actor "Sistema Central\n(Automatizado)" as Sistema <<system>>
+
+rectangle "Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)" {
+
+    ' Módulo Autenticación
+    usecase "CU-01: Iniciar Sesión\n(DNI / Correo)" as CU01
+    usecase "CU-02: Recuperar\nCredenciales" as CU02
+
+    ' Módulo Cursos e Inscripciones
+    usecase "CU-03: Explorar Catálogo\nde Cursos" as CU03
+    usecase "CU-04: Inscribirse a\nCapacitación" as CU04
+    usecase "Validar DNI y Cupos\nDisponibles" as CU04_inc <<include>>
+    usecase "CU-05: Gestionar Cursos\ny Vacantes" as CU05
+
+    ' Módulo Asistencia QR
+    usecase "CU-06: Generar y Proyectar\nQR de Sesión" as CU06
+    usecase "CU-07: Escanear QR y\nMarcar Asistencia" as CU07
+    usecase "Validar Token Temporal\ny Tolerancia" as CU07_inc <<include>>
+
+    ' Módulo Evaluaciones y Certificación
+    usecase "CU-08: Registrar Calificaciones\ny Cierre de Actas" as CU08
+    usecase "CU-09: Generar Certificado\nDigital Oficial" as CU09
+    usecase "Validar Requisitos\n(Nota >= 11 y Asistencia >= 70%)" as CU09_ext <<extend>>
+    usecase "CU-10: Verificar Certificado\n(Público QR/Hash SHA-256)" as CU10
+
+    ' Módulo Alertas y Reportes
+    usecase "CU-11: Gestionar Centro\nde Alertas" as CU11
+    usecase "Disparar Alertas Preventivas\n(Asistencia / Vencimiento)" as CU11_auto
+    usecase "CU-12: Generar Reportes\nEstadísticos y Auditoría" as CU12
+}
+
+' Relaciones Participante
+Participante --> CU01
+Participante --> CU02
+Participante --> CU03
+Participante --> CU04
+Participante --> CU07
+Participante --> CU09
+Participante --> CU10
+Participante --> CU11
+
+' Relaciones Docente
+Docente --> CU01
+Docente --> CU06
+Docente --> CU08
+Docente --> CU11
+
+' Relaciones Administrador
+Admin --> CU01
+Admin --> CU05
+Admin --> CU12
+Admin --> CU11
+
+' Inclusiones y Extensiones
+CU04 .> CU04_inc : <<include>>
+CU07 .> CU07_inc : <<include>>
+CU09 .> CU09_ext : <<extend>>
+CU11 <. CU11_auto : <<include>>
+
+' Relaciones Sistema
+Sistema --> CU04_inc
+Sistema --> CU07_inc
+Sistema --> CU09
+Sistema --> CU11_auto
+
+@enduml
