@@ -1,0 +1,78 @@
+\section{Parte 1: Preparación del Backlog}
+
+\subsection{Revisión y Consolidación de las Historias del Lab 03}
+
+Antes de iniciar la estimación, el equipo realizó una sesión preliminar de auditoría técnica sobre el repositorio de requerimientos elaborado en el Laboratorio 03 (\texttt{lab03/docs/jira/jira\_import\_sigc\_cusco.csv}) y su correspondiente estado en el proyecto de Jira Software. Con el objetivo de garantizar que la sesión de Planning Poker fuera ágil y careciera de ambigüedades semánticas, se ejecutaron las siguientes acciones de preparación:
+
+\begin{enumerate}
+    \item \textbf{Unificación y trazabilidad de nomenclatura en Jira:} Al cotejar el backlog con Jira, se advirtió que tres historias clave del Lab 03 habían sido registradas previamente con títulos genéricos y sin su código identificador formal. Se procedió a actualizar su resumen (\textit{Summary}) anteponiendo el código \texttt{HU-XX}:
+    \begin{itemize}
+        \item \textbf{SC-13:} Registrada inicialmente como \enquote{Gestionar usuarios y roles}, se homologó como \textbf{HU-10: Asignar roles a los usuarios para controlar el acceso}.
+        \item \textbf{SC-14:} Registrada como \enquote{Registrar institución con logo}, se homologó como \textbf{HU-07: Registrar diferentes instituciones en el sistema}.
+        \item \textbf{SC-16:} Registrada como \enquote{Crear capacitación}, se homologó como \textbf{HU-06: Crear capacitaciones con fechas, cupos y docente asignado}.
+    \end{itemize}
+    Las nueve historias restantes (SC-19 a SC-27) fueron sincronizadas rigurosamente en Jira manteniendo la correspondencia biunívoca con las especificaciones del Lab 03.
+    
+    \item \textbf{Incorporación formal de la historia de autenticación (HU-13):} En el backlog operativo de Jira existía el issue \textbf{SC-18: Iniciar sesión con DNI y recuperar contraseña}, fundamental para el acceso al sistema pero que no contaba con código \texttt{HU} en el archivo plano inicial. Para no dejar fuera del dimensionamiento este flujo crítico, el equipo la formalizó como \textbf{HU-13}, alcanzando un total de 13 historias candidatas para la sesión.
+    
+    \item \textbf{Vinculación a Épicas de producto:} Cada historia fue enlazada en Jira con su respectiva Épica funcional para facilitar el análisis del esfuerzo por subsistema:
+    \begin{itemize}
+        \item \textbf{SC-7:} Gestión Multientidad y Usuarios (\texttt{HU-07}, \texttt{HU-10}, \texttt{HU-13}).
+        \item \textbf{SC-8:} Catálogo e Inscripción (\texttt{HU-01}, \texttt{HU-06}, \texttt{HU-12}).
+        \item \textbf{SC-9:} Control de Asistencia Digital (QR) (\texttt{HU-03}, \texttt{HU-11}).
+        \item \textbf{SC-10:} Registro Académico y Evaluación (\texttt{HU-04}).
+        \item \textbf{SC-11:} Certificados con Verificación QR (\texttt{HU-05}, \texttt{HU-08}).
+        \item \textbf{SC-12:} Reportes y Notificaciones (\texttt{HU-02}, \texttt{HU-09}).
+    \end{itemize}
+    
+    \item \textbf{Aclaración previa de alcance y criterios de aceptación:} El equipo revisó que cada tarjeta contara con su redacción bajo la estructura \textit{Como / Quiero / Para} y con sus criterios de aceptación redactados en formato BDD (\textit{Dado / Cuando / Entonces}). Durante la revisión se aclararon dudas sobre el alcance que en iteraciones anteriores generaban confusión, como por ejemplo si la emisión de certificados en \texttt{HU-05} contemplaba la generación masiva o solo individual, o si la multientidad de \texttt{HU-07} exigía bases de datos físicas independientes.
+    
+    \item \textbf{Selección de la Historia de Referencia (\textit{Golden Story}):} Como buena práctica de estimación ágil, el equipo seleccionó de mutuo acuerdo la historia \textbf{HU-12: Consultar catálogo público de cursos disponibles} como unidad patrón de calibración, asignándole de forma unánime el valor base de \textbf{3 Story Points}.
+    
+    \textit{Justificación técnica de la referencia:} \texttt{HU-12} comprende una consulta indexada a la base de datos de cursos con estado publicado, un listado responsive con buscador y contador de vacantes en tiempo real, sin requerir sesión iniciada ni mutaciones transaccionales complejas. Dicha funcionalidad es perfectamente dominada por los integrantes, convirtiéndose en el patrón métrico: las historias más simples se estimarían en 1 o 2 SP, mientras que aquellas con mayor lógica transaccional, seguridad o incertidumbre escalarían a 5, 8, 13 o 21 SP.
+\end{enumerate}
+
+\subsection{Backlog Preparado para la Sesión}
+
+La Tabla~\ref{tab:backlog_preparado} consolida las 13 historias de usuario preparadas, con su clave en Jira, código funcional, título normalizado, épica asociada y su correspondiente clasificación de prioridad MoSCoW.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\caption{Product Backlog preparado y verificado para la sesión de Planning Poker (13 historias).}
+\label{tab:backlog_preparado}
+\begin{tabularx}{\textwidth}{P{1.4cm} P{1.4cm} Y P{3.8cm} C{2.6cm}}
+\toprule
+\rowcolor{headerblue}
+\textcolor{white}{\textbf{Clave}} & \textcolor{white}{\textbf{Código}} & \textcolor{white}{\textbf{Historia de Usuario}} & \textcolor{white}{\textbf{Épica Asociada}} & \textcolor{white}{\textbf{Prioridad MoSCoW}} \\
+\midrule
+\rowcolor{white}
+SC-13 & HU-10 & Asignar roles a los usuarios para controlar el acceso & Multientidad y Usuarios & Highest / Must \\
+\rowcolor{rowalt}
+SC-16 & HU-06 & Crear capacitaciones con fechas, cupos y docente & Catálogo e Inscripción & Highest / Must \\
+\rowcolor{white}
+SC-19 & HU-01 & Inscribirme a una capacitación usando mi DNI & Catálogo e Inscripción & Highest / Must \\
+\rowcolor{rowalt}
+SC-20 & HU-03 & Pasar asistencia escaneando un código QR & Control de Asistencia QR & High / Must \\
+\rowcolor{white}
+SC-21 & HU-04 & Registrar notas y calcular aprobación automáticamente & Evaluación y Actas & High / Must \\
+\rowcolor{rowalt}
+SC-22 & HU-05 & Generar y descargar certificado PDF con código QR & Certificados con QR & High / Must \\
+\rowcolor{white}
+SC-14 & HU-07 & Registrar diferentes instituciones en el sistema & Multientidad y Usuarios & Medium / Should \\
+\rowcolor{rowalt}
+SC-23 & HU-08 & Verificar autenticidad de certificado mediante QR & Certificados con QR & Medium / Should \\
+\rowcolor{white}
+SC-24 & HU-09 & Generar reportes de capacitaciones para auditorías & Reportes y Notificaciones & Medium / Should \\
+\rowcolor{rowalt}
+SC-25 & HU-02 & Recibir correo de confirmación al inscribirme & Reportes y Notificaciones & Medium / Should \\
+\rowcolor{white}
+SC-18 & HU-13 & Iniciar sesión con DNI y recuperar contraseña & Multientidad y Usuarios & Medium / Should \\
+\rowcolor{rowalt}
+SC-26 & HU-12 & Consultar catálogo público de cursos disponibles & Catálogo e Inscripción & Low / Could \textit{(Ref.)} \\
+\rowcolor{white}
+SC-27 & HU-11 & Marcar asistencia en modo offline con sincronización & Control de Asistencia QR & Low / Could \\
+\bottomrule
+\end{tabularx}
+\end{table}

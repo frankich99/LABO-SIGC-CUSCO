@@ -5,6 +5,7 @@
 [![Curso](https://img.shields.io/badge/Curso-Ingeniería_de_Software_I-orange.svg)](https://www.unsaac.edu.pe/)
 [![Documentación Lab 03](https://img.shields.io/badge/LaTeX-Lab_03_PDF-brightgreen.svg)](lab03/docs/latex/main.pdf)
 [![Documentación Lab 04](https://img.shields.io/badge/LaTeX-Lab_04_PDF-purple.svg)](lab04/Lab_04_Informe_SIGC_CUSCO.pdf)
+[![Documentación Lab 05](https://img.shields.io/badge/LaTeX-Lab_05_PDF-blue.svg)](lab05/Lab_05_Informe_SIGC_CUSCO.pdf)
 
 ---
 
@@ -76,11 +77,49 @@ El sistema sustituye el uso desarticulado de hojas de cálculo de Excel, listas 
 
 ---
 
+## 🃏 Contenido del Laboratorio 05 (Estimación de Esfuerzo con Planning Poker)
+
+1. **Parte 1 — Preparación del Product Backlog:**
+   * Auditoría y homologación de las historias de usuario de Lab 03 con el gestor de proyectos Jira Software (`SC-13` a `SC-27`).
+   * Adición formal de la historia de autenticación (`HU-13 / SC-18`) para completar el flujo base (13 historias a estimar).
+   * Definición de la historia de referencia (*Golden Story*): `HU-12` (Consultar catálogo público) = 3 SP.
+2. **Parte 2 — Sesión de Planning Poker:**
+   * Estimación relativa colaborativa con los tres integrantes del equipo mediante baraja con escala modificada de Fibonacci (1, 2, 3, 5, 8, 13, 21).
+   * Debate y resolución de discrepancias en historias con mayor dispersión (`HU-03` QR dinámico, `HU-07` multientidad, `HU-11` sincronización offline).
+   * Registro estructurado de votos por ronda en [`lab05/backlog/sesion_planning_poker.json`](lab05/backlog/sesion_planning_poker.json).
+3. **Parte 3 — Registro en Jira y Clasificación del Backlog:**
+   * Carga de Story Points consensuados en Jira Software y asignación de etiquetas (`sp-corta`, `sp-media`, `sp-compleja`, `lab05`).
+   * Clasificación del backlog (99 SP iniciales): 4 Cortas (11 SP), 5 Medias (28 SP) y 4 Complejas (60 SP).
+   * Exportación tabular formal en [`lab05/backlog/product_backlog_estimado.csv`](lab05/backlog/product_backlog_estimado.csv).
+4. **Trabajo Extra — Refinamiento y Descomposición de Historias Grandes:**
+   * Desglose sistemático de las 4 historias de 13+ SP en 13 historias atómicas bajo principios INVEST y técnicas de ingeniería (Spike técnico, división por fases y reglas de negocio).
+   * Consolidación del Product Backlog activo ejecutable: **22 historias de usuario con 96 Story Points** (ninguna historia excede los 8 SP).
+   * Registro estructurado en [`lab05/backlog/backlog_refinado.csv`](lab05/backlog/backlog_refinado.csv).
+5. **Informe Técnico Final en LaTeX:**
+   * Código fuente modular en [`lab05/latex/`](lab05/latex/).
+   * Documento compilado con formato oficial de la UNSAAC: [`lab05/Lab_05_Informe_SIGC_CUSCO.pdf`](lab05/Lab_05_Informe_SIGC_CUSCO.pdf).
+
+---
+
 ## 📂 Estructura General del Repositorio
 
 ```text
 LABO-SIGC-CUSCO/
 ├── README.md                          # Presentación oficial del repositorio y los laboratorios
+│
+├── lab05/                             # Laboratorio 05: Estimación con Planning Poker
+│   ├── Lab_05_Informe_SIGC_CUSCO.pdf  # Informe técnico oficial compilado (PDF)
+│   ├── Lab 5 ING. DE SOFTWARE.pdf     # Guía oficial del laboratorio
+│   ├── backlog/                       # Datos estructurados del backlog y sesión de poker
+│   │   ├── sesion_planning_poker.json # Registro de votos por ronda de cada integrante
+│   │   ├── product_backlog_estimado.csv # Backlog estimado (13 historias, 99 SP)
+│   │   └── backlog_refinado.csv       # Backlog refinado atómico (22 historias, 96 SP)
+│   └── latex/                         # Código fuente modular en LaTeX
+│       ├── main.tex                   # Documento principal LaTeX
+│       ├── main.pdf                   # PDF compilado en carpeta LaTeX
+│       ├── config/packages.tex        # Configuración formal institucional
+│       ├── secciones/                 # Portada, Dinámica, Jira, Refinamiento, Conclusiones
+│       └── imagenes/                  # Evidencias de sesión, Jira y clasificación
 │
 ├── lab04/                             # Laboratorio 04: Modelado UML y Prototipos
 │   ├── Lab_04_Informe_SIGC_CUSCO.pdf  # Informe técnico oficial compilado (PDF)
@@ -114,13 +153,24 @@ LABO-SIGC-CUSCO/
 
 ## 🛠️ Compilación de Documentos LaTeX
 
+Para compilar el informe técnico del **Laboratorio 05**:
+
+```bash
+# Navegar al directorio de LaTeX del Lab 05
+cd lab05/latex
+
+# Compilar con pdflatex (dos pasadas para actualizar tabla de contenidos y referencias cruzadas)
+pdflatex -interaction=nonstopmode main.tex
+pdflatex -interaction=nonstopmode main.tex
+```
+
 Para compilar el informe técnico del **Laboratorio 04**:
 
 ```bash
 # Navegar al directorio de LaTeX del Lab 04
 cd lab04/latex
 
-# Compilar con pdflatex (dos pasadas para actualizar tabla de contenidos y referencias cruzadas)
+# Compilar con pdflatex
 pdflatex -interaction=nonstopmode main.tex
 pdflatex -interaction=nonstopmode main.tex
 ```

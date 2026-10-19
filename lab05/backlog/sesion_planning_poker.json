@@ -1,0 +1,231 @@
+{
+  "laboratorio": "Laboratorio 05: Estimacion de esfuerzo con Planning Poker",
+  "asignatura": "Ingenieria de Software I",
+  "universidad": "UNSAAC",
+  "proyecto": "SIGC-CUSCO",
+  "fecha": "2026-10-19",
+  "participantes": [
+    {
+      "nombre": "Choquenaira Quispe, Noe Franklin",
+      "codigo": "133962",
+      "rol": "Developer / Scrum Master"
+    },
+    {
+      "nombre": "Yaranga Achahui, Aldo",
+      "codigo": "103179",
+      "rol": "Developer / Tech Lead"
+    },
+    {
+      "nombre": "Ccama Enriquez, Carolay",
+      "codigo": "210921",
+      "rol": "Developer / Product Owner"
+    }
+  ],
+  "escala": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    13,
+    21
+  ],
+  "historia_referencia": {
+    "clave": "SC-26",
+    "codigo": "HU-12",
+    "titulo": "Consultar catalogo publico de cursos disponibles",
+    "puntos": 3
+  },
+  "estimaciones": [
+    {
+      "clave": "SC-13",
+      "hu": "HU-10",
+      "titulo": "Asignar roles a los usuarios para controlar el acceso",
+      "prioridad": "Highest",
+      "r1": [
+        5,
+        8,
+        5
+      ],
+      "r2": null,
+      "consenso": 5,
+      "clasificacion": "Media"
+    },
+    {
+      "clave": "SC-16",
+      "hu": "HU-06",
+      "titulo": "Crear capacitaciones con fechas, cupos y docente asignado",
+      "prioridad": "Highest",
+      "r1": [
+        5,
+        5,
+        3
+      ],
+      "r2": null,
+      "consenso": 5,
+      "clasificacion": "Media"
+    },
+    {
+      "clave": "SC-19",
+      "hu": "HU-01",
+      "titulo": "Inscribirme a una capacitacion usando mi DNI",
+      "prioridad": "Highest",
+      "r1": [
+        5,
+        8,
+        8
+      ],
+      "r2": null,
+      "consenso": 8,
+      "clasificacion": "Media"
+    },
+    {
+      "clave": "SC-20",
+      "hu": "HU-03",
+      "titulo": "Pasar asistencia escaneando un codigo QR",
+      "prioridad": "High",
+      "r1": [
+        5,
+        13,
+        8
+      ],
+      "r2": [
+        8,
+        13,
+        13
+      ],
+      "consenso": 13,
+      "clasificacion": "Compleja"
+    },
+    {
+      "clave": "SC-21",
+      "hu": "HU-04",
+      "titulo": "Registrar notas y calcular aprobacion automaticamente",
+      "prioridad": "High",
+      "r1": [
+        3,
+        5,
+        5
+      ],
+      "r2": null,
+      "consenso": 5,
+      "clasificacion": "Media"
+    },
+    {
+      "clave": "SC-22",
+      "hu": "HU-05",
+      "titulo": "Generar y descargar certificado PDF con codigo QR",
+      "prioridad": "High",
+      "r1": [
+        8,
+        13,
+        13
+      ],
+      "r2": null,
+      "consenso": 13,
+      "clasificacion": "Compleja"
+    },
+    {
+      "clave": "SC-14",
+      "hu": "HU-07",
+      "titulo": "Registrar diferentes instituciones en el sistema",
+      "prioridad": "Medium",
+      "r1": [
+        13,
+        21,
+        8
+      ],
+      "r2": [
+        13,
+        13,
+        13
+      ],
+      "consenso": 13,
+      "clasificacion": "Compleja"
+    },
+    {
+      "clave": "SC-23",
+      "hu": "HU-08",
+      "titulo": "Verificar autenticidad de certificado mediante codigo QR",
+      "prioridad": "Medium",
+      "r1": [
+        3,
+        2,
+        3
+      ],
+      "r2": null,
+      "consenso": 3,
+      "clasificacion": "Corta"
+    },
+    {
+      "clave": "SC-24",
+      "hu": "HU-09",
+      "titulo": "Generar reportes de capacitaciones para auditorias",
+      "prioridad": "Medium",
+      "r1": [
+        5,
+        5,
+        8
+      ],
+      "r2": null,
+      "consenso": 5,
+      "clasificacion": "Media"
+    },
+    {
+      "clave": "SC-25",
+      "hu": "HU-02",
+      "titulo": "Recibir correo de confirmacion al inscribirme",
+      "prioridad": "Medium",
+      "r1": [
+        2,
+        3,
+        2
+      ],
+      "r2": null,
+      "consenso": 2,
+      "clasificacion": "Corta"
+    },
+    {
+      "clave": "SC-26",
+      "hu": "HU-12",
+      "titulo": "Consultar catalogo publico de cursos disponibles",
+      "prioridad": "Low",
+      "r1": [
+        3,
+        3,
+        3
+      ],
+      "r2": null,
+      "consenso": 3,
+      "clasificacion": "Corta"
+    },
+    {
+      "clave": "SC-27",
+      "hu": "HU-11",
+      "titulo": "Marcar asistencia en modo offline con sincronizacion",
+      "prioridad": "Low",
+      "r1": [
+        13,
+        21,
+        21
+      ],
+      "r2": null,
+      "consenso": 21,
+      "clasificacion": "Compleja"
+    },
+    {
+      "clave": "SC-18",
+      "hu": "HU-13",
+      "titulo": "Iniciar sesion con DNI y recuperar contrasena",
+      "prioridad": "Medium",
+      "r1": [
+        3,
+        3,
+        5
+      ],
+      "r2": null,
+      "consenso": 3,
+      "clasificacion": "Corta"
+    }
+  ]
+}

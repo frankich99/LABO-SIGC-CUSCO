@@ -1,0 +1,14 @@
+Origen_Clave,Origen_HU,Clave_Hija,HU_Hija,Titulo_Refinado,Story_Points,Clasificacion,Criterios_Aceptacion_Resumen
+SC-14,HU-07 (13 SP),SC-28,HU-07.1,"Registrar institucion con RUC, razon social y logo",3,Corta,Formulario con validacion de RUC 11 digitos y subida de logo PNG/JPG
+SC-14,HU-07 (13 SP),SC-29,HU-07.2,Asociar usuarios y capacitaciones a una institucion,5,Media,Relacion FK institution_id en tablas users y courses; select en dashboard institucional
+SC-14,HU-07 (13 SP),SC-30,HU-07.3,Aislar los datos para que cada institucion vea solo lo suyo,5,Media,Global Scope de Eloquent para filtrado automatico y policies de seguridad
+SC-20,HU-03 (13 SP),SC-31,HU-03.1,Generar QR dinamico por sesion (docente),5,Media,Token TOTP con expiracion de 30 segundos proyectado en pantalla de aula
+SC-20,HU-03 (13 SP),SC-32,HU-03.2,Registrar asistencia escaneando el QR (participante),5,Media,"Lector camara web/movil, decodificacion y envio a endpoint de marcado"
+SC-20,HU-03 (13 SP),SC-33,HU-03.3,Evitar marcaciones duplicadas y ver la lista de la sesion,3,Corta,"Restriccion UNIQUE(user_id, session_id) y tabla reactiva de presentes para el docente"
+SC-22,HU-05 (13 SP),SC-34,HU-05.1,Validar requisitos de emision (nota >= 11 y asistencia minima),3,Corta,Calculo de regla de negocio: nota >= 11 y asistencia >= 80% antes de habilitar boton
+SC-22,HU-05 (13 SP),SC-35,HU-05.2,"Generar PDF del certificado con plantilla, QR y hash SHA-256",5,Media,"Renderizado con DomPDF, firma grafica, codigo QR vectorial y firma hash criptografica"
+SC-22,HU-05 (13 SP),SC-36,HU-05.3,Emitir certificados en lote para todo un curso,5,Media,Job en cola de Laravel para generar PDFs masivos y comprimir en ZIP para descarga docente
+SC-27,HU-11 (21 SP),SC-37,HU-11.1,Spike: evaluar almacenamiento local (PWA + IndexedDB),2,Corta,Prototipo tecnico exploratorio de Service Worker e IndexedDB para medir viabilidad
+SC-27,HU-11 (21 SP),SC-38,HU-11.2,Guardar asistencias en el dispositivo cuando no hay internet,5,Media,Almacenamiento de marcas offline en IndexedDB con marca de tiempo del dispositivo
+SC-27,HU-11 (21 SP),SC-39,HU-11.3,"Sincronizar asistencias pendientes al reconectar, sin duplicados",8,Media,"Background Sync API, procesamiento en lote y resolucion de marcas concurrentes"
+SC-27,HU-11 (21 SP),SC-40,HU-11.4,Mostrar indicador de datos pendientes de sincronizar,3,Corta,Badge visual en interfaz con contador de marcas pendientes y boton de forzar sync

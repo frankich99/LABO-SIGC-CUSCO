@@ -1,0 +1,59 @@
+\section{Objetivo y Fundamento Teórico}
+
+\subsection{Objetivo General y Específicos}
+
+El presente laboratorio tiene como propósito estimar el esfuerzo relativo de desarrollo de las historias de usuario pertenecientes al \textbf{Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)}, formuladas durante el Laboratorio 03, mediante la técnica colaborativa ágil \textbf{Planning Poker} y el empleo de \textbf{Story Points} (puntos de historia). Asimismo, se busca institucionalizar el registro y clasificación del backlog dentro de la plataforma de gestión \textbf{Jira Software}, preparando el terreno para la planificación efectiva de los sprints del proyecto.
+
+Para cumplir con este objetivo general, se desarrollaron los siguientes objetivos específicos:
+\begin{itemize}
+    \item \textbf{Auditar y clarificar el Product Backlog:} Revisar minuciosamente las historias de usuario provenientes del Laboratorio 03, verificando la consistencia de su estructura (\textit{Como / Quiero / Para}) y la completitud de sus criterios de aceptación en formato BDD (\textit{Dado / Cuando / Entonces}) antes de someterlas a votación.
+    \item \textbf{Establecer una historia de referencia (\textit{Golden Story}):} Identificar una historia conocida y de bajo riesgo técnico que actúe como unidad patrón de comparación relativa para calibrar las estimaciones del equipo.
+    \item \textbf{Ejecutar la dinámica de Planning Poker:} Realizar una sesión de estimación con los tres integrantes del equipo de desarrollo, utilizando la escala modificada de Fibonacci, contrastando posturas técnicas divergentes y alcanzando consensos genuinos sin imposiciones jerárquicas.
+    \item \textbf{Registrar y clasificar el backlog en Jira:} Cargar los valores de Story Points acordados en el proyecto \texttt{SC} de Jira Software, clasificando las historias según su tamaño en tres grupos: \textit{Cortas} (1--3 SP), \textit{Medias} (5--8 SP) y \textit{Complejas} (13+ SP).
+    \item \textbf{Refinar historias sobredimensionadas (Trabajo extra):} Descomponer las historias catalogadas como complejas ($\ge 13$ SP) en historias de usuario hijas más pequeñas, atómicas y estimables ($\le 8$ SP), mitigando la incertidumbre arquitectónica mediante la formulación de spikes de investigación técnica.
+\end{itemize}
+
+\subsection{Fundamento Teórico}
+
+\subsubsection{Estimación ágil vs. estimación tradicional en horas}
+En el desarrollo de software convencional, la estimación suele abordarse asignando horas-hombre absolutas a cada tarea. La experiencia empírica y la literatura de ingeniería de software demuestran que este enfoque adolece de múltiples sesgos cognitivos:
+\begin{enumerate}
+    \item \textbf{Sesgo del optimismo:} Los desarrolladores tienden a estimar asumiendo un escenario ideal, ignorando interrupciones, depuración de dependencias, integración continua o tiempos de prueba.
+    \item \textbf{Variabilidad individual de velocidad:} Una tarea que a un programador experimentado le toma 4 horas puede demandar 16 horas a un desarrollador junior; por tanto, el tiempo en horas no mide la magnitud intrínseca del problema.
+    \item \textbf{Ley de Parkinson:} El trabajo tiende a expandirse hasta ocupar todo el tiempo asignado para su realización.
+\end{enumerate}
+
+La estimación ágil resuelve esta problemática trasladando el foco de la \textit{duración absoluta} al \textit{tamaño relativo}. La mente humana posee una notable precisión innata para comparar tamaños relativos (por ejemplo, determinar si un edificio es el doble de alto que una casa) en contraste con la dificultad de predecir la altura exacta en metros a simple vista. Al estimar historias de usuario de forma relativa frente a una historia de referencia, el equipo logra evaluaciones más rápidas, consistentes y desprovistas de compromisos temporales prematuros.
+
+\subsubsection{Story Points (Puntos de Historia)}
+Un \textbf{Story Point} es una unidad métrica abstracta que resume holísticamente tres componentes fundamentales de una historia de usuario:
+\begin{itemize}
+    \item \textbf{Complejidad:} Dificultad algorítmica y técnica requerida para materializar los criterios de aceptación (lógica de negocio cruzada, transacciones atómicas, validaciones de seguridad, integración de APIs de terceros o procesamiento de documentos).
+    \item \textbf{Esfuerzo:} Cantidad de trabajo volumétrico necesario (número de interfaces de usuario a diseñar en Blade/Tailwind, controladores y servicios a implementar, migraciones de base de datos, semillas de prueba y pruebas automatizadas).
+    \item \textbf{Incertidumbre o Riesgo:} Nivel de desconocimiento sobre la tecnología, ambigüedad en los requerimientos del cliente o riesgo de dependencias no controladas (como el comportamiento en entornos sin conectividad o la integración con pasarelas externas).
+\end{itemize}
+
+\subsubsection{Técnica Planning Poker}
+El \textbf{Planning Poker} es un procedimiento de estimación colaborativo fundamentado en el método \textit{Wideband Delphi}. Diseñado específicamente para entornos ágiles (Scrum/Kanban), persigue anular dos de los problemas más frecuentes en las reuniones de equipo:
+\begin{itemize}
+    \item \textbf{El efecto de anclaje (\textit{Anchoring effect}):} Ocurre cuando la primera persona en expresar una cifra condiciona inconscientemente las estimaciones de los demás participantes.
+    \item \textbf{La presión por conformidad o jerarquía:} La inclinación natural a subordinar la propia opinión técnica frente a integrantes con mayor antigüedad o autoridad percibida.
+\end{itemize}
+
+Para neutralizar estos efectos, la dinámica exige que todos los participantes seleccionen su voto en privado. Cuando todos han elegido, las cartas se revelan en simultáneo. Si existe dispersión en los valores, se otorga la palabra a los participantes que emitieron los votos extremos (el más alto y el más bajo) para que expongan sus argumentos técnicos, supuestos arquitectónicos o riesgos identificados. Tras un debate breve y enfocado, se procede a una nueva ronda de votación hasta alcanzar el consenso del equipo.
+
+\subsubsection{Escala modificada de Fibonacci}
+El equipo adoptó la secuencia estándar de Fibonacci:
+\[
+    \mathcal{F} = \{1,\, 2,\, 3,\, 5,\, 8,\, 13,\, 21\}
+\]
+El espaciamiento no lineal y progresivamente exponencial entre los valores refleja el \textit{Principio de Incertidumbre} en la ingeniería de software: a medida que el tamaño de un ítem se incrementa, la capacidad para predecir su costo con exactitud decae notablemente. No tiene valor práctico discernir si una funcionalidad demanda 14 o 15 puntos; en cambio, contrastar entre 13 y 21 puntos obliga al equipo a reflexionar si la tarea es simplemente grande o si oculta un riesgo técnico inaceptable que exige refinamiento inmediato.
+
+\subsection{Herramientas Empleadas}
+
+Para la ejecución sistemática del laboratorio se integraron las siguientes herramientas:
+\begin{itemize}
+    \item \textbf{Planning Poker digital:} Aplicación interactiva configurada con la baraja Fibonacci, empleada durante la sesión para la votación síncrona en tiempo real. Los registros de cada ronda y sus argumentos fueron exportados en formato estructurado a \texttt{backlog/sesion\_planning\_poker.json}.
+    \item \textbf{Jira Software Cloud (Proyecto \texttt{SC} -- SIGC-CUSCO):} Plataforma principal de gestión ágil. Se habilitó el campo numérico nativo \texttt{Story point estimate}, se etiquetaron las historias (\texttt{sp-corta}, \texttt{sp-media}, \texttt{sp-compleja}, \texttt{dividida}, \texttt{refinamiento}, \texttt{lab05}) y se categorizaron conforme a las prioridades MoSCoW del sistema.
+    \item \textbf{Repositorio en GitHub (\texttt{frankich99/LABO-SIGC-CUSCO}):} Repositorio institucional donde se almacena el historial de versiones del proyecto, incluyendo el backlog estimado en CSV (\texttt{backlog/product\_backlog\_estimado.csv}), las capturas de auditoría y los fuentes en \LaTeX{}.
+\end{itemize}

@@ -1,0 +1,56 @@
+% ==============================================================================
+% DOCUMENTO PRINCIPAL - LATEX
+% Asignatura: Ingeniería de Software I - UNSAAC
+% Laboratorio N° 05: Estimación de Esfuerzo con Planning Poker
+% Proyecto: Sistema Integral de Gestión de Capacitaciones (SIGC-CUSCO)
+% Autores: Choquenaira Quispe, Yaranga Achahui, Ccama Enriquez
+% Docente: Ing. Lisha Sabah Diaz Caceres
+% ==============================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+\input{config/packages.tex}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+% 1. Portada Institucional Oficial
+\input{secciones/00_portada.tex}
+
+% 2. Tabla de Contenidos
+\newpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+{
+    \hypersetup{linkcolor=black}
+    \begin{spacing}{0.95}
+    \tableofcontents
+    \end{spacing}
+}
+\newpage
+\pagenumbering{arabic}
+
+% 3. Objetivo y Fundamento Teórico
+\input{secciones/01_objetivo_fundamento.tex}
+\vspace{0.3cm}
+
+% 4. Parte 1: Preparación del Backlog
+\input{secciones/02_preparacion_backlog.tex}
+\vspace{0.3cm}
+
+% 5. Parte 2: Sesión de Planning Poker y Consenso
+\input{secciones/03_sesion_planning_poker.tex}
+\vspace{0.3cm}
+
+% 6. Parte 3: Registro de Estimaciones en Jira y Clasificación
+\input{secciones/04_registro_estimaciones.tex}
+\vspace{0.3cm}
+
+% 7. Trabajo Extra: Refinamiento de Historias Grandes
+\input{secciones/05_refinamiento_historias.tex}
+\vspace{0.3cm}
+
+% 8. Conclusiones y Lecciones Aprendidas
+\input{secciones/06_conclusiones.tex}
+
+\end{document}
