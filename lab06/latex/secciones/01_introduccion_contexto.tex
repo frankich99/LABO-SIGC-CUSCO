@@ -1,0 +1,17 @@
+\section{Objetivos y Fundamento Teórico de Kanban}
+
+\subsection{Objetivos del Laboratorio}
+Gestionar el flujo continuo de trabajo del proyecto \textbf{SIGC-CUSCO} mediante un tablero \textbf{Kanban} en \textbf{Jira Software Cloud}, definiendo estados normalizados, estableciendo límites de trabajo en progreso (\textit{Work In Progress} -- WIP), simulando cuellos de botella y evaluando métricas cuantitativas clave (\textit{Lead Time} y \textit{Cycle Time}).
+
+\subsection{Fundamento Teórico Esencial}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Kanban y Flujo Continuo:} Sistema visual de gestión que optimiza la entrega continua de valor sin las restricciones de tiempo fijo (\textit{timeboxes}) de Scrum, bajo el principio: \textit{<<Dejar de empezar y comenzar a terminar>>}.
+    \item \textbf{Work In Progress (WIP):} Cantidad máxima de tareas que pueden coexistir simultáneamente en un estado. Restringe la multitarea improductiva y reduce el costo de cambio de contexto.
+    \item \textbf{\textit{Lead Time} (Tiempo de Entrega):} Tiempo total desde que el cliente solicita una historia hasta que se entrega en \textit{Listo}.
+    \item \textbf{\textit{Cycle Time} (Tiempo de Ciclo):} Tiempo neto de desarrollo activo desde que la tarea pasa a \textit{En curso} hasta \textit{Listo}.
+    \item \textbf{Ley de Little en Kanban:} Establece la relación matemática del flujo en estado estacionario:
+    \begin{equation}
+        \text{Cycle Time} = \frac{\text{WIP}}{\text{Throughput}}
+    \end{equation}
+    Demuestra que la forma más directa de reducir los tiempos de entrega sin sobrecargar al equipo es disminuyendo el WIP activo.
+\end{itemize}

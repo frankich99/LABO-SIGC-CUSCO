@@ -1,0 +1,54 @@
+\section{Métricas Básicas y Análisis Cuantitativo}
+
+\subsection{Diagrama de Flujo Acumulado (CFD)}
+El Diagrama de Flujo Acumulado (CFD) de la Figura~\ref{fig:cfd} permite auditar visualmente el comportamiento de los 10 días de simulación:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\textwidth]{captura_cfd_diagrama_flujo.png}
+    \caption{Diagrama de Flujo Acumulado (CFD) del SIGC-CUSCO con detección de cuello de botella en el Día 6.}
+    \label{fig:cfd}
+\end{figure}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Estabilidad de Flujo:} Las bandas se mantienen estrechas y paralelas, demostrando un ritmo sostenible gracias al respeto de los límites WIP.
+    \item \textbf{Diagnóstico de la Anomalía:} El ensanchamiento de la banda naranja en el Día 6 evidencia la congestión de revisión, subsanada mediante el protocolo \textit{Swarming}.
+\end{itemize}
+
+\subsection{Evaluación de \textit{Lead Time}, \textit{Cycle Time} y Ley de Little}
+La Figura~\ref{fig:lead_cycle} y la Tabla~\ref{tab:metricas_historias} exponen los tiempos de ciclo y entrega de las historias evaluadas:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\textwidth]{captura_lead_cycle_time.png}
+    \caption{Comparativa de \textit{Lead Time} y \textit{Cycle Time} por Historia de Usuario.}
+    \label{fig:lead_cycle}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Métricas Consolidadas de Historias Clave.}
+\label{tab:metricas_historias}
+\begin{tabularx}{\textwidth}{P{2.0cm} Y P{2.5cm} P{2.5cm}}
+\toprule
+\textbf{Código} & \textbf{Historia de Usuario (MDSJ)} & \textbf{Cycle Time (días)} & \textbf{Lead Time (días)} \\
+\midrule
+\texttt{SC-19} & HU-01: Inscripción con DNI & 1.5 & 3.5 \\
+\texttt{SC-16} & HU-06: Crear capacitación & 2.0 & 5.0 \\
+\texttt{SC-14} & HU-07: Registrar institución MDSJ & 2.5 & 6.5 \\
+\texttt{SC-32} & HU-03.2: Lector DNI auditorio & 2.0 & 4.5 \\
+\texttt{SC-35} & HU-05.2: Certificado virtual firma/QR & 3.5 & 8.0 \\
+\texttt{SC-41} & HU-14: Registro anual PDP & 2.0 & 5.0 \\
+\texttt{SC-44} & Spike: Integrar API RENIEC MDSJ & 1.2 & 2.7 \\
+\midrule
+\textbf{Promedio} & \textbf{Valores medios del sistema} & \textbf{2.10 días} & \textbf{5.02 días} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent\textbf{Comprobación de la Ley de Little:} Con un \textit{Throughput} real de $TH = 1.5 \text{ historias/día}$ y un $\text{WIP} = 5$ ítems en sistema:
+\begin{equation}
+    \text{Cycle Time Teórico} = \frac{\text{WIP}}{\text{Throughput}} = \frac{5}{1.5} = 3.33 \text{ días}
+\end{equation}
+El valor experimental obtenido (promedio de 2.10 días para tareas estándar y 3.5 días para las de mayor complejidad) valida el modelo matemático y confirma la eficiencia de los límites WIP adoptados.

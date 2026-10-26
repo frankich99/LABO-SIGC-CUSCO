@@ -1,0 +1,103 @@
+% ==============================================================================
+% CONFIGURACIÓN DE PAQUETES - LATEX
+% Laboratorio 06: Gestión del Flujo de Trabajo con Kanban
+% Proyecto: SIGC-CUSCO - Municipalidad Distrital de San Jerónimo
+% UNSAAC - Ingeniería de Software I
+% ==============================================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
+\spanishdeactivate{"}
+\usepackage{csquotes}
+
+\usepackage[margin=2.5cm, headheight=20pt]{geometry}
+
+\usepackage{mathptmx}
+\usepackage{amsmath, amssymb}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{graphicx}
+\graphicspath{{./}{imagenes/}{./imagenes/}}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[table]{xcolor}
+\definecolor{jiraBlue}{RGB}{0, 82, 204}
+\definecolor{jiraDark}{RGB}{23, 43, 77}
+\definecolor{jiraGreen}{RGB}{0, 135, 90}
+\definecolor{jiraOrange}{RGB}{255, 139, 0}
+\definecolor{jiraRed}{RGB}{222, 53, 11}
+\definecolor{jiraGray}{RGB}{244, 245, 247}
+\definecolor{codeGray}{RGB}{240, 240, 240}
+
+\usepackage{enumitem}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape UNSAAC -- Ingeniería de Software I}
+\fancyhead[R]{\small\itshape Lab 06: Flujo Kanban | SIGC-CUSCO}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    breaklinks=true,
+    linkcolor=jiraBlue,
+    urlcolor=jiraBlue,
+    citecolor=jiraDark,
+    pdftitle={Laboratorio 06: Gestión del Flujo de Trabajo con Kanban - SIGC-CUSCO},
+    pdfauthor={Choquenaira, Yaranga, Ccama}
+}
+
+\usepackage{microtype}
+\emergencystretch=2.5em
+
+\setlength{\parindent}{0.6cm}
+\setlength{\parskip}{0.25em}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Entorno para cuadros destacados
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{cajainfo}[1]{
+    colback=jiraBlue!5!white,
+    colframe=jiraBlue,
+    fonttitle=\bfseries\color{white},
+    title={#1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+\newtcolorbox{cajaalerta}[1]{
+    colback=jiraRed!5!white,
+    colframe=jiraRed,
+    fonttitle=\bfseries\color{white},
+    title={#1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+\newtcolorbox{cajaexito}[1]{
+    colback=jiraGreen!5!white,
+    colframe=jiraGreen,
+    fonttitle=\bfseries\color{white},
+    title={#1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}

@@ -1,0 +1,17 @@
+\section{Parte 3: Simulación de Flujo y Cuellos de Botella}
+
+\subsection{Inducción y Diagnóstico del Cuello de Botella}
+En cumplimiento de la \textbf{Parte 3} de la guía, se simuló el avance del flujo de trabajo y se forzó un cuello de botella en la columna \textbf{\textit{En revisión}}, acumulando 4 historias (\texttt{SC-28}, \texttt{SC-31}, \texttt{SC-41} y \texttt{SC-21}), duplicando el límite máximo permitido de $\text{WIP} = 2$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.96\textwidth]{captura_jira_cuello_botella.png}
+    \caption{Simulación de Cuello de Botella en Jira Software. La columna \textit{En revisión} supera el límite WIP (4/2), activando la alerta roja y bloqueando la salida de tareas en \textit{En curso}.}
+    \label{fig:cuello_botella}
+\end{figure}
+
+\subsection{Efectos Observados y Resolución mediante \textit{Swarming}}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Efecto de Bloqueo (\textit{Backpressure}):} Las historias completadas en \textit{En curso} quedaron retenidas sin poder pasar a revisión.
+    \item \textbf{Acción Correctiva (\textit{Swarming}):} Siguiendo la regla Kanban \textit{<<dejar de empezar y comenzar a terminar>>}, Franki, Aldo y Carolay detuvieron el desarrollo nuevo en \textit{En curso} y colaboraron de forma simultánea para revisar el código y validar las 4 historias estancadas, restableciendo el flujo en menos de 4 horas.
+\end{itemize}

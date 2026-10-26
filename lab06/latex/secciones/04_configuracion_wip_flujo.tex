@@ -1,0 +1,52 @@
+\section{Parte 2: Configuración del Flujo y Límites WIP}
+
+\subsection{Definición y Justificación de los Límites WIP}
+Para evitar el costo de cambio de contexto y la sobrecarga, se establecieron políticas explícitas de límites de trabajo en progreso para el equipo de 3 desarrolladores ($N = 3$):
+
+\begin{equation}
+    \text{WIP}_{\text{En curso}} = 3 \quad \text{(Exactamente 1 historia activa por cada desarrollador)}
+\end{equation}
+\begin{equation}
+    \text{WIP}_{\text{En revisión}} = 2 \quad \text{(Evita la acumulación de inventario pendiente de pruebas)}
+\end{equation}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Políticas Operacionales y Límites de Capacidad.}
+\label{tab:wip_limits}
+\begin{tabularx}{\textwidth}{P{3.0cm} P{2.0cm} P{2.2cm} Y}
+\toprule
+\textbf{Columna} & \textbf{Límite Mín.} & \textbf{Límite Máx.} & \textbf{Política Operacional} \\
+\midrule
+\textbf{Por hacer} & 3 & Sin límite & Buffer de historias preparadas para alimentar el flujo continuo. \\
+\textbf{En curso} & 1 & \textbf{3 (WIP)} & Ningún desarrollador puede tener más de una tarea activa a la vez. \\
+\textbf{En revisión} & 0 & \textbf{2 (WIP)} & Si se alcanza el límite de 2, se frena el inicio de nuevo desarrollo. \\
+\textbf{Listo} & 0 & Sin límite & Entregas terminadas y desplegadas. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Asignación de Historias y Carga por Integrante}
+El estudiante \textbf{Noe Franklin Choquenaira Quispe} lidera la arquitectura e integración crítica del sistema (52\% de la carga técnica), coordinando con \textbf{Aldo Yaranga} y \textbf{Carolay Ccama}:
+
+\begin{table}[H]
+\centering
+\small
+\caption{Matriz de Responsabilidades y Asignación de Historias en Jira.}
+\label{tab:asignacion_responsables}
+\begin{tabularx}{\textwidth}{P{4.0cm} P{3.0cm} Y P{1.8cm}}
+\toprule
+\textbf{Integrante} & \textbf{Rol Principal} & \textbf{Historias Asignadas en Jira} & \textbf{Carga (\%)} \\
+\midrule
+\textbf{Choquenaira Quispe, Noe Franklin} & Líder Técnico, Backend \& Integraciones MDSJ & 
+\textbf{SC-35} (Certificado digital/SGD), \textbf{SC-44} (Spike RENIEC), \textbf{SC-19} (Inscripción DNI), \textbf{SC-21} (Notas), \textbf{SC-22, 23} (PDF y validación QR), \textbf{SC-25, 26, 34, 36, 43, 16}. & \textbf{52\%} \\
+\addlinespace[0.1cm]
+\textbf{Yaranga Achahui, Aldo} & Módulo Asistencia \& Hardware Auditorio & 
+\textbf{SC-32} (Lector DNI auditorio), \textbf{SC-31} (QR dinámico), \textbf{SC-33} (Antiduplicados), \textbf{SC-20, 27, 37, 38, 39, 40} (PWA offline). & \textbf{26\%} \\
+\addlinespace[0.1cm]
+\textbf{Ccama Enriquez, Carolay} & Módulo Servidores \& Plan PDP & 
+\textbf{SC-41} (Registro anual PDP), \textbf{SC-42} (Servidores por área), \textbf{SC-24} (Dashboard PDP), \textbf{SC-13, 18, 28, 29, 30} (Multientidad MDSJ). & \textbf{22\%} \\
+\bottomrule
+\end{tabularx}
+\end{table}

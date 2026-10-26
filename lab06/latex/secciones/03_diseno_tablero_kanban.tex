@@ -1,0 +1,36 @@
+\section{Parte 1: Diseño del Tablero Kanban en Jira}
+
+\subsection{Estructura de Columnas y Estados del Tablero}
+En cumplimiento estricto de la \textbf{Parte 1} de la guía de prácticas, se aprovisionó el \textbf{Tablero Kanban ID 137 (\textit{Tablero Kanban - Lab 06})} en Jira Software Cloud (\url{https://unsaac-team-grupois.atlassian.net/jira/software/projects/SC/boards/137}), estructurado en cinco estados:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{\textit{Backlog}:} Cola de requerimientos priorizados según el plan de la MDSJ.
+    \item \textbf{\textit{Por hacer} (ID: 10155):} Historias refinadas listas para ser iniciadas por los desarrolladores.
+    \item \textbf{\textit{En curso} (ID: 10156):} Trabajo activo de codificación en frontend/backend.
+    \item \textbf{\textit{En revisión} (ID: 10158):} Control de calidad (\textit{QA}) y revisión cruzada de código (\textit{Code Review}).
+    \item \textbf{\textit{Listo / Hecho} (ID: 10157):} Incrementos probados y desplegados satisfactoriamente.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.96\textwidth]{captura_jira_tablero_kanban.png}
+    \caption{Tablero Kanban Activo en Jira Software Cloud (Tablero ID: 137 - SIGC-CUSCO).}
+    \label{fig:tablero_kanban}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Mapeo de Estados y Configuración del Flujo en Jira.}
+\label{tab:mapeo_columnas}
+\begin{tabularx}{\textwidth}{P{3.2cm} P{2.5cm} P{2.8cm} Y}
+\toprule
+\textbf{Columna} & \textbf{ID Estado} & \textbf{Categoría} & \textbf{Definición Operativa en SIGC-CUSCO} \\
+\midrule
+\textit{Por hacer} & \texttt{10155} & \texttt{new} & Requerimientos priorizados de la MDSJ listos para implementar. \\
+\textit{En curso} & \texttt{10156} & \texttt{indeterminate} & Desarrollo activo de controladores, migraciones y vistas React. \\
+\textit{En revisión} & \texttt{10158} & \texttt{indeterminate} & Pruebas con API RENIEC y revisión de código por pares. \\
+\textit{Listo} & \texttt{10157} & \texttt{done} & Módulos validados con criterios de aceptación cumplidos. \\
+\bottomrule
+\end{tabularx}
+\end{table}

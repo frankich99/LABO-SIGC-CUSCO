@@ -6,6 +6,7 @@
 [![Documentación Lab 03](https://img.shields.io/badge/LaTeX-Lab_03_PDF-brightgreen.svg)](lab03/docs/latex/main.pdf)
 [![Documentación Lab 04](https://img.shields.io/badge/LaTeX-Lab_04_PDF-purple.svg)](lab04/Lab_04_Informe_SIGC_CUSCO.pdf)
 [![Documentación Lab 05](https://img.shields.io/badge/LaTeX-Lab_05_PDF-blue.svg)](lab05/Lab_05_Informe_SIGC_CUSCO.pdf)
+[![Documentación Lab 06](https://img.shields.io/badge/LaTeX-Lab_06_PDF-red.svg)](lab06/INFORME_LABORATORIO_06.pdf)
 
 ---
 
@@ -174,6 +175,33 @@ cd lab04/latex
 pdflatex -interaction=nonstopmode main.tex
 pdflatex -interaction=nonstopmode main.tex
 ```
+
+---
+
+
+---
+
+## 📊 Contenido del Laboratorio 06 (Gestión del Flujo de Trabajo con Kanban)
+
+1. **Parte 1 — Diseño del Tablero Kanban:**
+   * Configuración del flujo continuo sobre Jira Software Cloud enlazado al proyecto SIGC-CUSCO y la Municipalidad Distrital de San Jerónimo (MDSJ).
+   * Definición de 5 columnas normalizadas: *Backlog*, *Por hacer* (10155), *En progreso / En curso* (10156), *En revisión* (10158) y *Terminado / Listo* (10157).
+   * Enlace directo al tablero activo en Jira: [Jira Software - Tablero Kanban SC](https://unsaac-team-grupois.atlassian.net/jira/software/projects/SC/boards/136).
+2. **Parte 2 — Configuración del Flujo y Límites WIP:**
+   * Asignación del inventario de 41 incidencias priorizadas con liderazgo de Noe Franklin Choquenaira Quispe (52% de carga técnica), Aldo Yaranga Achahui (26%) y Carolay Ccama Enriquez (22%).
+   * Fijación matemática de límites de trabajo en progreso: **WIP = 3** en *En progreso* (1 tarea activa por desarrollador) y **WIP = 2** en *En revisión* para evitar el costo de cambio de contexto (*multitasking penalty*).
+3. **Parte 3 — Simulación de Flujo y Cuellos de Botella:**
+   * Movimiento dinámico de tareas según avance y saturación forzada de la columna *En revisión* (4 tareas simultáneas, duplicando el límite WIP = 2).
+   * Diagnóstico del efecto de bloqueo (*Backpressure*) y resolución inmediata mediante la técnica colaborativa de *Swarming* (*Stop Starting, Start Finishing*).
+4. **Entregables y Vinculación con la Municipalidad de San Jerónimo (MDSJ):**
+   * Formalización del acta de reunión del 20 de octubre de 2026 con el Director de OTI de San Jerónimo, Lic. Adrian Valer (módulos de PDP anual, asistencia con lector de DNI en auditorio, certificados con firma digital y pasarela RENIEC).
+   * Análisis de métricas: Diagrama de Flujo Acumulado (CFD), tiempos de ciclo (promedio 2.10 días), tiempo de entrega (promedio 5.02 días) y comprobación empírica de la Ley de Little (Cycle Time = WIP / Throughput).
+   * Evidencias de software ejecutables en el repositorio real (SIGC-CUSCO).
+5. **Trabajo Extra — Mantenimiento Continuo del Tablero:**
+   * Protocolo de actualización semanal: Daily Standup de 10 min, principio estricto de jalado (*Pull*) y auditoría semanal del CFD.
+6. **Informe Técnico Final en LaTeX:**
+   * Código fuente modular en [lab06/latex/](lab06/latex/).
+   * Documento compilado con formato oficial de la UNSAAC: [lab06/INFORME_LABORATORIO_06.pdf](lab06/INFORME_LABORATORIO_06.pdf).
 
 ---
 
